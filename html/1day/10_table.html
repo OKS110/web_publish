@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0 auto;
+        padding: 0;
+
+    }
+    table{
+        border: 1px solid #333;
+        border-collapse: collapse;
+        width: 50%;
+    }
+    th{
+        background-color: #999;
+    }
+    th, td{
+        border: 1px solid #333;
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">구분</th>
+                <th scope="col">제목 1</th>
+                <th scope="col">제목 2</th>
+                <th scope="col">제목 3</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td style="background-color: skyblue;"colspan="3">data1 + data2 + data3</td>
+                <!-- <td>data2</td> -->
+                <!-- <td>data3</td> -->
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>data4</td>
+                <td style="background-color: yellow;" rowspan="2">data5 + data8</td>
+                <td>data6</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>data7</td>
+                <!-- <td>data8</td> -->
+                <td>data9</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>data10</td>
+                <td>data11</td>
+                <td>data12</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th scope="row">합계</th>
+                <td>total1</td>
+                <td>total2</td>
+                <td>total3</td>
+            </tr>
+        </tfoot>
+        
+    </table>
+
+</body>
+</html>
