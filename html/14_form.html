@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function loginSubmit(){
+            alert("서버로 전송합니다!!");
+        }
+    </script>
+</head>
+<body>
+    <h1>Form Element or Tag</h1>
+<!-- 폼태그 ===> 서버에 전송 -->
+    <form action="#" method="get" name="loginForm">
+        <!-- get : 소켓의 Head에 쿼리스트링 방식 :: ~~주소?name=value&name=value&... -->
+        <!-- ex) http://127.0.0.1:5500/html/14_form.html?ID=test1&PW=1234%23# 쿼리스트링 방식 > GET 방식 -->
+        <!-- post : 소켓의 Body에 데이터 저장 -->
+        <!-- ================================================================================================ -->
+        <!-- ================================================================================================ -->
+        <!-- ================================================================================================ -->
+        <fieldset>
+            <legend>로그인 화면</legend>
+            <ul>
+                <li>
+                    <label for="">ID</label>
+                    <input type="text" name="ID" placeholder="ID 입력">
+                </li>
+                <li>
+                    <label for="">PassWord</label>
+                    <input type="password" name="PW" placeholder="PW 입력">
+                </li>
+            </ul>
+        </fieldset>
+
+        <!-- ================================================================================================ -->
+        <!-- ================================================================================================ -->
+        <!-- ================================================================================================ -->
+        <!-- ================================================================================================ -->
+        <fieldset>
+            <legend>옵션 사항</legend>
+            <ul>
+                <li>
+                    <label for="">주소</label>
+                    <select name="address">
+                        <option value="선택">선택</option>
+                        <option value="서울시">서울시</option>
+                        <!-- address = 서울시 -->
+                        <option value="부산시">부산시</option>
+                        <!-- address = 부산시 -->
+                        <option value="인천시">인천시</option>
+                        <!-- address = 인천시 -->
+                    </select>
+                </li>
+
+                <li>
+                    <label for="">직군</label>
+                    <input type="radio" name="role" value="front">
+                    <span>프론트 개발자</span>
+                    <input type="radio" name="role" value="server">
+                    <span>서버 개발자</span>
+                    <input type="radio" name="role" value="DBA">
+                    <span>DB 관리자</span>
+                </li>
+
+                <li>
+                    <label for="">관심 과목</label>
+                    <input type="checkbox" name="subject" value="html">
+                    <span>HTML</span>
+                    <input type="checkbox" name="subject" value="css">
+                    <span>CSS</span>
+                    <input type="checkbox" name="subject" value="js">
+                    <span>JavaScript</span>
+                </li>
+
+                <li>
+                    <label for="">자기소개</label>
+                    <textarea name="intro" id="" cols="50" rows="10" placeholder="200자 이내로 작성해주세요"></textarea>
+                    <!-- textarea 태그 안에는 enter도 문자로 인식하기 때문에 시작태그와 종료태그를 붙여서 사용하는 것이 좋다. -->
+                </li>
+
+                <li>
+                    <label for="">파일업로드</label>
+                    <input type="file" name="file">
+                    <!-- 쿼리스트링 방식 X -->
+                </li>
+                
+                <li>
+                    <label for="">URL</label>
+                    <input type="url" name="url">
+                </li>
+                
+                <li>
+                    <label for="">생년월일</label>
+                    <input type="date" name="birth">
+                </li>
+            </ul>
+        </fieldset>
+        <div>
+            <!-- 디폴트 type : submit(폼의 주소 서버로 데이터 전송) -->
+            <!-- <button type="submit" onclick="loginSubmit()">Login</button> -->
+            <button type="submit">Login</button>
+            <button type="reset">Reset</button>
+            <button>
+                <img src="./images/logoRed.png" alt="로고" width="70px">
+            </button>
+        </div>
+        
+    </form>
+</body>
+</html>
