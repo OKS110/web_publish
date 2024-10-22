@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Class Selector</title>
+</head>
+<style>
+    h1::before{
+        content: "-";
+        color: violet;
+    }
+    h1::after{
+        content: "^^";
+        background-color: black;
+        color: yellow;
+    }
+    h1:hover{
+        background-color: silver;
+        color: #fff;
+    }
+    a{
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+    a:visited{color: tomato;}
+    a:active{
+        color: blue;
+    }
+    input[type="text"]:focus{
+        background-color: yellow;
+        outline: none;
+        /* outline - 바깥라인, dafault 값으로 radius가 잡혀있음 */
+    }
+</style>
+<body>
+    <h1>Pseudo Class Selector</h1>
+    <p>
+        <a href="http://www.naver.com" target="_blank">Naver</a>
+        <a href="#">Google</a>
+    </p>
+    <div>
+        <input type="text">
+        <button>Send</button>
+    </div>
+</body>
+</html>

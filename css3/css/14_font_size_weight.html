@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font_size_weight</title>
+</head>
+<style>
+    .font-color{
+        color: violet;
+    }
+    /* -----------------------------------text 사이즈----------------------------------------------------- */
+    .small{
+        font-size: small;
+    }
+    .medium{
+        font-size: medium;
+    }
+    .large{
+        font-size: large;
+    }
+    /* -----------------------------------text 두께----------------------------------------------------- */
+    .weight1{
+        font-weight: 100;
+    }
+    .weight2{
+        font-weight: 500;
+    }
+    .weight3{
+        font-weight: 700;
+    }
+    /* ------------------------------------밑줄---------------------------------------------------- */
+    .none{text-decoration: none;}
+    .underline{text-decoration: underline;}
+    .linethrough{text-decoration: line-through;}
+    .dotted{text-decoration: underline dotted red;}
+
+    /* ------------------------------------이탤릭체---------------------------------------------------- */
+    .italic{font-style: italic;}
+
+</style>
+<body>
+    <h1 class="italic">Font size/weight</h1>
+
+    <p class="small">font size:small</p>
+    <p class="medium">font size:medium</p>
+    <p class="large">font size:large</p>
+    <hr>
+
+    <p class="weight1">font weight:100</p>
+    <p class="weight2">font weight:500</p>
+    <p class="weight3">font weight:700</p>
+    <hr>
+    
+    <p class="none">font line</p>
+    <p class="underline">font line</p>
+    <p class="linethrough">font line</p>
+    <p class="dotted">font line</p>
+    <hr>
+    
+    <p>
+        Lorem ipsum dolor sit <span class="small font-color">amet consectetur adipisicing elit.</span> <br>
+        Odio fugiat laboriosam qui inventore deleniti alias tempore accusamus <br>
+         similique. <b class="font-color">Ex suscipit</b> totam obcaecati eaque nobis deleniti <br>
+         qui illum fugiat explicabo. <span class="large">Natus?</span>
+    </p>
+</body>
+</html>
