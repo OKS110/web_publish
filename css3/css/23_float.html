@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float</title>
+</head>
+<style>
+    .box-group{
+        overflow: hidden;
+        border: 1px solid rgb(255, 0, 0);
+        clear: both;
+    }
+    .box-group>div{
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        margin: 10px;
+        background-color: violet;
+        border-radius: 10px;
+        float: left;
+    }
+    div.box-group>p{clear: both;}
+    ul{
+        padding: 0;
+        list-style-type: none;
+    }
+    ul li{
+        width: 100px;
+        border: 1px solid #fff;
+        background-color: silver;
+        float: left;
+        text-align: center;
+        padding: 20px 0;
+    }
+    ul li a{
+        color: #fff;
+        text-decoration: none;
+    }
+    ul li a:hover{
+        color: #000;
+        text-decoration: underline;
+    }
+    ul li:nth-child(1) a{
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    ul+hr{clear: both;}
+    img{
+        float: right;
+        display: block;
+    }
+    img+p{
+        width: 420px;
+        border: 1px solid red;
+        text-indent: 10px;
+        text-align: justify;
+    }
+</style>
+<body>
+    <h1>Float : 블록레벨 한 줄로 정렬</h1>
+    <div class="box-group">
+        <div>box1</div>
+        <div>box2</div>
+        <div>box3</div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Id tempora dicta beatae omnis incidunt vero corporis sit. 
+            Amet incidunt enim aut, odio possimus reiciendis.
+            Magnam odit molestias commodi animi iure.
+    
+        </p>
+    </div>
+    <hr>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Signup</a></li>
+        <li><a href="#">MyPage</a></li>
+        <li><a href="#">Support</a></li>
+    </ul>
+    <hr>
+    <img src="/web_publish/html/images/logoRed.png" alt="logo">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Ea ipsum sint assumenda? Dolore, beatae id error asperiores cumque,
+          voluptates consequuntur doloremque harum,
+           repellendus dolores ea quam? Dignissimos id quod commodi.
+
+    </p>
+</body>
+</html>

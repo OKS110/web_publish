@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background-image</title>
+</head>
+<style>
+    div{
+        width: 600px;
+        height: 600px;
+        border: 1px solid silver;
+    }
+    .bg-image{
+        background-image: url(/web_publish/html/images/logoRed.png);
+        /* 반복 패턴 이미지 주소 복사 후 url에 붙이기 https://www.freepik.com */
+    }
+    .bg-image-no-repeat{
+        background-image: url(/web_publish/html/images/logoRed.png);
+        background-repeat: no-repeat;
+    }
+    .bg-image-repeat-x{
+        background-image: url(/web_publish/html/images/logoRed.png);
+        background-repeat: repeat-x;
+    }
+    .bg-image-repeat-y{
+        background-image: url(/web_publish/html/images/logoRed.png);
+        background-repeat: repeat-y;
+    }
+</style>
+<body>
+    <h3>Background-image</h3>
+    <div class="bg-image">
+    </div>
+</body>
+</html>
