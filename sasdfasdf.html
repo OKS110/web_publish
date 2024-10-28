@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+/*초기화 코드*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+asdf
+.slidewrap{
+
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+}
+.slides{
+    display: flex;
+
+}
+.slide{
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    color: white;
+    font-size: 40px;
+}
+.section1{
+    background-color: blueviolet;
+}
+.section2{
+    background-color: aqua;
+}
+.section3{
+    background-color: tomato;
+}
+.section4{
+    background-color: greenyellow;
+}
+.section5{
+    background-color: goldenrod;
+}
+
+</style>
+<body>
+    <div class="slidewrap">
+        <div class="slides">
+            <div class="section1 slide">1</div>
+            <div class="section2 slide">2</div>
+            <div class="section3 slide">3</div>
+            <div class="section4 slide">4</div>
+            <div class="section5 slide">5</div>    
+        </div>
+    </div>
+</body>
+
+<script>
+//기본적인 슬라이드 정보 얻어두기
+const slidewrap = document.querySelector(".slidewrap"); // 슬라이드 전체 랩
+const slidescnt = document.querySelectorAll(".slide").length; // 슬라이드 클래스 배열길이(각 요소 길이) - 5
+const slideContainer = document.getElementsByClassName("slides"); //움직이는 슬라이드 박스
+const slideWidth = slidewrap.offsetWidth; //슬라이드 전체 랩의 너비
+let currentSlide = 0; //현재 슬라이드 인덱스 0, 1, 2, 3, 4
+
+/*  공통으로 이용할 함수
+
+        슬라이드 이동 함수
+            해당 기능에는 페이지네이션 HTML에 class를 이동하여 현 위치를 마크해야함
+        CSS 삽입 함수
+*/
+
+//슬라이드 이동 함수
+function goToSlide(index){ //인덱스 값을 받으면
+    currentSlide = index; //인덱스 값은 현재 슬라이드 인덱스 변수로 들어가고 - 0, 1, 2, 3, 4
+    slideContainer[0].style.transition = 'transform 0.5s ease';  //움직이는 슬라이드 박스는 이동할것이다.
+     slideContainer[0].style.transform = `translateX(-${slideWidth * currentSlide}px)`; // 이 길이만큼(전체 너비 * 현재 인덱스)
+     //px을 붙였기에 브라우저 크기에 따라 슬라이드 움직이는 결과가 달라진다.
+     //앞에 배열[0]인덱스 번호가 붙은 건 클래스이름으로 변수를 정해놨기 때문
+    console.log(slidescnt);
+}
+
+//CSS 삽입 함수
+function AddStyle(style){
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = style;
+    document.head.appendChild(styleTag);
+}
+
+/*  페이지네이션 생성 함수
+        HTML 삽입
+        CSS 삽입 (공통함수 사용)
+        페이지네이션 이벤트 등록 (공통함수 이벤트 함수)
+*/
+
+/*  버튼 생성 함수
+        HTML 삽입
+        CSS 삽입 (공통함수 사용)
+        버튼 이벤트 등록 (공통함수 이벤트 함수)
+*/
+// 버튼생성
+function Createbtn(){
+    //HTML Tag 생성
+    slidewrap.innerHTML += `<div class="leftbtn btn">Prev</div>`;
+    slidewrap.innerHTML += `<div class="rightbtn btn">Next</div>`;
+    //CSS 생성
+    const BtnStyle = `
+        .btn {
+            display : flex;
+            position : absolute;
+            bottom : calc(50% - 60px);
+            width: 100px;
+            height : 120px;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            border: 1px solid white;
+            border-radius: 20px;
+        }
+        .leftbtn{
+            left : 20px;
+        }
+        .rightbtn{
+            right : 20px;
+        }
+    `
+    AddStyle(BtnStyle);
+    
+    //버튼 이벤트 생성
+    const BtnL = document.querySelector(".leftbtn"); //왼쪽 버튼
+    BtnL.addEventListener('click',(event)=>{ //왼쪽 버튼을 클릭하면
+        event.preventDefault(); // 기본 앵커 링크 동작을 막습니다.
+        const index = (currentSlide-1) >=0 ? currentSlide-1 : 0; // 삼항 연산을 통해 페이지 이동 최소 값 제한
+        goToSlide(index); //함수호출
+    })
+    const BtnR = document.querySelector(".rightbtn"); //오른쪽 버튼
+    BtnR.addEventListener('click',(event)=>{ //오른쪽 버튼을 누르면
+        event.preventDefault(); // 기본 앵커 링크 동작을 막습니다.
+        const index = (currentSlide+1) < slidescnt ? currentSlide+1 : slidescnt-1; //삼항 연산을 통해 페이지 이동 최대 값 제한
+                        //만약 4(마지막 인덱스) 즉 마지막 페이지에 도달할 경우 4+1 < 5(slidescnt) 는 거짓이므로 false 결과값으로 들어가서 4가 출력 이것이 반복되면
+                        //현재 위치 * 4가 반복되므로 마지막 페이지에서 더 이상 움직이지 않는다.
+        goToSlide(index); //함수호출
+    })    
+}
+
+
+//웹 브라우저 시작
+Createbtn();
+
+</script>
+</html>

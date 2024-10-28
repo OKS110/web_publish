@@ -17,7 +17,7 @@
 <body>
     <header>
         <div class="top-wrap">
-            <div class="header-top">
+            <div class="header-top center-layout">
                 <div class="header-top-logo">
                     <a href="/cgv/index.html" target="_parent">
                         <img src="/cgv/images/logoRed.png" alt="CGV Logo">
@@ -87,6 +87,7 @@
                             <dd>플레이존</dd>
                             <dd>씨네샵</dd>
                         </dl>
+                        <div class="menubg"></div>
                     </li>
                     <li>
                         <a href="#" class="header-bottom-title">이벤트</a>
@@ -120,5 +121,27 @@
 
         
     </header>
+    <script>
+        let menuTitle = document.getElementsByClassName("header-bottom-title");
+        let dl = document.getElementsByTagName("dl");
+let menuTitleLength = menuTitle.length;
+    for(let i = 0; i < menuTitleLength; i++){
+    // console.log(menuTitle[i]);
+        menuTitle[i].addEventListener('mouseenter',function(){
+
+        for(let i = 0; i < dl.length; i++){
+            dl[i].style.display = "block";
+        }
+    });
+    dl[i].addEventListener('click',function(){
+
+        for(let i = 0; i < dl.length; i++){
+            dl[i].style.display = "none";
+
+        }
+    });
+}
+
+    </script>
 </body>
 </html>

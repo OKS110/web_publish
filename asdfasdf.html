@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 300px;
+        height: 300px;
+        background-color: blue;
+        color: #fff;
+
+    }
+
+    .opa{
+        opacity: 0.5;
+    }
+</style>
+<body>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div>asdf</div>
+    <div class="opa">
+        <div class="moveTopBtn">asdfasdfasdfasdf</div>
+    </div>
+    
+    <script>
+            const topBtn = document.getElementsByClassName("moveTopBtn");
+    console.log(topBtn);
+
+
+    topBtn[0].addEventListener('click', function(){
+        console.log("check");
+        window.scrollTo({top: 0, behavior: 'smooth'});  
+    });
+    </script>
+</body>
+</html>
