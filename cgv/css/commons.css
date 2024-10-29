@@ -27,12 +27,12 @@ a{
 /* 컨텐츠 가운데 정렬 */
 
 .center-layout{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 1000px;
     margin: 0 auto;
 }
 .center-title{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     padding: 40px 15px 10px;
     margin-bottom: 40px;
 }

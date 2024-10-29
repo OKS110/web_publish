@@ -117,12 +117,13 @@ function goToRightSlide(index){
     window.addEventListener('scroll', () => { 
         //스크롤을 할 때마다 로그로 현재 스크롤의 위치가 찍혀나온다.
         console.log(window.scrollX, window.scrollY);
-        if(window.scrollY > Number(500) && window.scrollY < Number(2300)){
+        if(window.scrollY > Number(500)){
+            fixButtonWrap[0].style.transition = '.3s'; //등장할 때 사라질 때 서서히 나타남
             fixButtonWrap[0].style.opacity = '100%';
             move.style.transform = 'translate(-50px, 0)';
 
             
-        }else if(window.scrollY < Number(500) && window.scrollY > Number(0)){           
+        }else if(window.scrollY < Number(500)){   
                 fixButtonWrap[0].style.opacity = '0';
                 move.style.transform = 'translate(50px, 0)';
             }

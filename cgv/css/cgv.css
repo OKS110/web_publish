@@ -313,6 +313,9 @@ ul.footer_menu a:hover{
     /* border: 1px solid red; */
     margin-top: 30px;
 }
+.p2 a{
+    cursor: default;
+}
 
 /* =================================================================================================================================================================================== */
 /* =================================================================================================================================================================================== */
@@ -403,7 +406,7 @@ div.content-moviechart-title-right>a{
 }
 /* ===============================================무비차트 리스트=========================================================================================================================== */
 .slide-wrap{
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
     width: 100%;
     position: relative;
     /* overflow: hidden; */
@@ -440,7 +443,7 @@ div.content-moviechart-title-right>a{
     display: flex;
     justify-content: space-between;
     gap: 37px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 
 }
 
@@ -823,7 +826,7 @@ div.content-moviechart-title-right>a{
     width: 200px;
     height: 60px;
     position: fixed; bottom: 120px; right: 380px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 
 }
 .fix-button>a:nth-child(1){
@@ -836,23 +839,26 @@ div.content-moviechart-title-right>a{
     background: linear-gradient(to left, pink, tomato);
     color: #fff;
     border-radius: 50px;
-    transition: 1s;
+    transition: .5s;
+    box-shadow: 1px 1px 2px gray;
 }
 .fix-button>.moveTopBtn{
     cursor: pointer;
     position: absolute; right: 0;
-    border: 1px solid #000;
+    border: 1px solid #727272;
     width: 50px;
     height: 50px;
     border-radius: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 1px 1px 2px gray;
 }
-.fix-button>a:nth-child(2)>img{
-    width: 50%;
-    height: 70%;
+.fix-button img{
     display: block;
+
+    width: 15px;
+    height: 21px;
 }
 
 
@@ -885,7 +891,7 @@ div.content-moviechart-title-right>a{
     padding-bottom: 35px;
     /* border-top: 1px solid var(--color-login-font);
     border-bottom: 1px solid var(--color-login-font); */
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -929,4 +935,258 @@ div.content-moviechart-title-right>a{
 }
 .login-form ul>li:nth-child(5) div:last-child a{
     color: var(--color-login-font);
+}
+
+
+
+/* =====================================================================================
+
+    *   title: join form style
+    *   author: me
+    *   final-date: 24-10-24
+========================================================================================*/
+
+.join-form{
+    position: relative;
+    z-index: 2000;
+}
+.join-form form{
+    /* border: 1px solid green; */
+    width: 400px;
+    margin: 0 auto;
+}
+.join-form form button{
+    border: 0;
+    padding: 6px 30px 6px 30px;
+    background-color: var(--color-button);
+    border-radius: 5px;
+    font-weight: 700;
+    color: #fff;
+    box-shadow : 0 0 1px gray;
+}
+.join-form ul li{
+    /* border: 1px solid red; */
+    padding-top: 10px;
+}
+.join-form ul li div{
+    border: 1px solid var(--color-silver);
+    border-radius: 5px;
+    padding: 5px 10px;
+
+    /* padding-top: 10px; */
+}
+
+.join-form ul li div input{
+    /* border: 1px solid blue; */
+    border: 0;
+    outline: none;
+    width: 250px;
+    height: 30px;
+}
+.join-form ul li:nth-child(6) div{
+    
+    border: 0;
+    padding: 0;
+}
+.join-form ul li:nth-child(6) div input,
+.join-form ul li:nth-child(6) div select{
+    width: 150px;
+    height: 42px;
+    padding: 0px 10px;
+    border: 1px solid var(--color-silver);
+    outline: none;
+    border-radius: 5px;
+    /* border: 1px solid black; */
+}
+.join-form ul li:first-child>div,
+.join-form ul li:nth-child(6)>div{
+    /* border: 1px solid tomato; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.join-form ul li:last-child{
+    padding-top: 30px;
+    /* border: 1px solid red; */
+    text-align: center;
+}
+
+.join-form ul li:first-child>div>button{
+    padding: 6px 15px;
+}
+.join-form ul li:last-child>button:last-child{
+    background-color: var(--color-primary);
+}
+.join-form ul li label{
+    margin-left: 2px;
+    font-size: .9em;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+.join-form ul li label + span{
+    margin-left: 5px;
+    font-size: 0.7em;
+    font-weight: 500;
+    color: var(--color-button);
+}
+
+/* =====================================================================================
+
+    *   title: mycgv form style
+    *   author: me
+    *   final-date: 24-10-24
+========================================================================================*/
+.mycgv{
+    position: relative;
+    z-index: 2000;
+}
+.mycgv div{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+}
+.mycgv div span{
+    border: 1px solid green;
+    display: inline-block;
+    width: 200px;
+    padding: 30px;
+    margin: 30px 20px;
+    text-align: center;
+}
+.mycgv div span:hover{
+    background-color: beige;
+}
+
+/* =====================================================================================
+
+    *   title: support form style
+    *   author: me
+    *   final-date: 24-10-24
+========================================================================================*/
+
+.support{
+    position: relative;
+    z-index: 2000;
+}
+.support-content{
+    width: 800px;
+    margin: 0 auto;
+}
+.support-content>p{
+    padding-bottom: 10px;
+    font-size: .9em;
+}
+.support-search{
+    width: 350px;
+    height: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 5px; */
+}
+.support-search>select{
+    width: 25%;
+    height: 100%;
+    padding-left: 5px;
+}
+.support-search>button{
+    width: 20%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid gray;
+    outline: 1px solid #000;
+    font-size: 12px;
+    font-weight: bold;
+}
+.support-search>input{
+    width: 50%;
+    height: 100%;
+    text-indent: 10px;
+}
+
+.support-menuwrap{
+
+    margin: 10px 0 30px 0;
+
+    border-bottom: 2px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+}
+.support-menuwrap a{
+    display: block;
+    width: 88px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+    border-left: 2px solid #fff;
+    background-color: var(--color-primary);
+    
+}
+.support-menuwrap li:first-child a{
+    border: none;
+    
+}
+
+.support-menuwrap a:focus{
+    background-color: var(--color-button);
+    border-bottom: 1px solid var(--color-button);
+    outline: 1px solid var(--color-button);
+    margin-bottom: -2px;
+}
+
+/* ======================================테이블================================================== */
+.tit{
+    text-align: left;
+}
+table{
+    border-spacing: 0;
+}
+.support-table{
+    /* border: 1px solid blue; */
+    width: 100%;
+    text-align: center;
+    color: #666;
+}
+.support-table a{
+    color: #666;
+}
+
+.support-table thead th{
+    font-size: .9rem;
+    padding: 7px;
+    background-color: #ececec;
+    border-bottom: 1px solid silver;
+    border-top: 1px solid silver;
+
+}
+.support-table thead th:nth-child(3){
+    text-indent: 5px;
+}
+.support-table tbody td{
+    font-size: .9em;
+    padding: 15px;
+}
+.support-table tbody td a:hover{
+    text-decoration: underline;
+    font-weight: 600;
+}
+.support-table tfoot td{
+    padding: 5px;
+    padding-top: 30px;
+    font-weight: 500;
+    font-size: 1rem;
+    border-top: 1px solid var(--color-silver);
+
+}
+/* 테이블 하단 숫자 리스트 */
+.support-table tfoot td a{
+    display: inline-block;
+    padding: 0px 5px;
+}
+.support-table tfoot td a:focus{
+    text-decoration: underline;
 }
