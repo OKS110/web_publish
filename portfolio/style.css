@@ -2,11 +2,13 @@
 
 header{
     width: 100%;
-    height: 50px;
+    height: 70px;
     background-color: var(--color-primary);
     /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    z-index: 1000;
 }
 /* ==================================================================header 왼쪽 로고==================================================================== */
 .main-logo{
@@ -44,10 +46,13 @@ nav>ul.main-menu{
     align-items: center;
     justify-content: space-between;
 }
-
+nav>ul.main-menu>li:first-child>a{
+    color: aqua;
+    font-weight: bold;
+}
 nav>ul.main-menu>li>a{
     /* border: 1px solid red; */
-    padding: 5px 20px;
+    padding: 8px 20px 5px;
 }
 nav>ul.main-menu>li>a:hover{
     margin: -1px;
@@ -58,9 +63,13 @@ nav>ul.main-menu>li>a:hover{
 /* ==============================================================메인 섹션====================================================================================== */
 .main-section{
     width: 100%;
-    height: 400px;
+    height: 700px;
     padding: 40px 0 150px 0;
     background-color: var(--color-primary);
+    /* center - x, y 좌표 center */
+    /* cover - 배경 영역을 덮기 */
+    background: url("/portfolio/images/main-visual.jpg")no-repeat center/cover; 
+    background-attachment: fixed; /* background-attachment: fixed; 스크롤 내렸을때 이미지 고정 */
 }
 .main-section>div{
     margin: 0 auto;
@@ -68,12 +77,14 @@ nav>ul.main-menu>li>a:hover{
     text-align: center;
     
 }
-
+.main-section>div:nth-child(2){
+    margin-top: 120px;
+}
 
 /* ==========================================================dot 효과========================================================================== */
 .main-section>div.dot{
     background-color: #fff;
-    position: absolute; top: 55%; left: 70%; 
+    position: absolute; top: 65%; left: 70%; 
     width: 10px; height: 10px; background-color: #fff; 
     border-radius: 50%; transform: translate(-50%, -50%);
     
@@ -131,7 +142,6 @@ nav>ul.main-menu>li>a:hover{
     margin: 0 auto;
     width: 60%;
     height: 700px;
-    border: 1px solid red;
     /* color: #000; */
     text-align: center;
 }
@@ -349,7 +359,6 @@ ul.skill-box li:last-child .skill-bar>div{
 .mywork{
     box-sizing: border-box;
     background-color: var(--color-primary);
-    border: 1px solid red;
     text-align: center;
     padding-bottom: 40px;
 }
@@ -424,7 +433,6 @@ ul.skill-box li:last-child .skill-bar>div{
 .testimonial p{
     color: #000;
     font-size: 1.5em;
-
 }
 .testimonial-comment-wrap{
     margin-top: 40px;
@@ -442,26 +450,33 @@ ul.skill-box li:last-child .skill-bar>div{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 14%;
-    height: 100%;
+    width: 140px;
+    /* height: 100%; */
+    height: 140px;
     border-radius: 100%;
     overflow: hidden;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
-
 }
 
 .usertext{
     width: 70%;
+    height: 60%;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
     padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px
 
 }
-.user-information{
-    margin-top: 15px;
+.usertext>p.user-comment{
+    font-size: 1rem;
 }
+
 .user-information span{
     color: #000;
-    font-size: 1.2em;
+    font-size: 0.9em;
 }
 .user-information span:first-child{
     color: aqua;
@@ -487,6 +502,7 @@ footer ul li{
 .contact-icons i{
     font-size: 1.5em;
     margin: 0 10px;
+    cursor: pointer;
 }
 
 /* =======================================================우측 하단 고정버튼================================================================================= */
