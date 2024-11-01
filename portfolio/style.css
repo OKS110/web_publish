@@ -1,0 +1,516 @@
+@charset "utf-8";
+
+header{
+    width: 100%;
+    height: 50px;
+    background-color: var(--color-primary);
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+}
+/* ==================================================================header 왼쪽 로고==================================================================== */
+.main-logo{
+    /* border: 1px solid #fff; */
+    width: 130px;
+    height: 100%;
+}
+.main-logo>a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.main-logo>a>img{
+    width: 40px;
+    height: 40px;
+}
+.main-logo>a>span{
+    padding-top: 15px;
+    font-size: 2em;
+    letter-spacing: -1px;
+    font-weight: 600;
+}
+
+/* ==================================================================header 오른쪽 메뉴==================================================================== */
+nav{
+    width: 600px;
+    height: 100%;
+}
+nav>ul.main-menu{
+    height: 100%;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav>ul.main-menu>li>a{
+    /* border: 1px solid red; */
+    padding: 5px 20px;
+}
+nav>ul.main-menu>li>a:hover{
+    margin: -1px;
+    border: 1px solid aqua;
+    border-radius: 3px;
+}
+
+/* ==============================================================메인 섹션====================================================================================== */
+.main-section{
+    width: 100%;
+    height: 400px;
+    padding: 40px 0 150px 0;
+    background-color: var(--color-primary);
+}
+.main-section>div{
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    
+}
+.main-section>div.dot{
+/* ==========================================================dot 효과========================================================================== */
+    position: absolute; top: 100px; left: 350px ;
+    border-radius: 50px;
+    background-color: #fff;
+    animation: dot 1.5s 0s forwards infinite;
+}
+@keyframes dot{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        
+        opacity: 100%;
+    }
+}
+
+
+.main-section>div>.avata-img-wrap{
+    width: 220px;
+    height: 220px;
+    border: 5px solid aqua;
+    border-radius: 250px;
+    margin: 0 auto;
+}
+.main-section>div>.avata-img-wrap img{
+    width: 100%;
+    height: 100%;
+}
+.main-section>div>h2{
+    font-size: 3em;
+}
+.main-section>div>h2>span{
+    font-size: 1em;
+    color: aqua;
+}
+.main-section>div>p{
+    font-size: 1.3rem;
+}
+
+.contact-button button{
+    cursor: pointer;
+    margin-top: 40px;
+    padding: 5px 15px;
+    border: 1px solid aqua;
+    border-radius: 3px;
+    outline: none;
+    background-color: aqua;
+    color: #000;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: .3s;
+}
+.contact-button button:hover{
+    color: #fff;
+}
+/* ======================================================================About me============================================================================================================ */
+
+.about{
+    margin: 0 auto;
+    width: 60%;
+    height: 700px;
+    border: 1px solid red;
+    /* color: #000; */
+    text-align: center;
+}
+.title-style{
+    text-align: center;
+    color: #000;
+    font-size: 2.5em;
+    padding-top: 60px;
+    margin-bottom: 15px;
+}
+
+.about>p{
+    color: #000;
+    font-size: 1.2em;
+    line-height: 25px;
+}
+
+/* ==================about 카드 3장============================= */
+ul.about-cards{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin-top: 40px;
+}
+
+ul.about-cards>li{
+    width: 30%;
+    height: 250px;
+    padding: 20px;
+    background-color: rgb(0, 0, 20);
+    border-radius: 15px;
+    margin: 0 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
+    transition: .3s;
+}
+ul.about-cards>li>div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 30px;
+}
+.about-cards-img{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #fff;
+}
+ul.about-cards>li>div>h3{
+    font-size: 1.6em;
+}
+ul.about-cards>li>div>p{
+    color: #fff;
+    font-size: 1em;
+}
+ul.about-cards>li:hover{
+    cursor: pointer;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, .5);
+}
+/* =================================경력 아이콘 2개================================================================================= */
+.about-career-icon-wrap{
+    width: 88%;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.about-career-icon{
+    display: flex;
+}
+.about-career-icon>div:first-child{
+    width: 70px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.about-career-icon>div:first-child img{
+    width: 100%;
+}
+.about-career-icon>div:last-child{
+    text-align: left;
+}
+.about-career-icon>div:last-child>p{
+    font-size: 1em;
+    color: #000;
+}
+.about-career-icon>div:last-child>span{
+    font-size: 0.9em;
+    color: #000;
+}
+
+.content-wrap{
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* ============================================My Skills==================================================================== */
+.myskills{
+    background-color: #2f2d32;
+    text-align: center;
+    padding-bottom: 100px;
+}
+.myskills>h2{
+    color: #fff;
+}
+.myskills>h3{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+.myskills>p{
+    width: 80%;
+    margin-bottom: 40px;
+}
+
+.myskills>article{
+    width: 80%;
+    display: flex;
+   box-shadow: 4px 4px 8px rgba(0, 0, 0, .8);
+
+}
+/* 왼쪽 */
+.coding-skills-wrap{
+    width: 60%;
+    padding: 40px;
+    background-color: #0a005f;
+}
+.skill-title{
+    display: flex;
+    justify-content: space-between;
+}
+.skill-title span{
+    display: block;
+    margin: 0;
+    padding-bottom: 10px;
+}
+ul.skill-box li{
+    margin-top: 20px;
+}
+ul.skill-box li .skill-bar{
+    height: 3px;
+    background-color: rgb(66, 66, 66);
+    line-height: 3px;
+    /* border-bottom: 1px solid rgb(66, 66, 66); */
+    position: relative;
+}
+ul.skill-box li:first-child .skill-bar>div{
+    width: 80%;
+    height: 3px;
+    background-color:greenyellow;
+}
+
+ul.skill-box li:nth-child(2) .skill-bar>div{
+    width: 90%;
+    height: 3px;
+    background-color:greenyellow;
+}
+ul.skill-box li:nth-child(3) .skill-bar>div{
+    width: 70%;
+    height: 3px;
+    background-color:greenyellow;
+}
+ul.skill-box li:nth-child(4) .skill-bar>div{
+    width: 88%;
+    height: 3px;
+    background-color:greenyellow;
+}
+ul.skill-box li:nth-child(5) .skill-bar>div{
+    width: 98%;
+    height: 3px;
+    background-color:greenyellow;
+}
+ul.skill-box li:last-child .skill-bar>div{
+    width: 50%;
+    height: 3px;
+    background-color:greenyellow;
+}
+
+
+
+
+/* 오른쪽 */
+.tools-wrap{
+    width: 40%;
+    height: 100%;
+}
+
+.tools-wrap h3{
+    margin-bottom: 10px;
+}
+.tools-wrap>ul{
+    display: flex;
+    flex-direction: column;
+}
+.Tools{
+    box-sizing: border-box;
+    padding: 40px;
+    padding-bottom: 55px;
+    width: 100%;
+    height: 60%;
+    background-color: #1a1a1a;
+}
+
+.Etc{
+    box-sizing: border-box;
+
+    padding: 40px;
+    padding-bottom: 60px;
+
+    width: 100%;
+    height: 40%;
+    background-color: #444444;
+}
+/* ===================================================================my work====================================================================== */
+.mywork{
+    box-sizing: border-box;
+    background-color: var(--color-primary);
+    border: 1px solid red;
+    text-align: center;
+    padding-bottom: 40px;
+}
+.mywork h2{
+    color: #fff;
+}
+.mywork h3{
+    font-size: 2em;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+.mywork-list-wrap{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+}
+.mywork-list>a{
+    display: block;
+    padding: 10px 40px;
+    border: 1px solid aqua;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: .3s;
+
+}
+.mywork-list>a:hover{
+    background-color: aqua;
+    color: #000;
+}
+.mywork-cards{
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 40px;
+    padding: 40px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.mywork-cards li{
+    width: 20%;
+    margin: 0;padding: 0;
+}
+.mywork-cards a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .3s;
+}
+.mywork-cards a img{
+    width: 100%;
+    height: 100%;
+}
+.mywork-cards a:hover{
+    box-shadow: 0px 0px 35px rgba(25, 247, 255, 0.7);
+
+}
+/* =====================================================testimonial=================================================================== */
+.testimonial{
+    text-align: center;
+    padding-bottom: 80px;
+}
+.testimonial p{
+    color: #000;
+    font-size: 1.5em;
+
+}
+.testimonial-comment-wrap{
+    margin-top: 40px;
+}
+.testimonial-comment-wrap>li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    height: 200px;
+    margin-top: 5px;
+}
+.user-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14%;
+    height: 100%;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
+
+}
+
+.usertext{
+    width: 70%;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
+    padding: 10px 5px;
+
+}
+.user-information{
+    margin-top: 15px;
+}
+.user-information span{
+    color: #000;
+    font-size: 1.2em;
+}
+.user-information span:first-child{
+    color: aqua;
+}
+/* =========================================================Contact====================================================================== */
+
+footer{
+    text-align: center;
+    background-color: var(--color-primary);
+    padding-bottom: 40px;
+}
+.contact .title-style{
+    color: #fff;
+}
+footer ul li{
+    margin-top: 15px;
+    font-size: 1.2em;
+}
+.contact-icons{
+    text-align: center;
+
+}
+.contact-icons i{
+    font-size: 1.5em;
+    margin: 0 10px;
+}
+
+/* =======================================================우측 하단 고정버튼================================================================================= */
+.fixed-btn{
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    background-color: #000;
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+    color: #fff;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+
+}
+.fixed-btn i{
+    font-size: 2em;
+}
+.fixed-btn:hover{
+    box-shadow: 4px 4px 8px rgba(0, 242, 255, 0.7);
+
+}
