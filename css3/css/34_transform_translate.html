@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate</title>
+</head>
+<style>
+
+    .translate img{
+        width: 300px;
+        transition: .4s;
+    }
+    img:hover{
+        transform: translateX(50px);
+        /* transform: translate(50px, 50px); */
+        /* transform: scale(1.5); */
+        /* transform: rotate(45deg); */
+        /* transform: skewX(20deg); */
+        /* transform: skewY(20deg); */
+    }
+/* 
+    .translate{
+        perspective: 1000px;
+    }
+    .translate img{
+        width: 300px;
+        transition: .4s;
+    }
+    img:hover{
+        transform: translateZ(100px);
+    } */
+
+</style>
+<body>
+    <h1>Translate</h1>
+    <div class="translate">
+        <img src="/cgv/images/package.jpg" alt="package">
+    </div>
+</body>
+</html>

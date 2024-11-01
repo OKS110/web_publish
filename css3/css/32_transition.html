@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition Style</title>
+</head>
+<style>
+    div img{
+        width: 200px;
+        /* transition-property: width; 전환되는 속성 지정
+        transition-duration: 0.3s; 전환되는 전체 시간을 지정
+        transition-delay: 0s; 전환되는 시점까지의 지연시간을 지정
+        transition-timing-function: ease-in; 전환되는 속도를 지정 */
+        transition: width 0.3s 0s ease-in;
+    }
+    
+    div img:hover{
+        width: 400px;
+    }
+
+</style>
+<body>
+    <h1>Transition</h1>
+    <div>
+        <img src="/html/images/logoRed.png" alt="logo">
+    </div>
+    <hr>
+
+</body>
+</html>
