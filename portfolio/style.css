@@ -144,6 +144,7 @@ nav>ul.main-menu>li>a:hover{
     height: 700px;
     /* color: #000; */
     text-align: center;
+    margin-bottom: 50px;
 }
 .title-style{
     text-align: center;
@@ -161,20 +162,22 @@ nav>ul.main-menu>li>a:hover{
 
 /* ==================about 카드 3장============================= */
 ul.about-cards{
+    border: 1px solid red;
     margin: 0 auto;
     display: flex;
-    justify-content: space-around;
-    width: 90%;
+    justify-content: space-between;
+    gap: 10px;
     margin-top: 40px;
 }
 
 ul.about-cards>li{
-    width: 30%;
+    margin: 0;
+    width: 33%;
     height: 250px;
     padding: 20px;
     background-color: rgb(0, 0, 20);
     border-radius: 15px;
-    margin: 0 10px;
+ 
     box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
     transition: .3s;
 }
@@ -203,7 +206,7 @@ ul.about-cards>li:hover{
 }
 /* =================================경력 아이콘 2개================================================================================= */
 .about-career-icon-wrap{
-    width: 88%;
+    width: 100%;
     margin: 40px auto;
     display: flex;
     flex-direction: column;
@@ -375,6 +378,7 @@ ul.skill-box li:last-child .skill-bar>div{
     margin-top: 50px;
     display: flex;
     justify-content: center;
+    /* flex-wrap: wrap; */
     gap: 30px;
 
 }
