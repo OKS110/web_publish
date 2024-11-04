@@ -141,7 +141,6 @@
 
 /* Home */
 #home{
-    /* border: 1px solid red; */
     background-color: var(--color-primary);
     color: var(--color-text);
     padding: 5rem 1rem;
@@ -167,23 +166,25 @@
 
     font-size: 1.3rem;
     margin: 0;
-    margin-bottom: 36px;
+    margin-bottom: 2rem;
 }
 .home__contact{
     /* border: 1px solid red; */
-
     display: inline-block;
     padding: 0.5rem 1rem;
     background-color: var(--color-accent);
     font-weight: bold;
     border-radius: 4px;
     color: var(--color-primary);
+    /* border: 2px solid red; */
+    border: 2px solid transparent;
 }
 .home__contact:hover{
+    box-sizing: border-box;
     color: var(--color-text);
     background-color: var(--color-primary);
     border: 2px solid var(--color-accent);
-    margin: -2px;
+    
 }
 
 /* About me */
