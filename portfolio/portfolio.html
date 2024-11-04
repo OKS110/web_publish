@@ -61,7 +61,7 @@
         </nav>
     </header>
     
-    <section class="main-section">
+    <section id="main-section">
         <div class="dot">
             <!-- dot 애니메이션 -->
         </div>
@@ -80,7 +80,7 @@
         </div>
     </section>
 
-    <section class="about">
+    <section id="about">
         <h2 class="title-style">About me</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. dit praesentium odit neq<br>
             Debitis,autem atque earum quo doloremque impedit praesentium odit neque ipsa molestiae aliquam
@@ -141,7 +141,7 @@
         </div>
     </section>
 
-    <section class="myskills content-wrap">
+    <section id="myskills" class="content-wrap">
         <h2 class="title-style">My Skills</h2>
         <h3>Skills & Attributes</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -245,28 +245,32 @@
         </article>
     </section>
 
-    <section class="mywork content-wrap">
+    <section id="mywork" class="content-wrap">
         <h2 class="title-style">My Work</h2>
         <h3>Project</h3>
         <ul class="mywork-list-wrap">
             <li class="mywork-list">
                 <a href="#">
                     All
+                    <span class="category__count">8</span>
                 </a>
             </li>
             <li class="mywork-list">
                 <a href="#">
                     Front-end
+                    <span class="category__count">8</span>
                 </a>
             </li>
             <li class="mywork-list">
                 <a href="#">
                     Back-end
+                    <span class="category__count">8</span>
                 </a>
             </li>
             <li class="mywork-list">
                 <a href="#">
                     Mobile
+                    <span class="category__count">8</span>
                 </a>
             </li>
         </ul>
@@ -275,47 +279,79 @@
             <li>
                 <a href="#">
                     <img src="/portfolio/images/projects/project1.webp" alt="1">
+                    <div class="project__metadata">
+                        <h3 class="project__metadata__title">Project #1</h3>
+                        <p>Clone Coding with HTML, CSS</p>
+                    </div>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <img src="/portfolio/images/projects/project2.webp" alt="2">
+                    <div class="project__metadata">
+                        <h3 class="project__metadata__title">Project #1</h3>
+                        <p>Clone Coding with HTML, CSS</p>
+                    </div>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <img src="/portfolio/images/projects/project3.webp" alt="3">
+                    <div class="project__metadata">
+                        <h3 class="project__metadata__title">Project #1</h3>
+                        <p>Clone Coding with HTML, CSS</p>
+                    </div>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <img src="/portfolio/images/projects/project4.webp" alt="4">
+                    <div class="project__metadata">
+                        <h3 class="project__metadata__title">Project #1</h3>
+                        <p>Clone Coding with HTML, CSS</p>
+                    </div>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <img src="/portfolio/images/projects/project5.webp" alt="5">
+                    <div class="project__metadata">
+                        <h3 class="project__metadata__title">Project #1</h3>
+                        <p>Clone Coding with HTML, CSS</p>
+                    </div>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <img src="/portfolio/images/projects/project6.webp" alt="6">
+                    <div class="project__metadata">
+                        <h3 class="project__metadata__title">Project #1</h3>
+                        <p>Clone Coding with HTML, CSS</p>
+                    </div>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <img src="/portfolio/images/projects/project7.webp" alt="7">
+                    <div class="project__metadata">
+                        <h3 class="project__metadata__title">Project #1</h3>
+                        <p>Clone Coding with HTML, CSS</p>
+                    </div>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <img src="/portfolio/images/projects/project8.webp" alt="8">
+                    <div class="project__metadata">
+                        <h3 class="project__metadata__title">Project #1</h3>
+                        <p>Clone Coding with HTML, CSS</p>
+                    </div>
                 </a>
             </li>
         </ul>
     </section>
 
-    <section class="testimonial content-wrap">
+    <section id="testimonial" class="content-wrap">
         <h2 class="title-style">Testimonial</h2>
         <p>See. What they say about me</p>
 
@@ -338,6 +374,9 @@
                 </div>
             </li>
             <li>
+                <div class="user-img">
+                    <img src="/portfolio/images/testimonials/people2.webp" alt="2">
+                </div>
                 <div class="usertext">
                     <p class="user-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Ea earum eaque illo error, dicta voluptas inventore soluta quibusdam asp
@@ -349,9 +388,6 @@
                         <span>Google</span>
                     </p>
                     
-                </div>
-                <div class="user-img">
-                    <img src="/portfolio/images/testimonials/people2.webp" alt="2">
                 </div>
             </li>
             <li>
@@ -394,4 +430,16 @@
         <i class="fa-solid fa-arrow-up-long"></i>
     </div>
 </body>
+
+
+<script>
+
+// 버튼 클릭 시 위로 올라가는 코드
+    const topBtn = document.getElementsByClassName("fixed-btn");
+    console.log(topBtn);
+    topBtn[0].addEventListener('click', function(){
+        console.log("check");
+        window.scrollTo({top: 0, behavior: 'smooth'});  
+    });
+</script>
 </html>
