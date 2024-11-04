@@ -606,7 +606,7 @@ footer ul li{
 
     .about-career-icon-wrap{
         display: flex;
-        gap: 40px;
+        justify-content: space-around;
     }
 
 }
