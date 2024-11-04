@@ -146,7 +146,6 @@ nav>ul.main-menu>li>a:focus{
     margin: 0 auto;
     width: 60%;
     height: 700px;
-    /* color: #000; */
     text-align: center;
     margin-bottom: 50px;
 }
@@ -166,13 +165,10 @@ nav>ul.main-menu>li>a:focus{
 
 /* ==================about 카드 3장============================= */
 ul.about-cards{
-    border: 1px solid red;
-    /* margin: 0 auto; */
     display: flex;
     justify-content: space-between;
     gap: 10px;
     margin-top: 40px;
-    
 }
 
 ul.about-cards>li{
@@ -184,7 +180,6 @@ ul.about-cards>li{
  
     box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
     transition: .3s;
-    border: 1px solid red;
 }
 ul.about-cards>li>div{
     display: flex;
