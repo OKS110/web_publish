@@ -53,7 +53,7 @@ nav>ul.main-menu>li:first-child>a{
 }
 nav>ul.main-menu>li>a{
     /* border: 1px solid red; */
-    padding: 8px 20px 5px;
+    padding: 8px 20px;
 }
 nav>ul.main-menu>li>a:hover,
 nav>ul.main-menu>li>a:focus{
@@ -208,8 +208,7 @@ ul.about-cards>li:hover{
 .about-career-icon-wrap{
     width: 100%;
     margin: 40px auto;
-    display: flex;
-    flex-direction: column;
+
     gap: 15px;
 }
 .about-career-icon{
@@ -595,5 +594,19 @@ footer ul li{
 }
 .fixed-btn:hover{
     box-shadow: 4px 4px 8px rgba(0, 242, 255, 0.7);
+
+}
+@media screen and (max-width: 1200px){
+
+    #about{
+        width: 80%;
+        margin: 0 auto;
+
+    }
+
+    .about-career-icon-wrap{
+        display: flex;
+        gap: 40px;
+    }
 
 }
