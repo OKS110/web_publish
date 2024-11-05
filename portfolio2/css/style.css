@@ -129,7 +129,6 @@
     border-radius: 4px;
 }
 .header__toggle{
-    border: 1px solid yellow;
     display: none;
     color: var(--color-text);
     font-size: 1.5rem;
@@ -545,7 +544,6 @@ ul.testimonials{
     
 
     .section{
-        border: 1px solid yellow;
         padding: 3rem 1rem;
     }
     .title{

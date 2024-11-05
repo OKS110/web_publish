@@ -747,7 +747,6 @@ footer ul li{
     /* 아래 8개 이미지 */
     .mywork-cards{
         padding: 0;
-        border: 1px solid yellow;
         height: 1000px;
         flex-wrap: wrap;
         flex-direction: column;
