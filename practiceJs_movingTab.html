@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul, li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+        color: #999;
+    }
+    .nav{
+        position: relative;
+    }
+    .highlight{
+        position: absolute;
+        width: 98px;
+        height: 20px;
+        top: 0;
+        left: 0;
+        background-color: #000;
+        z-index: -1;
+        transition: .4s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    ul.tab-menu{
+        border: 1px solid blue;
+        display: flex;
+        justify-content: center;
+
+        width: 300px;
+        height: 20px;
+    }
+    ul.tab-menu>li{
+        border: 1px solid red;
+        margin: 0;
+        width: 100px;
+        height: 100%;
+    }
+</style>
+<body>
+    <div class="tab_wrapper">
+        <div class="nav">
+            <ul class="tab-menu">
+                <li><a href="#">basic</a></li>
+                <li><a href="#">advanced</a></li>
+                <li><a href="#">expert</a></li>
+            </ul>
+            <span class="highlight"></span>
+        </div>
+        <div id="tab-content">
+            <div id="tabs-1">
+                <h1>Basic plan</h1>
+                aasdffffffffffasdfffasdfasdf
+                aasdffffffffffasdfffasdfasdf
+                aasdffffffffffasdfffasdfasdf
+                aasdffffffffffasdfffasdfasdf
+                aasdffffffffffasdfffasdfasdf
+
+            </div>
+            <div id="tabs-2">
+                <h1>Advanced Plan</h1>
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+            </div>
+            <div id="tabs-3">
+                <h1>Expert Plan</h1>
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const tabMenu = document.querySelectorAll('.tab-menu li'); // 상단 메뉴들
+        const tabContent = document.querySelectorAll('#tab-content > div'); // 내용물들
+        const highLight = document.querySelector('.highlight'); // 검정색 박스
+
+        function showContent(num){ //함수 선언
+            tabContent.forEach(function(item){ // forEach로 tabContent 길이만큼 for문 돌림
+                item.style.display = 'none'; // 각 파라미터 즉, item(div) 들의 display => none;
+            });
+            tabContent[num].style.display = 'block'; //tabContent[파라미터]의 display: block; 처리
+        }
+        showContent(0); // tabContent[0] => div 첫번째 보임.
+
+        tabMenu.forEach(function(item, idx){ //tabMenu에 for문 돌릴건데 item이랑 idx(인덱스)를 인자로 받아서 함수 실행시켜줘
+            // console.log(idx) - 0, 1, 2
+            item.addEventListener('click', function(e){  //각각 tabMenu li애들한테 클릭이벤트 발생시키면
+                e.preventDefault; //기존의 이벤트 다 삭제시키고
+                showContent(idx); // showContent 함수 불러줘. 아까 받은 idx를 인자로 써서. (위로 올라가서 showContent 함수 찾아봐.)
+
+                moveHighlight(idx); //인덱스 값이 들어가서 마우스로 찍는 것 마다 값이 달라짐.
+            });
+        });
+
+        function moveHighlight(num){
+            // offsetLeft - 가까운 부모 중 position 속성이 기본값(static)이 아닌 요소의 좌측에서부터의 거리를 반환.
+            //              본 예제에서는 클래스 명 tab-menu가 기준
+            // offsetWidth - 요소의 보더까지의 크기를 반환
+
+            const newLeft = tabMenu[num].offsetLeft; // 1, 101, 201 tab-menu의 li들의 left 좌표값
+            const newWidth = tabMenu[num].offsetWidth; // 100 tab-menu의 li들의 너비 값
+            console.log(newLeft, newWidth);
+            highLight.style.left = newLeft + 'px'; //tab-menu의 li들의 left 좌표값만큼 이동
+            highLight.style.width = newWidth + 'px'; //tab-menu의 li들의 width만큼 설정
+        }
+
+        // 클릭된 링크의 위치와 너비를 확인하여 highlight의 left 값과 width 값으로 설정해준다.
+
+
+    </script>
+</body>
+</html>
