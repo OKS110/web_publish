@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul, li{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    .nav{
+        position: relative;
+    }
+    .highlight{
+        position: absolute;
+        width: 98px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #000;
+        transition: .4s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    ul.tab-menu{
+        border: 1px solid red;
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+    }
+</style>
+<body>
+    <div class="tab_wrapper">
+        <div class="nav">
+            <ul class="tab-menu">
+                <li><a href="#">basic</a></li>
+                <li><a href="#">advanced</a></li>
+                <li><a href="#">expert</a></li>
+            </ul>
+            <span class="highlight"></span>
+        </div>
+        <div id="tab-content">
+            <div id="tabs-1">
+                <h1>Basic plan</h1>
+                aasdffffffffffasdfffasdfasdf
+                aasdffffffffffasdfffasdfasdf
+                aasdffffffffffasdfffasdfasdf
+                aasdffffffffffasdfffasdfasdf
+                aasdffffffffffasdfffasdfasdf
+
+            </div>
+            <div id="tabs-2">
+                <h1>Advanced Plan</h1>
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+            </div>
+            <div id="tabs-3">
+                <h1>Expert Plan</h1>
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabMenu = document.querySelectorAll('.tab-menu li');
+        const tabContent = document.querySelectorAll('#tab-content > div');
+        const highLight = document.querySelector('.highlight');
+        // let promp = prompt("값을 입력 : ", "");
+
+    </script>
+</body>
+</html>
