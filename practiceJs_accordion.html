@@ -50,7 +50,7 @@
 </style>
 <body>
     <section id="faq">
-        <button>Collapse All</button>
+        <button id = btn-collapse>Collapse All</button>
 
         <div class="panel-question active">
             <div class="panel-heading">
@@ -104,6 +104,26 @@
 
 </body>
 <script>
+    const panelQuestion = document.querySelectorAll('.panel-question');
+    const btnCollapse = document.getElementById('btn-collapse');
+    console.log(panelQuestion);
+    for(let i of panelQuestion){
+        i.addEventListener('click', function(){
+            hideAll();
+            console.log(this.classList);
 
+            this.classList.add('active');
+            console.log(this.classList);
+
+        });
+    }
+    function hideAll(){
+        for(let q of panelQuestion){
+            q.classList.remove('active');
+        }
+    }
+    btnCollapse.addEventListener('click', function(){
+        hideAll();
+    })
 </script>
 </html>
