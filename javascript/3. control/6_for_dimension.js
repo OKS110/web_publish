@@ -36,17 +36,6 @@ for(let i = 0; i < 5; i++){
     let rows = '';
     for(let j = 1; j < 4; j++){
         rows += `${3 * i + j}\t`;
-        // if(i == 0){
-        //     rows += `${j} \t`;
-        // }
-        // else if(i == 1){
-        //     rows += `${j+3} \t`;
-        // }
-        // else if(i == 2){
-        //     rows += `${j+6} \t`;
-        // }
-        // ...
-
 
     }
     console.log(rows);
@@ -214,4 +203,28 @@ for (let i = 1; i <= size; i++) {
     }
     // 한 행 끝나면 줄바꿈
     console.log();
+}
+// process.stdout.write()는 줄바꿈 없이 한 줄에 숫자를 출력
+
+for (let i = 1; i <= 9; i += 3) {
+      for (let j = i; j < i + 3 && j <= 9; j++) {
+    process.stdout.write(`${j}\t`);
+    // 맥북은 (option + ₩)로 `` 표현
+  }
+  console.log(); // 줄바꿈
+}
+
+
+// object 배열을 이용한 중첩for문 연습
+// 예를 들어, 2차원 배열을 순회하는 경우
+let array = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+        console.log(array[i][j]);
+    }
 }
