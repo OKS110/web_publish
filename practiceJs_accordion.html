@@ -109,7 +109,7 @@
     console.log(panelQuestion);
     for(let i of panelQuestion){
         i.addEventListener('click', function(){
-            hideAll();
+            hideAll(); //active 삭제
             console.log(this.classList);
 
             this.classList.add('active');
@@ -117,6 +117,8 @@
 
         });
     }
+
+
     function hideAll(){
         for(let q of panelQuestion){
             q.classList.remove('active');
