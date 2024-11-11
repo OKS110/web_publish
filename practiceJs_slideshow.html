@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .slide-wrapper{
+        position: relative;
+        width: 100%;
+        height: 800px;
+    }
+
+    .slide-container{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        transition: left .3s ease-in;
+        left: 0;
+    }
+
+    .slide-container>li{
+        position: absolute;
+        top: 0%;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .slide-container>li>div{
+        text-align: center;
+        color: aliceblue;
+    }
+    .slide1{
+        background-image: url(./imagesJs/Pixabay-1.svg);
+    }
+    .slide2{
+        background-image: url(./imagesJs/Pixabay-2.svg);
+    }
+    .slide3{
+        background-image: url(./imagesJs/Pixabay-3.svg);
+    }
+    .slide4{
+        background-image: url(./imagesJs/Pixabay-4.svg);
+    }
+    .slide5{
+        background-image: url(./imagesJs/Pixabay-5.svg);
+    }
+    .new{
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        border: 1px solid red;
+    }
+
+    #prev.disabled,
+    #next.disabled{
+        display: none;
+    }
+    #prev,
+    #next{
+        position: absolute;
+        z-index: 1000;
+        display: block;
+        width: 80px;
+        height: 80px;
+        background-color: #fff;
+        border: 1px solid red;
+    }
+    #prev{
+        top: 50%;
+        left: 0;
+    }
+    #next{
+        top: 50%;
+        right: 0;
+    }
+
+    .pager{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        background-color: purple;
+    }
+    .pager a.active{
+        background-color: #000;
+    }
+</style>
+<body>
+    <div class="slide-wrapper">
+        <ul class="slide-container">
+            <li class="slide1">
+                <div class="contents">
+                    <h2>Slide 01 title</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius dolores consequuntur, deserunt eaque facilis obcaecati 
+                        magnam vero eos dolore voluptatibus blanditiis 
+                        officia accusantium eligendi est unde, magni placeat minima aut!
+                    </p>
+                    <a href="">Visit now</a>
+                </div>
+            </li>
+            <li class="slide2">
+                <div class="contents">
+                    <h2>Slide 01 title</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius dolores consequuntur, deserunt eaque facilis obcaecati 
+                        magnam vero eos dolore voluptatibus blanditiis 
+                        officia accusantium eligendi est unde, magni placeat minima aut!
+                    </p>
+                    <a href="#">Visit now</a>
+                </div>
+            </li>
+            <li class="slide3">
+                <div class="contents">
+                    <h2>Slide 01 title</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius dolores consequuntur, deserunt eaque facilis obcaecati 
+                        magnam vero eos dolore voluptatibus blanditiis 
+                        officia accusantium eligendi est unde, magni placeat minima aut!
+                    </p>
+                    <a href="#">Visit now</a>
+                </div>
+            </li>
+            <li class="slide4">
+                <div class="contents">
+                    <h2>Slide 01 title</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius dolores consequuntur, deserunt eaque facilis obcaecati 
+                        magnam vero eos dolore voluptatibus blanditiis 
+                        officia accusantium eligendi est unde, magni placeat minima aut!
+                    </p>
+                    <a href="#">Visit now</a>
+                </div>
+            </li>
+            <li class="slide5">
+                <div class="contents">
+                    <h2>Slide 01 title</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Eius dolores consequuntur, deserunt eaque facilis obcaecati 
+                        magnam vero eos dolore voluptatibus blanditiis 
+                        officia accusantium eligendi est unde, magni placeat minima aut!
+                    </p>
+                    <a href="#">Visit now</a>
+                </div>
+            </li>
+        </ul>
+        <a href="#" id="prev" class="controls"><i class="fas fa-chevron-left"></i></a>
+        <a href="#" id="next" class="controls"><i class="fas fa-chevron-right"></i></a>
+        <p class="pager">
+            <!-- <a href="">0</a>
+            <a href="" class="active">1</a>
+            <a href="" class="active">2</a>
+            <a href="" class="active">3</a>
+            <a href="" class="active">4</a> -->
+        </p>
+    </div> 
+</body>
+<script>
+    //변수 지정
+    let slideWrapper = document.querySelector('.slide-wrapper'),
+        slideContainer = slideWrapper.querySelector('.slide-container'),
+        slides = slideContainer.querySelectorAll('li'),
+        slideCount = slides.length,
+        currentIndex = 0,
+        pager = slideWrapper.querySelector('.pager'),
+        pagerHtml = '',
+        timer,
+        navPrev = slideWrapper.querySelector('#prev'),
+        navNext = slideWrapper.querySelector('#next');
+
+    // 슬라이드가 있으면 가로로 배열하기, 페이저 생성하기
+    if(slideCount > 0){
+        slides.forEach(function(item, index){
+            item.style.left = `${index * 100}%`;
+            pagerHtml += `<a href="#" class="new">${index}</a>`;
+        });
+        console.log(pagerHtml);
+    }
+    pager.innerHTML = pagerHtml;
+    let pagerBtn = pager.querySelectorAll('a');
+    
+    // 슬라이드 이동함수(이동, 페이저 업데이트, 슬라이드 활성화)
+
+    // 좌우 버튼 클릭으로 슬라이드 이동시키기
+
+    // 페이저로 슬라이드 이동하기
+
+    // 자동 슬라이드
+</script>
+</html>

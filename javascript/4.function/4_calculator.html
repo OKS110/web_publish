@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./2_calculator.js"></script>
+    <title>Calculator</title>
+</head>
+
+<body>
+    <h1>계산기</h1>
+    <form action="">
+        <ul>
+            <li>
+                <label for="">number1</label>
+                <input id= 'number1' type="text">
+            </li>
+            <li>
+                <label for="">number2</label>
+                <input id = 'number2' type="text">
+            </li>
+            <li>
+                <button type="button" onclick = "dataInput('+')">+</button>
+                <button type="button" onclick = "dataInput('-')">-</button>
+                <button type="button" onclick = "dataInput('*')">*</button>
+                <button type="button" onclick = "dataInput('/')">/</button>
+                <button type="button" onclick = "dataInput('%')">%</button>
+            </li>
+        </ul>
+
+        <div>
+            <span>result : </span>
+            <span></span>
+        </div>
+    </form>
+</body>
+<script>
+    function dataInput(op){
+        // 계산기 처리를 위한 데이터 전처리
+        // 데이터가 입력되는 폼에 유효성 체크(validation check)를
+        // 반드시 진행해야 함!!!
+        // let a = document.getElementById('number1').value;
+        // let b = document.getElementById('number2').value;
+        let a = document.querySelector('#number1');
+        let b = document.querySelector('#number2');
+        
+        //유효성 체크
+        if(a.value === ''){
+            alert("첫 번째값을 입력해주세요");
+            a.focus();
+        }else if(b.value === ''){
+            alert("두 번째값을 입력해주세요");
+            b.focus();
+        }else{
+            calculator(parseInt(a.value), parseInt(b.value), op);
+        }
+    }
+</script>
+</html>
