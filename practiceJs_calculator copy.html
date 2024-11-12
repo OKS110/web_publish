@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <script src="./practiceJs_calculator.js"></script> -->
+<style>
+.wrap {
+  margin: 100px auto;
+  width: 300px;
+  height: 400px;
+  border: 1px solid transparent;
+  background-color: rgb(151, 151, 151);
+  border-radius: 5px;
+}
+.input {
+  height: 20px;
+  text-align: right;
+}
+.display {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  font-size: 36px;
+  font-weight: 700;
+  border: 1px solid red;
+  margin: 5px 5px 0 5px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #777676;
+  color: #fff;
+}
+.buttons {
+  padding: 5px;
+  display: grid;
+  height: calc(100% - 85px);
+  gap: 5px;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4열로 나열 */
+}
+button {
+  color: #fff;
+  font-size: 36px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.numBtn {
+  background-color: #828284;
+}
+.operator,
+.result,
+.ac {
+  background-color: orange;
+}
+</style>
+<body>
+    <div class='wrap'>
+        <div class='display'>
+            <div class='input'></div>
+        </div>
+
+        <div class='buttons'>
+            <button data-type="ac" class='ac'>C</button>
+            <button data-type='operator' class='operator'>+</button>
+            <button data-type='operator' class='operator'>-</button>
+            <button data-type='operator' class='operator'>x</button>
+
+            <button class='numBtn'>7</button>
+            <button class='numBtn'>8</button>
+            <button class='numBtn'>9</button>
+            <button data-type='operator' class='operator'>/</button>
+
+            <button class='numBtn'>4</button>
+            <button class='numBtn'>5</button>
+            <button class='numBtn'>6</button>
+            <button data-type='result' class='result'>=</button>
+
+            <button class='numBtn'>1</button>
+            <button class='numBtn'>2</button>
+            <button class='numBtn'>3</button>
+            <button class='numBtn'>0</button>
+        </div>
+    </div>
+</body>
+<script>
+  const buttons = document.querySelectorAll('button');
+  const numBtn = document.querySelectorAll('.numBtn');
+  const operators = document.querySelectorAll('.operator');
+  const display = document.querySelector('.display');
+
+// console.log(buttons);
+// console.log(numBtn);
+// console.log(operators);
+// console.log(display);
+
+let calculate = (prevNum, operator, recentNum) => {
+  let result = 0;
+  switch(operator){
+    case '+':
+      result = Number(prevNum) + Number(recentNum);
+      break;
+    case '-':
+      result = Number(prevNum) - Number(recentNum);
+      break;
+    case '*':
+      result = Number(prevNum) * Number(recentNum);
+      break;
+    case '/':
+      result = Number(prevNum) / Number(recentNum);
+      break;
+    default: break;
+  }
+  return Number(result);
+}
+
+
+</script>
+</html>

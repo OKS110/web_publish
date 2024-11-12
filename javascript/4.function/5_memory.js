@@ -5,7 +5,9 @@ function add(a, b){
 }
 
 
-let sum = add;
+let sum = add; // call by reference
+console.log(add);
+console.log(sum);
 add(1, 3);
 sum(1, 2);
 // sum 과 add는 같은 주소를 참조하고 있다.
