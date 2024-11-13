@@ -25,3 +25,4 @@ class Animal{
 const dog = new Animal('🐶', 'white');
 console.log(dog); //Animal { display: [Function: display], emoji: '🐶', color: 'white' }
 dog.display(); //🐶
+

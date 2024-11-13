@@ -25,8 +25,6 @@ console.log(lemon);
 
 
 
-
-
 // // apple: property - name, color : method - display()
 // const apple ={
 //     name: "apple",

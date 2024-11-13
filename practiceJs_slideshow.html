@@ -247,7 +247,27 @@
         }
     });
     // 페이저로 슬라이드 이동하기
-
+    pagerBtn.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToSlide(index);
+        });
+    });
     // 자동 슬라이드
+    function startAutoSlide(){
+        timer = setInterval(()=>{
+            let nextIndex = (currentIndex + 1) % slideCount; // 1 2 3 4 0
+            goToSlide(nextIndex);
+        }, 4000);
+    }
+    startAutoSlide();
+
+    slideWrapper.addEventListener('mouseover', ()=>{
+        clearInterval(timer);
+    });
+    slideWrapper.addEventListener('mouseout', ()=>{
+        startAutoSlide();
+    });
+
 </script>
 </html>
