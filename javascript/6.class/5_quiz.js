@@ -47,42 +47,14 @@ class Student{
 
 const hong = new Student('홍길동', 24, '서울시', 'nick');
 
-hong.display();
-console.log(hong.name);
-console.log(hong.address);
+hong.display(); //홍길동 24 서울시 nick
+console.log(hong.name); //홍길동
+console.log(hong.address); //서울시
 
 
-hong.name = '';
-hong.age = -1;
+hong.name = ''; //Invalid name
+hong.age = -1; //Invalid age
 
 hong.name = 'Eric';
 hong.address = '경기도';
-hong.display();
-
-
-// class Student2{
-//     #name;
-//     #age;
-//     #address;
-//     constructor(name, age, address, nick){
-//         this.#name = name;
-//         this.#age = age;
-//         this.#address = address;
-//         this.nick = nick;
-//     }
-//     display = () => console.log(`${this.#name} ${this.#age} ${this.#address} ${this.nick}`);
-    
-//     getName = () => this.#name;
-//     getAge = () => this.#age;
-//     getAddress = () => this.#address;
-//     getNickname = () => this.nickName;
-
-//     setName = (name) => this.#name = name;
-//     setAge = (age) => this.#age = age;
-//     setAddress = (address) => this.#address = address;
-//     setAddress = (nickName) => this.#address = nickName;
-
-// }
-
-// const hong2 = new Student2('홍길동', 20, '서울시 강남구', '홍홍');
-// console.log(`${hong2.getName()}\n, ${hong2.getAge()}\n,${hong2.getAddress()}\n,${hong2.getNickname()},`)
+hong.display(); //Eric 24 경기도 nick

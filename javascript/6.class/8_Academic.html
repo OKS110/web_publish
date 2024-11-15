@@ -7,15 +7,38 @@
     <script src="./8_Academic.js"></script>
 </head>
 <style>
+    *{
+        margin: 0 auto; padding: 0;
+        font-size: 1.2rem;
+    }
+    h1{
+        text-align: center;
+        margin: 50px;
+    }
     #student, #professor, #parents, #employee{
         display: none;
+    }
+    ul, li{ list-style: none;}
+    ul{
+        width: 500px;
+        }
+    label{
+        display: inline-block;
+        width: 100px;
+    }
+    button{
+        padding: 10px;
+        margin-top: 20px;
+    }
+    #result{
+        width: 800px;
+        background-color: silver;
     }
 </style>
 <body>
     <h1>Academic Signup</h1>
-    <ul>
+    <ul class="check_box">
         <li>
-
             <!-- <input type="radio" name="type" value = "1" checked><span>학생</span> -->
             <input type="radio" name="type" value = "1" onchange="display('1')"><span>학생</span> <!-- onchange 변경되는 시점(선택되는 시점에 display 함수로 '1'이 넘어감)-->
             <input type="radio" name="type" value = "2" onchange="display('2')"><span>교수</span>
@@ -118,5 +141,10 @@
             <button type="reset">Reset</button>
         </li>
     </ul>
+
+    <!-- 입력 정보 출력 -->
+    <div id="result">
+
+    </div>
 </body>
 </html>

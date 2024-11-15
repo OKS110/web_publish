@@ -117,9 +117,9 @@ class EverZoo{
 const tom = new Lion('tom', 'white', '🦁', 'meat');
 const smith = new Tiger('smith', 'gray', '🐯', 'meat', 3);
 const judy = new Dog('judy', 'white', '🐶', 'meat', '푸들');
-tom.all(); tom.sleep(); tom.eat();
-smith.display(); smith.sleep(); smith.eat(); smith.ages();
-judy.display(); judy.sleep(); judy.eat(); judy.species();
+tom.all(); tom.sleep(); tom.eat();//tom : 🦁 tom 자다 tom 먹다 tom 자다 tom 먹다
+smith.display(); smith.sleep(); smith.eat(); smith.ages(); // smith : 🐯 smith 자다 smith 먹다 3
+judy.display(); judy.sleep(); judy.eat(); judy.species(); // judy : 🐶 judy 자다 judy 먹다 푸들
 
 const everZoo = new EverZoo(EverZoo.LION, tom);
 console.log(everZoo.type, everZoo.animal);
