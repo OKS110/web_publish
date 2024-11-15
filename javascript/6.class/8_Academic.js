@@ -134,7 +134,7 @@ const signupCheck = () => {
     // let child = document.querySelector('#child');;
     // let div = document.querySelector('#div');;
     // let subject = document.querySelector('#subject');;
-    console.log(typeof type.value);
+    console.log(typeof type.value); //string
     
     // type에 따라서 각각의 클래스 생성
     let member = null;
@@ -179,7 +179,7 @@ const signupCheck = () => {
     
     let list = '';
     member.values.forEach((item)=>{ //배열에 있는 값들을 forEach 함수로 순차적으로 뽑아내어 list에 넣음
-        list += `<li>${item}</li>`;
+        list += `<li class = 'item'>${item}</li>`;
     })
     // console.log(list);
     let output;
