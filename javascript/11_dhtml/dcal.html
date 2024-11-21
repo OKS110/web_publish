@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src=""></script>
+    <script type = 'module' src="./dcal.js"></script>
 </head>
 <style>
+    #content{
+        position: absolute; top: 30%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: auto;
+    }
     ul, li{
         list-style: none;
         margin: 0;
         padding: 0;
     }
+
     li{
         margin-bottom: 30px;
         display: flex;
@@ -30,30 +37,18 @@
         align-items: center;
         font-size: 2rem;
     }
+    h3{
+        font-size: 2rem;
+    }
+    span{
+        color: red;
+        text-decoration: underline;
+    }
 </style>
 <body>
     <div id="content">
-        <h1>DHTML - calculator</h1>
-        <ul>
-            <li>
-                <input type="text" id="number1" placeholder="첫번째 숫자">
-                <input type="text" id="number2" placeholder="두번째 숫자">
-            </li>
-            <li>
-                <button type="button" class="button" data-operation="sum">+</button>
-                <button type="button" class="button" data-operation="sub">-</button>
-                <button type="button" class="button" data-operation="mul">x</button>
-                <button type="button" class="button" data-operation="div">/</button>
-            </li>
-            <li>
-                <h3>Result : </h3>
-            </li>
-        </ul>
+
     </div>
 </body>
-<script src="./dcal.js">
 
-    
-    
-</script>
 </html>
