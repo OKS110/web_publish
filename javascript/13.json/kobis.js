@@ -97,6 +97,6 @@ async function searchBoxOffice(type, searchDt){
                 // 테이블 화면 출력
                 document.querySelector('#result').innerHTML = output;
     })
-    .catch();
+    .catch(error => console.log(error));
 
 }
