@@ -5,7 +5,7 @@ let promise1 = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve('success');
         reject('fail');
-    }, 3000);
+    }, 1000);
 });
 
 promise1
@@ -32,3 +32,4 @@ getPromise(1)
     console.log(res);
     return getPromise(4);
 });
+
