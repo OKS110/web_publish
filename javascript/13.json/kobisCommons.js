@@ -6,7 +6,7 @@ export async function kobsBoxOffice(type, searchDt){
     const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/search${type}BoxOfficeList.json?key=${key}&targetDt=${searchDt}`;
     
     let kobis = await fetch(url);
-    let jsonData = await kobis.json(); //await를 통해 promise를 반환받는다.
+    let jsonData = await kobis.json();
 
     return jsonData;
 }
