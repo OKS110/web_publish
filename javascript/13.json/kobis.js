@@ -59,7 +59,7 @@ async function searchBoxOffice(type, searchDt){
         const range = result.boxOfficeResult.showRange;
 
         let rankList = null;
-        // ktype을 체크하여 Daily, Weekly
+        // type을 체크하여 Daily, Weekly
         if(type === `Daily`){
             rankList = result.boxOfficeResult.dailyBoxOfficeList;
         }else if(type === `Weekly`){
