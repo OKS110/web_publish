@@ -88,7 +88,7 @@ function searchMovieResult(type, value, title){
 
           
         }else{
-            output += `<h5>검색하신 데이터가 존재하지 않습니다.</h5>`
+            output += `<h5>검색하신 데이터가 존재하지 않습니다.</h5>`;
         }
         document.querySelector('#result').innerHTML = output;
 
