@@ -147,7 +147,7 @@ function onMovieDetail(event){
     const modalImage = document.getElementById('modalImage');
     const closeModalBtn = document.getElementById('closeModal');
 
-    let [movieNm, openDt] = event.target.id.split(',');
+    let [movieNm, openDt] = event.target.id.split(','); //구조 분해 할당
     console.log(movieNm);
     console.log(openDt);
         
