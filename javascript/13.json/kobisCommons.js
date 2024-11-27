@@ -39,3 +39,37 @@ export async function kobisBoxOffice(type, searchDt) {
 
     return jsonData;
 }
+
+
+// KMDB 영화 상세 정보
+export async function kmdbMovieDetail(movieNm, openDt){
+    const serviceKey = `59H5F0U0OFQB3R2261VM`;
+    let url = `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/`;
+    url += `search_json2.jsp?collection=kmdb_new2&detail=Y`;
+    url += `&title=${movieNm}&releaseDts=${openDt}&ServiceKey=${serviceKey}`;
+
+    let api = await fetch(url);
+    let jsonData = await api.json();
+
+    return jsonData;
+
+}
+
+
+
+// KMDB 영화 포스터 검색
+export async function searchMoviePoster(movieNm, openDt){
+    const serviceKey = `59H5F0U0OFQB3R2261VM`;
+    let url = `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/`;
+    url += `search_json2.jsp?collection=kmdb_new2&detail=Y`;
+    url += `&title=${movieNm}&releaseDts=${openDt}&ServiceKey=${serviceKey}`;
+
+    let result = [];
+    console.log(`url :: ${url}`);
+
+    let api = await fetch(url);
+    let jsonData = await api.json();
+    result = jsonData.Data[0].Result[0].posters.split('|')[0];
+    
+    return result;
+}
