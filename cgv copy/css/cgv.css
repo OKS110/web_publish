@@ -411,7 +411,7 @@ div.content-moviechart-title-right>a{
     position: relative;
     /* overflow: hidden; */
 }
-#arrow-left, #arrow-right{
+.leftbtn, .rightbtn{
     background-color: #fff;
     border-radius: 50px;
     width: 50px;
@@ -424,11 +424,12 @@ div.content-moviechart-title-right>a{
     opacity: .7;
     box-shadow: 0 0 10px;
 }
-#arrow-left{
+.leftbtn{
     position: absolute; left: -20px; top: 35%;
+
     z-index: 1000;
 }
-#arrow-right{
+.rightbtn{
     position: absolute; right: -20px; top: 35%;
     z-index: 1000;
 
@@ -440,15 +441,12 @@ div.content-moviechart-title-right>a{
     padding-top: 30px;
     padding-bottom: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 37px;
     /* border: 1px solid red; */
 
 }
-.content-moviechart-list>.slide{
-    /* border: 1px solid red; */
-    margin-left: 18px;
-    margin-right: 18px;
-}
+
 .content-moviechart-imgwrap{
     /* border: 1px solid red; */
     width: 170px;
@@ -889,13 +887,16 @@ div.content-moviechart-title-right>a{
 }
 
 .login-form form ul{
+    padding-top: 35px;
+    padding-bottom: 35px;
     /* border-top: 1px solid var(--color-login-font);
     border-bottom: 1px solid var(--color-login-font); */
-    
+    /* border: 1px solid red; */
     width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 11px;
+    align-items: center;
+    justify-content: space-between;
 }
 .login-form form ul li{
     width: 100%;

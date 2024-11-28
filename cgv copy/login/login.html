@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="/cgv/css/commons.css">
     <link rel="stylesheet" href="/cgv/css/cgv.css">
     <script src="https://kit.fontawesome.com/5cc509faeb.js" crossorigin="anonymous"></script>
-    <script type="module" src="../js/cgv.js"></script>
-    <script src="../js/cgvForm.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -136,10 +134,8 @@
                                 <i class="fa-regular fa-user"></i>
                                 <span>|</span>
                                 <label for=""></label>
-                                <input type="text" name="id" id="id" placeholder="아이디를 입력해주세요">
-                                
+                                <input type="text" name="id" placeholder="아이디를 입력해주세요">
                             </div>
-                            <div id="error-msg-id"></div>
                            
                         </li>
 
@@ -148,14 +144,12 @@
                                 <i class="fa-solid fa-lock"></i>
                                 <span>|</span>
                                 <label for=""></label>
-                                <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요">
-
+                                <input type="password" name="pw" placeholder="비밀번호를 입력해주세요">
                             </div>
-                            <div id="error-msg-pw"></div>
                             
                         </li>
                         <li>
-                            <button type="button" class="btn-main-color" onclick="loginFormCheck()">로그인</button>
+                            <button class="btn-main-color">로그인</button>
                         </li>
                         <li>
                             <div>

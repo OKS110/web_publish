@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/cgv/css/cgv.css">
     <link rel="stylesheet" href="/cgv/css/commons.css">
-    <script type= "module" src="./js/cgv.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <title>CGV를 만들어봤다.</title>
@@ -154,9 +153,168 @@
 
 <!-- 슬라이드 -->
                 <article class="slide-wrap">
+                    <!-- 슬라이드 버튼 -->
+                    <div class="leftbtn">&lt;</div>
+                    <div class="rightbtn">&gt;</div>
 
                     <ul class="content-moviechart-list">
-                        
+                        <!-- li들을 5개씩 묶어서 하나의 li안에 넣어야 슬라이드 시 간격 이상 없이 움직임. -->
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="/cgv/images/movie_chart1.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                                
+                            </div>
+                            <div><h3>보통의 가족</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                            
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88881/88881_320.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                                
+                            </div>
+                            <div><h3>2024 KBO 한국시리즈 5차전 - 삼성 라이온즈 vs KIA 타이거즈</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88813/88813_320.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div><h3>리틀 엠마</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88895/88895_320.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div><h3>2024 LoL 월드챔피언십 4강 2R</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88659/88659_320.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div><h3>롱레그스</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="/cgv/images/movie_chart1.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div><h3>제목</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="/cgv/images/movie_chart1.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div><h3>제목</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="/cgv/images/movie_chart1.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div><h3>제목</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="/cgv/images/movie_chart1.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div><h3>제목</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+                        <li class="slide">
+                            <div class="content-moviechart-imgwrap">
+                                <img src="/cgv/images/movie_chart1.jpg" alt="무비차트1">
+                                <div class="content-moviechart-hoverimg">
+                                    <div class="content-moviechart-hoverimg-bg"></div>
+                                    <div class="content-moviechart-hoverimg-textwrap">
+                                        <a href="#" class="content-moviechart-hoverimg-top">상세보기</a>
+                                        <a href="#" class="content-moviechart-hoverimg-bottom">예매하기</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div><h3>제목</h3></div>
+                            <div><img src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png" alt="예매율 아이콘"><h5> 99%  </h5><h5>예매율 99%</h5></div>
+                        </li>
+             
+
+                        <!-- 무비차트 리스트 반복 -->
                     </ul>
                 </article>
 
@@ -431,6 +589,6 @@
 </body>
 
 
+<script src="./script/script.js"></script>
 
 </html>
-

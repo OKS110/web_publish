@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/cgv/css/commons.css">
     <link rel="stylesheet" href="/cgv/css/cgv.css">
-    <script src="https://kit.fontawesome.com/5cc509faeb.js" crossorigin="anonymous"></script>
-    <script type="module" src="../js/cgv.js"></script>
-    <script src="../js/cgvForm.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -122,63 +119,12 @@
 
         <!-- contents -->
         <div class="content">
-            <div class="center-layout login-form">
-                <h1 class="center-title">로그인</h1>
-                <form action="#" method="post">
-                    <ul>
-                        <li>
-                            <p>
-                                아이디 비밀번호를 입력하신 후, 로그인 버튼을 클릭해 주세요.
-                            </p>
-                        </li>
-                        <li>
-                            <div class="input-wrap">
-                                <i class="fa-regular fa-user"></i>
-                                <span>|</span>
-                                <label for=""></label>
-                                <input type="text" name="id" id="id" placeholder="아이디를 입력해주세요">
-                                
-                            </div>
-                            <div id="error-msg-id"></div>
-                           
-                        </li>
-
-                        <li>
-                            <div class="input-wrap">
-                                <i class="fa-solid fa-lock"></i>
-                                <span>|</span>
-                                <label for=""></label>
-                                <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요">
-
-                            </div>
-                            <div id="error-msg-pw"></div>
-                            
-                        </li>
-                        <li>
-                            <button type="button" class="btn-main-color" onclick="loginFormCheck()">로그인</button>
-                        </li>
-                        <li>
-                            <div>
-                                <input type="checkbox" name="status">
-                                <label for="">아이디저장</label>
-                            </div>
-                            <div>
-                                <a href="#">아이디 찾기<span>&gt;</span></a>
-                                <a href="#">비밀번호 찾기<span>&gt;</span></a>
-                            </div>
-                        </li>
-
-                        <li>
-                            <button>
-                                네이버 로그인
-                            </button>
-                        </li>
-                    </ul>
-                    <div>
-                        <a href="#"><img src="https://adimg.cgv.co.kr//images/202206/loginplus/350x300.png" alt="외부사이트"></a>
-                        
-                    </div>
-                </form>
+            <div class="center-layout mycgv">
+                <h1 class="center-title">My CGV</h1>
+                <div>
+                    <span>예매정보</span>
+                    <span>개인정보 확인 / 수정</span>
+                </div>
             </div>
         </div>
     

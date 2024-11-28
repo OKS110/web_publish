@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/cgv/css/commons.css">
     <link rel="stylesheet" href="/cgv/css/cgv.css">
-    <script src="https://kit.fontawesome.com/5cc509faeb.js" crossorigin="anonymous"></script>
-    <script type="module" src="../js/cgv.js"></script>
-    <script src="../js/cgvForm.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -119,65 +116,70 @@
         </header>
 
 
-
         <!-- contents -->
         <div class="content">
-            <div class="center-layout login-form">
-                <h1 class="center-title">로그인</h1>
+            <div class="center-layout join-form">
+                <h1 class="center-title">회원가입</h1>
                 <form action="#" method="post">
                     <ul>
                         <li>
-                            <p>
-                                아이디 비밀번호를 입력하신 후, 로그인 버튼을 클릭해 주세요.
-                            </p>
+                            <label for="id"><b>아이디</b></label> <span>사용할 수 없는 아이디입니다.</span>
+                            <div>
+                                <input type="text" name="id" placeholder="아이디 입력(6~20자)">
+                                <button>중복확인</button>
+                            </div>
                         </li>
+
                         <li>
-                            <div class="input-wrap">
-                                <i class="fa-regular fa-user"></i>
-                                <span>|</span>
-                                <label for=""></label>
-                                <input type="text" name="id" id="id" placeholder="아이디를 입력해주세요">
+                            <label for="pw"><b>비밀번호</b></label> <span>20자 이내의 비밀번호를 입력해주세요.</span>
+                            <div> 
+                                <input type="password" name="pw" placeholder="비밀번호 입력(문자, 숫자, 특수문자 포함 8~20자)">
+                            </div>
+                        </li>
+
+                        <li>
+                            <label for="pw_c"><b>비밀번호확인</b></label> <span>비밀번호가 일치하지 않습니다.</span>
+                            <div>
                                 
+                                <input type="pw" name="pw_c" placeholder="비밀번호 재입력">
                             </div>
-                            <div id="error-msg-id"></div>
-                           
                         </li>
 
                         <li>
-                            <div class="input-wrap">
-                                <i class="fa-solid fa-lock"></i>
-                                <span>|</span>
-                                <label for=""></label>
-                                <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요">
-
-                            </div>
-                            <div id="error-msg-pw"></div>
-                            
-                        </li>
-                        <li>
-                            <button type="button" class="btn-main-color" onclick="loginFormCheck()">로그인</button>
-                        </li>
-                        <li>
+                            <label for="name">이름</label>
                             <div>
-                                <input type="checkbox" name="status">
-                                <label for="">아이디저장</label>
-                            </div>
-                            <div>
-                                <a href="#">아이디 찾기<span>&gt;</span></a>
-                                <a href="#">비밀번호 찾기<span>&gt;</span></a>
+                                <input type="text" name="name" placeholder="이름을 입력해주세요">
                             </div>
                         </li>
 
                         <li>
-                            <button>
-                                네이버 로그인
-                            </button>
+                            <label for="phone">전화번호</label>
+                            <div>
+                                <input type="text" name="phone" placeholder="휴대폰 번호 입력('-'제외 11자리 입력)">
+                            </div>
+                        </li>
+
+                        <li>
+                            <label for="email">이메일 주소</label>
+                            <div>
+                                
+                                <!-- <input type="email" name="email"> -->
+                                 <input type="text" placeholder="이메일 주소" name="email">
+                                 <span>@</span>
+                                 <select name="emaildomain">
+                                    <option value="default">선택</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                    <option value="daum.net">daum.net</option>
+                                 </select>
+                            </div>
+                        </li>
+
+                        <li>
+                            <button>가입하기</button>
+                            <button>가입취소</button>
                         </li>
                     </ul>
-                    <div>
-                        <a href="#"><img src="https://adimg.cgv.co.kr//images/202206/loginplus/350x300.png" alt="외부사이트"></a>
-                        
-                    </div>
                 </form>
             </div>
         </div>
