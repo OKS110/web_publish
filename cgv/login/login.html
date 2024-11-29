@@ -136,7 +136,10 @@
                                 <i class="fa-regular fa-user"></i>
                                 <span>|</span>
                                 <label for=""></label>
-                                <input type="text" name="id" id="id" placeholder="아이디를 입력해주세요">
+                                <input type="text" name="id" id="id"
+                                oninput="handleChange(event)" 
+                                class="handle"
+                                placeholder="아이디를 입력해주세요">
                                 
                             </div>
                             <div id="error-msg-id"></div>
@@ -148,7 +151,10 @@
                                 <i class="fa-solid fa-lock"></i>
                                 <span>|</span>
                                 <label for=""></label>
-                                <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요">
+                                <input type="password" name="pw" id="pw" 
+                                oninput="handleChange(event)" 
+                                class="handle"
+                                placeholder="비밀번호를 입력해주세요">
 
                             </div>
                             <div id="error-msg-pw"></div>

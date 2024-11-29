@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/cgv/css/commons.css">
     <link rel="stylesheet" href="/cgv/css/cgv.css">
+    <script src="../js/cgv_support.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -134,151 +135,20 @@
 
                     <nav>
                         <ul class="support-menuwrap">
-                            <li><a href="#">전체</a></li>
-                            <li><a href="#">시스템점검</a></li>
-                            <li><a href="#">극장</a></li>
-                            <li><a href="#">행사/이벤트</a></li>
-                            <li><a href="#">제휴이벤트</a></li>
-                            <li><a href="#">기타</a></li>
+                            <li><a onclick="onChangeNoticeList('total')">전체</a></li>
+                            <li><a onclick="onChangeNoticeList('system')">시스템점검</a></li>
+                            <li><a onclick="onChangeNoticeList('theater')">극장</a></li>
+                            <li><a onclick="onChangeNoticeList('event')">행사/이벤트</a></li>
+                            <li><a onclick="onChangeNoticeList('cardevent')">제휴이벤트</a></li>
+                            <li><a onclick="onChangeNoticeList('rest')">기타</a></li>
                         </ul>
                     </nav>
                     <p>총 114건이 검색되었습니다. </p>
                     <table class="support-table">
-                        <thead>
-                            <tr>
-                                <th>번호</th>
-                                <th>구분</th>
-                                <th class="tit">제목</th>
-                                <th>등록일</th>
-                                <th>조회수</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td class="tit"><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <!-- <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr>
-                            <tr>
-                                <td>114</td>
-                                <td>[시스템점검]</td>
-                                <td><a href="#">iOS 18 업데이트 관련 예매 서비스 이용안내</a></td>
-                                <td>2024.09.13</td>
-                                <td>118691</td>
-                            </tr> -->
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="5">
-                                    <a href="#">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">5</a>
-                                    <a href="#" class="next-btn">&gt;&gt;</a>
-                                </td>
-                            </tr>
-                        </tfoot>
+                        
+                            
+
+                        
                     </table>
                 </div>
 
