@@ -4,8 +4,8 @@ export default function AvatarList({avatar_list}){
 
     return (
         <ul>
-            {avatar_list.map((object) =>  
-                <li><Avatar img={object.img} name={object.name} age={object.age}></Avatar></li>
+            {avatar_list.map((object, index) =>  
+                <li key={index}><Avatar img={object.img} name={object.name} age={object.age}></Avatar></li>
             )}
         </ul>
     );
