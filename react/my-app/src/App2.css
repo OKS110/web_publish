@@ -1,0 +1,7 @@
+.wrap{
+    background-color: aquamarine;
+    display: flex;
+}
+.title{
+    color: red;
+}
