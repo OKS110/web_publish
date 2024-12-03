@@ -8,7 +8,9 @@ createMovieChartList(1);
 function createMovieChartList(page){
     //어제의 날짜를 갖고오기
     let date = new Date(); 
-    let searchDt = date.getFullYear().toString().concat(date.getMonth() + 1).concat(date.getDate() - 1);
+    let searchDt = date.getFullYear().toString()
+    .concat((date.getMonth() + 1).toString().padStart(2, '0')) // 월을 2자리로
+    .concat((date.getDate() - 1).toString().padStart(2, '0')); // 일을 2자리로
     console.log(searchDt); //toString으로 문자열로 만들어줘야 concat을 적용 시킬 수 있다.(Date 함수는 숫자로 반환하기 때문에 concat 불가)
 
     kobisBoxOffice('Daily', searchDt)
