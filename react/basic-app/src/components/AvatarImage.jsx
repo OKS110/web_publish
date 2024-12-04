@@ -5,7 +5,5 @@ export default function AvatarImage({img}){
         <div>
             <img src={img} className="avatar-img"></img>
         </div>
-        
-
     );
 }

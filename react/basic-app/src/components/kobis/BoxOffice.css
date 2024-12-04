@@ -1,0 +1,16 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+#title{
+    width: 1200px;
+    display: flex;
+    text-align: center;
+}
+p{
+    margin: 0;
+    border: 1px solid red;
+    width: 200px;
+    padding: 10px;
+}

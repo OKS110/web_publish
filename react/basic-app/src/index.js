@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import AppAvatar from './AppAvatar';
+import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppAvatar />
+    <App />
   </React.StrictMode>
 );
 
