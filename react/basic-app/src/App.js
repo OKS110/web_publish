@@ -1,13 +1,8 @@
-// import './App.css';
-import './components/dwitter/Dwitter.css';
-
-import AppBoxOffice from './components/kobis/AppBoxOffice.jsx';
+import AppCgv from './components/cgv_layout/AppCgv.jsx';
 
 export default function App() {
   return(
-    <div>
-      <AppBoxOffice />
-    </div>
+      <AppCgv />
   );
 }
 
