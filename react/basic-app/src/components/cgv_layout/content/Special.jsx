@@ -1,24 +1,14 @@
 import SpecialItem from "./SpecialItem";
-
+import { useEffect, useState } from "react";
 export default function Special(){
-    const specialList = [
-        {
-            "title": "SUITE CINEMA",
-            "text": "#호텔 컨셉의 프리미엄관"
-        },
-        {
-            "title": "CINE & LIVINGROOM",
-            "text": "#신개념 소셜 상영관"
-        },
-        {
-            "title": "4DX",
-            "text": "#모션 시트 #오감체험"
-        },
-        {
-            "title": "CINE de CHEF",
-            "text": "#쉐프가 있는 영화관"
-        },
-    ]
+    const [specialList, setSpecialList] = useState([]);
+
+    useEffect(() => {
+        fetch("/data/cgv_content.json")
+        .then(data => data.json())
+        .then(jsonData => setSpecialList(jsonData.specialList))
+        .catch(error => console.log(error))
+    }, []);
     
     return(
         <section>
@@ -36,11 +26,10 @@ export default function Special(){
                         <img src="https://img.cgv.co.kr//Front/Main/2022/0616/16553622935690.png" alt="Special2" className="special-images"></img>
                         <img src="https://img.cgv.co.kr//Front/Main/2021/1130/16382612660240.png" alt="Special3" className="special-images"></img>
                         <img src="https://img.cgv.co.kr//Front/Main/2021/1130/16382612660560.png" alt="Special4" className="special-images"></img>
-
                     </div>
 
                     <ul>
-                        {specialList.map((item, index) =>
+                        {specialList && specialList.map((item, index) =>
                             <li key={index} className="special-list" aria-selected="true">
                                 <SpecialItem title={item.title} text={item.text}></SpecialItem>
                             </li>

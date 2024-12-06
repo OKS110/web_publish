@@ -1,0 +1,108 @@
+{
+    "specialList" : [
+        {
+            "title": "SUITE CINEMA",
+            "text": "#호텔 컨셉의 프리미엄관"
+        },
+        {
+            "title": "CINE & LIVINGROOM",
+            "text": "#신개념 소셜 상영관"
+        },
+        {
+            "title": "4DX",
+            "text": "#모션 시트 #오감체험"
+        },
+        {
+            "title": "CINE de CHEF",
+            "text": "#쉐프가 있는 영화관"
+        }
+    ],
+    "pList" :[
+        {
+            "title": "패키지",
+            "list": [
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/17170520996180.jpg",
+                    "alt":"package",
+                    "text":"우리 패키지",
+                    "price":"62,000원"
+                },
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/17170520996180.jpg",
+                    "alt":"package",
+                    "text":"나랑 너 패키지",
+                    "price":"35,000원"
+                },
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/17170520996180.jpg",
+                    "alt":"package",
+                    "text":"좋은 날 패키지",
+                    "price":"18,000원"
+                }
+            ]
+        },
+        {
+            "title": "영화관람권",
+            "list": [
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/16777513183750.jpg",
+                    "alt":"package",
+                    "text":"CGV 영화 관람권",
+                    "price":"13,000원"
+                },
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/16104445886810.jpg",
+                    "alt":"package",
+                    "text":"IMAX 영화 관람권",
+                    "price":"18,000원"
+                },
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/16105061088530.jpg",
+                    "alt":"package",
+                    "text":"4DX 영화 관람권",
+                    "price":"19,000원"
+                }
+            ]
+        },
+        {
+            "title": "기프트카드",
+            "list":[
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814124358590.jpg",
+                    "alt":"package",
+                    "text":"PACONNIE A형",
+                    "price":"금액충전형"
+                },
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814158039890.jpg",
+                    "alt":"package",
+                    "text":"PACONNIE B형",
+                    "price":"금액충전형"
+                },
+                {
+                    "src": "https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814162227570.jpg",
+                    "alt":"package",
+                    "text":"PACONNIE C형",
+                    "price":"금액충전형"
+                }
+            ]
+        }
+    ],
+    "eventList" : [
+        {
+            "src": "https://img.cgv.co.kr/WebApp/contents/eventV4/42372/17295802409470.jpg",
+            "title": "[콜렉터블 무비머니] Vol.1 맥스 달튼",
+            "date": "2024.09.25 ~ 2024.10.31"
+        },
+        {
+            "src": "https://img.cgv.co.kr/WebApp/contents/eventV4/42820/17327600028470.jpg",
+            "title": "2025 CGV짱구는 못말려 캘린더 출시!",
+            "date": "2024.11.28~2024.12.31"
+        },
+        {
+            "src": "https://img.cgv.co.kr/WebApp/contents/eventV4/42888/17332152020130.jpg",
+            "title": "[모아나2]4DX 스페셜 포스터",
+            "date": "2024.12.03~2024.12.08"
+        }
+    ]
+}

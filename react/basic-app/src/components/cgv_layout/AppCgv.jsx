@@ -9,12 +9,14 @@ import ContentsTop from "./content/ContentsTop.jsx";
 import MovieChart from './content/MovieChart.jsx';
 import EventSpecial from './content/EventSpecial.jsx';
 
-import Package from './content/Package.jsx';
-import Notice from './content/Notice.jsx';
 import Footer from './footer/Footer.jsx';
 import FooterMenu from './footer/FooterMenu.jsx';
+import GotoButton from './content/GotoButton.jsx';
+
 
 export default function AppCgv(){
+
+
     return(
         <>
             <Header>
@@ -27,16 +29,13 @@ export default function AppCgv(){
                 <ContentsTop></ContentsTop>
                 <MovieChart></MovieChart>
 
-                <EventSpecial>
-                    
-                    <Package></Package>
-                    <Notice></Notice>
-                </EventSpecial>
+                <EventSpecial></EventSpecial>
             </Contents>
 
             <Footer>
                 <FooterMenu></FooterMenu>
             </Footer>
+            <GotoButton></GotoButton>
         </>
     );
 }
