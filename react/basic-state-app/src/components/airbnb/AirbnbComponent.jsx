@@ -1,18 +1,19 @@
+export default function AirbnbComponent({img, d1, d2, d3, d4, isGood, color}){
 
-export default function AirbnbComponent(props){
-    return(
-        <>
-            <div className="wrap">
-                <div className="image">
-                    <img src={props.img}/>
-                </div>
-                <div className="text">
-                    <p className="d1">{props.d1}</p>
-                    <p className="d2">{props.d2}</p>
-                    <p className="d3">{props.d3}</p>
-                    <p className="d4">{props.d4} / 박</p>
-                </div>
-            </div>
-        </>
+    return (
+        <div className="wrap">
+                    <div className="image">
+                        <img src={img} alt="" />
+                        {isGood && <span className="isgood">게스트 추천</span>}
+                        <span className="like" style={{color: color}}>♥</span>
+                    </div>
+
+                    <div className="text">
+                        <p className="d1">{d1}</p>
+                        <p className="d2">{d2}</p>
+                        <p className="d3">{d3}</p>
+                        <p className="d4">{d4}</p>
+                    </div>
+        </div>
     );
 }
