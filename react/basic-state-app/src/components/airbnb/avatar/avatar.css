@@ -1,0 +1,40 @@
+
+ul, li{
+    list-style: none;
+}
+ul{
+    display: flex;
+    gap: 20px;
+}
+
+li{
+    width: 250px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+.image{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+
+.new{
+    background-color: yellow;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: .9rem;
+    position:absolute; top: 20px; right: 20px;
+}

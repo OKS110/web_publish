@@ -1,0 +1,40 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+.total{
+    width: 250px;
+    margin-top: 30px;
+    font-size: 1.2rem;
+}
+.wrap{
+    margin-top: 10px;
+    width: 250px;
+    border: 1px solid red;
+
+}
+.wrap img{
+    width: 100px;
+    margin-right: 20px;
+}
+ul, li{
+    list-style: none;
+    
+}
+li:first-child{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+button{
+    padding: 6px;;
+}

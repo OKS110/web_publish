@@ -12,7 +12,7 @@ export default function AppAirbnb(){
 
     return (
         <ul>
-            {list.map((item, index) => <li key={index}>
+            {list && list.map((item, index) => <li key={index}>
                 <AirbnbComponent img={item.img} d1={item.d1} d2={item.d2} d3={item.d3} d4={item.d4} isGood ={item.isGood} color={item.color}>
                 </AirbnbComponent>
             </li>)}

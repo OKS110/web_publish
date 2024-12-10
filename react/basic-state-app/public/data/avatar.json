@@ -1,0 +1,19 @@
+{
+    "person" : [
+        {
+            "newText" : true,
+            "img" : "/data/images/people1.webp",
+            "name" : "Smith"
+        },
+        {
+            "newText" : false,
+            "img" : "/data/images/people2.webp",
+            "name" : "James"
+        },
+        {
+            "newText" : true,
+            "img" : "/data/images/people3.webp",
+            "name" : "Loren"
+        }
+    ]
+}
