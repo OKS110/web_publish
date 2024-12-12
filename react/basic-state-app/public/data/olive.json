@@ -46,5 +46,53 @@
         "isSale": true,
         "isCoupon": false,
         "isToday": true
+    },
+    {
+        "id":"p_005",
+        "rank":"1",
+        "img" : "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/400/10/0000/0021/A00000021315332ko.jpg?l=ko",
+        "title": "메디힐",
+        "description": "[1위패드/100+100+14매] 메디힐 마데카소사이드 흔적패드 어워즈",
+        "price": "39900",
+        "sprice": "28900",
+        "isSale": true,
+        "isCoupon": false,
+        "isToday": true
+    },
+    {   
+        "id":"p_006",
+        "rank":"2",
+        "img" : "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/400/10/0000/0021/A00000021419126ko.jpg?l=ko",
+        "title": "에스트라",
+        "description": "[올영1등크림] 에스트라 아토베리어365 크림 80ml 어워즈 한정기획",
+        "price": "33000",
+        "sprice": "26000",
+        "isSale": true,
+        "isCoupon": true,
+        "isToday": true
+    },
+    {   
+        "id":"p_007",
+        "rank":"3",
+        "img" : "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/400/10/0000/0017/A00000017142380ko.jpg?l=ko",
+        "title": "어노브",
+        "description": "[2024 어워즈/3년 연속 1위] 어노브 딥 데미지 헤어 트리트먼트 EX 더블/듀오",
+        "price": "42000",
+        "sprice": "29800",
+        "isSale": false,
+        "isCoupon": true,
+        "isToday": false
+    },
+    {   
+        "id":"p_008",
+        "rank":"4",
+        "img" : "https://image.oliveyoung.co.kr/cfimages/cf-goods/uploads/images/thumbnails/400/10/0000/0021/A00000021349504ko.jpg?l=ko",
+        "title": "정샘물",
+        "description": "[2024 어워즈/올영쿠션 1위] 정샘물 에센셜 스킨누더 쿠션 어워즈 한정 기획",
+        "price": "45000",
+        "sprice": "36000",
+        "isSale": true,
+        "isCoupon": false,
+        "isToday": false
     }
 ]

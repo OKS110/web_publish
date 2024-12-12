@@ -7,7 +7,8 @@ import ReactDOM from 'react-dom/client';
 // import './Airbnb.css';
 // import Avatar from './components/airbnb/avatar/Avater.jsx';
 // import AppBestSeller from './components/yes24/AppBestSeller.jsx';
-import AppOlive from './components/olive/AppOlive.jsx';
+// import AppOlive from './components/olive/AppOlive.jsx';
+import AppAladin from './components/aladin/AppAladin.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -15,7 +16,8 @@ root.render(
     {/* <AppAirbnb></AppAirbnb> */}
     {/* <Avatar></Avatar> */}
     {/* <AppCounter></AppCounter> */}
-    <AppOlive></AppOlive>
+    {/* <AppOlive></AppOlive> */}
+    <AppAladin></AppAladin>
   </React.StrictMode>
 );
 

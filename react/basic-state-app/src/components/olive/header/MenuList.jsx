@@ -1,5 +1,4 @@
 import Menu from "./Menu.jsx";
-import { useState } from "react";
 export default function MenuList({count}) {
 
     const menuList = [

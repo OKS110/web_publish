@@ -1,5 +1,10 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
 ul, li{
     list-style: none;
+    margin: 0;padding: 0;
 }
 
 header{
@@ -30,15 +35,17 @@ header button{
     margin: auto;
 }
 .product-list-container{
-    display: flex;
-    gap: 20px;
+    /* display: flex;
+    gap: 20px; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     margin: 20px 0;
 }
 .product-container{
+    /* border: 1px solid red; */
     width: 250px;
-    height: 300px;
     text-align: center;
-
+    padding: 10px;
 }
 .product-container img{
     width: 220px;
