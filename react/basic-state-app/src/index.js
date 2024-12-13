@@ -8,7 +8,10 @@ import ReactDOM from 'react-dom/client';
 // import Avatar from './components/airbnb/avatar/Avater.jsx';
 // import AppBestSeller from './components/yes24/AppBestSeller.jsx';
 // import AppOlive from './components/olive/AppOlive.jsx';
-import AppAladin from './components/aladin/AppAladin.jsx';
+// import AppAladin from './components/aladin/AppAladin.jsx';
+// import AppAladin2 from './components/aladin2/AppAladin2.jsx';
+import AppForm from './components/form/AppForm.jsx';
+// import CgvLoginForm from './components/form/CgvLoginForm.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -17,7 +20,10 @@ root.render(
     {/* <Avatar></Avatar> */}
     {/* <AppCounter></AppCounter> */}
     {/* <AppOlive></AppOlive> */}
-    <AppAladin></AppAladin>
+    {/* <AppAladin></AppAladin> */}
+    {/* <AppAladin2></AppAladin2> */}
+    <AppForm></AppForm>
+  {/* <CgvLoginForm></CgvLoginForm> */}
   </React.StrictMode>
 );
 

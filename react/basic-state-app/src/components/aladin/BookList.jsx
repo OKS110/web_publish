@@ -22,11 +22,15 @@ export default function BookList() {
                 if (type !== 'total') {
                     filteredBooks = filteredBooks.filter((item) => item.type === type);
                 }
+
                 if (selectCategory && selectCategory !== '선택') {
                     filteredBooks = filteredBooks.filter((item) => item.category === selectCategory);
                 }
-
                 setBooks(filteredBooks);
+
+                // filteredBooks = (selectCategory && selectCategory !== '선택') 
+                // ? filteredBooks.filter((item) => item.category === selectCategory) 
+                // : filteredBooks;
             })
             .catch((error) => console.log(error));
     }, [type, selectCategory]);
