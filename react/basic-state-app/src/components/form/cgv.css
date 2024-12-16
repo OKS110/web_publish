@@ -1039,7 +1039,7 @@ div.content-moviechart-title-right>a{
     font-size: 0.7em;
     font-weight: 500;
     color: var(--color-button);
-    color: gray;
+    color: red;
 }
 
 /* =====================================================================================

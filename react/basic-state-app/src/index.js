@@ -10,7 +10,9 @@ import ReactDOM from 'react-dom/client';
 // import AppOlive from './components/olive/AppOlive.jsx';
 // import AppAladin from './components/aladin/AppAladin.jsx';
 // import AppAladin2 from './components/aladin2/AppAladin2.jsx';
-import AppForm from './components/form/AppForm.jsx';
+// import AppForm from './components/form/AppForm.jsx';
+// import Signup from './components/form/Signup.jsx';
+import Signup2 from './components/form/Signup2.jsx';
 // import CgvLoginForm from './components/form/CgvLoginForm.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,8 +24,9 @@ root.render(
     {/* <AppOlive></AppOlive> */}
     {/* <AppAladin></AppAladin> */}
     {/* <AppAladin2></AppAladin2> */}
-    <AppForm></AppForm>
+    {/* <AppForm></AppForm> */}
   {/* <CgvLoginForm></CgvLoginForm> */}
+  <Signup2></Signup2>
   </React.StrictMode>
 );
 

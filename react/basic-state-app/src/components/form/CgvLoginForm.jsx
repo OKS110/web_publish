@@ -1,35 +1,41 @@
 import './cgv.css';
 import './commons.css';
 import { useState, useRef } from 'react';
-
+import { validate } from '../../apis/validate.js';
 
 export default function CgvLoginForm() {
-    const idRef = useRef(null);
-    const pwRef = useRef(null);
+    // const idRef = useRef(null);
+    // const pwRef = useRef(null);
+    const refs = {
+        idRef: useRef(null), //refs.idRef
+        pwRef: useRef(null)
+    };
+
     const initFormData = {'id':"", 'pw': ""};
     const [formData, setFormData] = useState(initFormData);
-
+    const [errorMsg, setErrorMsg] = useState({'id' : '', "pw": ''});
     const handleChangeForm = (event) => {
         const {name, value} = event.target;
         setFormData({...formData, [name]: value});
-    };
-    const validate = () => {
-        let result = true;
-        if(idRef.current.value === ""){
-            alert('id 입력');
-            idRef.current.focus();
-            result = false;
-        }else if(pwRef.current.value === ""){
-            alert('pw 입력');
-            pwRef.current.focus();
-            result = false;
+        if(name === 'id'){
+            (value === '')?
+                setErrorMsg({...errorMsg, "id":"아이디를 입력해주세요."}): setErrorMsg({...errorMsg, "id": ""});
+        }else if(name === "pw"){
+            (value === '')?
+                setErrorMsg({...errorMsg, "pw":"비밀번호를 입력해주세요."}): setErrorMsg({...errorMsg, "pw": ""});
         }
-        return result;
     };
- 
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(validate()){
+        const param = {
+            // "idRef" : idRef,
+            // "pwRef": pwRef, 
+            "refs":refs,
+            "errorMsg": errorMsg,
+            "setErrorMsg": setErrorMsg
+        };
+        if(validate(param)){
 
             console.log(formData);
 
@@ -54,13 +60,12 @@ return (
                                 <label for=""></label>
                                 <input type="text" name="id" id="id"
                                 // oninput="handleChange(event)" 
-                                ref={idRef}
+                                ref={refs.idRef}
                                 onChange={handleChangeForm}
                                 className="handle"
                                 placeholder="아이디를 입력해주세요" />
-                                
                             </div>
-                            <div id="error-msg-id"></div>
+                            <div id="error-msg-id" style={{color:'red', fontSize:'0.8rem'}}>{errorMsg.id}</div>
                            
                         </li>
 
@@ -71,13 +76,13 @@ return (
                                 <label for=""></label>
                                 <input type="password" name="pw" id="pw" 
                                 // oninput="handleChange(event)" 
-                                ref={pwRef}
+                                ref={refs.pwRef}
                                 onChange={handleChangeForm}
                                 className="handle"
                                 placeholder="비밀번호를 입력해주세요"/>
 
                             </div>
-                            <div id="error-msg-pw"></div>
+                            <div id="error-msg-pw" style={{color:'red', fontSize:'0.8rem'}}>{errorMsg.pw}</div>
                             
                         </li>
                         <li>

@@ -1,9 +1,16 @@
 import { useState, useRef } from "react";
-
+import { validateForm } from "../../apis/validate";
 export default function UserInfo() {
-    const nameRef = useRef(null);
-    const addressRef = useRef(null);
-    const ageRef = useRef(null);
+    // const nameRef = useRef(null);
+    // const addressRef = useRef(null);
+    // const ageRef = useRef(null);
+
+    const refs = {
+        nameRef: useRef(null),
+        addressRef: useRef(null),
+        ageRef: useRef(null),
+    };
+
     const info = {"name":"", "address":"", "age": ""}; 
     const [userInfo, setUserInfo] = useState(info);
 
@@ -14,26 +21,27 @@ export default function UserInfo() {
                                                 //userInfo에 넣어줌 - [] : 오브젝트 객체의 필드'값'을 변수로 입력하는 경우에는 []로 감싼 후 적용
     };
 
-    const validateForm = () => {
-        let result = true;
-        if(nameRef.current.value === ''){
-            alert('name입력');
-            result = false;
-        }else if(addressRef.current.value === ''){
-            alert('address입력');
-            result = false;
+    // const validateForm = () => {
+    //     let result = true;
+    //     if(nameRef.current.value === ''){
+    //         alert('name입력');
+    //         result = false;
+    //     }else if(addressRef.current.value === ''){
+    //         alert('address입력');
+    //         result = false;
             
-        }else if(ageRef.current.value === ''){
-            alert('age입력');
-            result = false;
-        }
+    //     }else if(ageRef.current.value === ''){
+    //         alert('age입력');
+    //         result = false;
+    //     }
+    //     return result;
+    // }
 
-        return result;
-    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(validateForm()){
+        if(validateForm(refs)){
             console.log(userInfo);
         }
         
@@ -45,15 +53,15 @@ export default function UserInfo() {
             <ul>
                 <li>
                     <label>Name</label>
-                    <input type="text" name="name" value={userInfo.name} ref ={nameRef} onChange={handleChange}/>
+                    <input type="text" name="name" value={userInfo.name} ref ={refs.nameRef} onChange={handleChange}/>
                 </li>
                 <li>
                     <label>Address</label>
-                    <input type="text" name="address" value={userInfo.address} ref ={addressRef} onChange={handleChange}/>
+                    <input type="text" name="address" value={userInfo.address} ref ={refs.addressRef} onChange={handleChange}/>
                 </li>
                 <li>
                     <label>Age</label>
-                    <input type="text" name="age" value={userInfo.age} ref ={ageRef} onChange={handleChange}/>
+                    <input type="text" name="age" value={userInfo.age} ref ={refs.ageRef} onChange={handleChange}/>
                 </li>
                 <li>
                     <button type="submit"> Send </button>
