@@ -1,137 +1,119 @@
 import { useRef, useState } from "react";
-
+import { validateSignup2, errorChange } from "../../apis/validate.js";
+import { initFormName } from "../../apis/initial.js";
 export default function Signup2() {
+    //배열 + reduce() 함수
+    const name = ["id","pwd","name","phone1","phone2","phone3","address","year","month","day" ,"job","gender","email", "introduce"];
 
-    const refs ={
+    const refs = {
         idRef : useRef(null),
         pwdRef : useRef(null),
-        cpwdRef : useRef(null),
-        phoneRef : useRef(null),
-        addressRef : useRef(null)
+        nameRef : useRef(null),
+        phone1Ref : useRef(null),
+        phone2Ref : useRef(null),
+        phone3Ref : useRef(null),
+        addressRef : useRef(null),
+        yearRef : useRef(null),
+        monthRef : useRef(null),
+        dayRef : useRef(null),
+        jobRef : useRef(null),
+        genderRef : useRef(null),
+        emailRef : useRef(null),
+        introduceRef : useRef(null)
     };
-
-
-    const init = {
-        "id":"",
-        "pwd":"",
-        "cpwd":"",
-        "phone":"",
-        "address":"",
-    }
-    const initErrors = {
-        "id":"",
-        "pwd":"",
-        "cpwd":"",
-        "phone":"",
-        "address":"",
-    }
-    const errorMsg = [
-        { 
-            'name':'id',
-            'msg':'아이디를 입력해주세요.'
-        },
-        { 
-            'name':'pwd',
-            'msg':'비밀번호를 입력해주세요.'
-        },
-        { 
-            'name':'cpwd',
-            'msg':'비밀번호를 확인해주세요.'
-        },
-        { 
-            'name':'name',
-            'msg':'이름을 입력해주세요.'
-        },
-        { 
-            'name':'phone',
-            'msg':'전화번호를 입력해주세요.'
-        },
-        { 
-            'name':'address',
-            'msg':'주소를 입력해주세요.'
-        }
-];
-    const [form, setForm] = useState(init);
-    const [errors, setErrors] = useState(initErrors);
+    const [formData, setFormData] = useState(initFormName(name));
+    const [errors, setErrors] = useState(initFormName(name));
     
-
-
-    const handleChange = (e) => {
-        console.log(e.target);
-        const {name, value} = e.target;
-        setForm({...form, [name]:value});
-
-        {errorMsg.map((item) => {
-                return (item.name === name)? ((value !== '')? setErrors({...errors, [item.name]: ''}): setErrors({...errors, [item.name]: item.msg})):'';
-            }
-        )}
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if(validateSignup2(refs, errors, setErrors)){
+            console.log(formData);
+        }
+        
     };
 
-    const validate = () => {
-        if(refs.idRef.current.value === ''){
-            setErrors({...errors, "id":"아이디를 입력하세요."});
-            refs.idRef.current.focus();
-            return false;
-        }else if(refs.pwdRef.current.value === ''){
-            setErrors({...errors, "pwd":"비밀번호를 입력하세요."});
-            refs.pwdRef.current.focus();
-            return false;
-        }else if(refs.cpwdRef.current.value === ''){
-            setErrors({...errors, "cpwd":"비밀번호를 입력하세요."});
-            refs.cpwdRef.current.focus();
-            return false;
-        }else if(refs.phoneRef.current.value === ''){
-            setErrors({...errors, "phone":"전화번호를 입력하세요."});
-            refs.phoneRef.current.focus();
-            return false;
-        }else if(refs.addressRef.current.value === ''){
-            setErrors({...errors, "address":"주소를 입력하세요."});
-            refs.addressRef.current.focus();
-            return false;
-        }
-        return true;
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setFormData({...formData, [name]:value});
+        errorChange(name, value, errors, setErrors);
+        
     };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if(validate()){
-            console.log(form);
-        }
-    }; 
+
 
     return (
-    <div>
-        <form onSubmit={handleSubmit}>
-            <ul>
-                <li>
-                    <label htmlFor="">아이디</label>
-                    <input type="text" name="id" value= {form.id} onChange={handleChange} ref={refs.idRef}/>
-                    <span>{errors.id}</span>
-                </li>
-                <li>
-                    <label htmlFor="">비밀번호</label>
-                    <input type="password" name="pwd" value= {form.pwd} onChange={handleChange} ref={refs.pwdRef}/>
-                    <span>{errors.pwd}</span>
-                </li>
-                <li>
-                    <label htmlFor="">비밀번호 확인</label>
-                    <input type="password" name="cpwd" value= {form.cpwd} onChange={handleChange} ref={refs.cpwdRef}/>
-                    <span>{errors.cpwd}</span>
-                </li>
-                <li>
-                    <label htmlFor="">전화번호</label>
-                    <input type="text" name="phone" value= {form.phone} onChange={handleChange} ref={refs.phoneRef}/>
-                    <span>{errors.phone}</span>
-                </li>
-                <li>
-                    <label htmlFor="">주소</label>
-                    <input type="text" name="address" value= {form.address} onChange={handleChange} ref={refs.addressRef}/>
-                    <span>{errors.address}</span>
-                </li>
-                <li>
-                    <button type="submit">로그인</button>
-                </li>
-            </ul>
-        </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+        <ul>
+            <li>
+                <label htmlFor="">아이디 : </label>
+                <input type="text" name="id" value={formData.id} onChange={handleChange} ref={refs.idRef}/>
+                <span>{errors.id}</span>
+            </li>
+            <li>
+                <label htmlFor="">비밀번호 : </label>
+                <input type="text" name="pwd" value={formData.pwd} onChange={handleChange} ref={refs.pwdRef}/>
+                <span>{errors.pwd}</span>
+            </li>
+            <li>
+                <label htmlFor="">이름 : </label>
+                <input type="text" name="name" value={formData.name} onChange={handleChange} ref={refs.nameRef}/>
+                <span>{errors.name}</span>
+            </li>
+            <li>
+                <label htmlFor="">전화 : </label>
+                <input type="text" name="phone1" value={formData.phone1} style={{ width:"50px"}} onChange={handleChange} ref={refs.phone1Ref}/>-
+                <input type="text" name="phone2" value={formData.phone2} style={{ width:"50px"}} onChange={handleChange} ref={refs.phone2Ref}/>-
+                <input type="text" name="phone3" value={formData.phone3} style={{ width:"50px"}} onChange={handleChange} ref={refs.phone3Ref}/>
+                <span>{errors.phone1}</span>
+                <span>{errors.phone2}</span>
+                <span>{errors.phone3}</span>
+            </li>
+            <li>
+                <label htmlFor="">주소 : </label>
+                <input type="text" name="address" value={formData.address} onChange={handleChange} ref={refs.addressRef}/>
+                <span>{errors.address}</span>
+            </li>
+            <li>
+                <label htmlFor="">생일 : </label>
+                <input type="text" name="year" value={formData.year} style={{ width:"50px"}} onChange={handleChange} ref={refs.yearRef}/>/
+                <input type="text" name="month" value={formData.month} style={{ width:"50px"}} onChange={handleChange}ref={refs.monthRef}/>/
+                <input type="text" name="day" value={formData.day} style={{ width:"50px"}} onChange={handleChange} ref={refs.dayRef}/>
+                <span>{errors.year}</span>
+                <span>{errors.month}</span>
+                <span>{errors.day}</span>
+
+            </li>
+            <li>
+                <label htmlFor="">직업 : </label>
+                <select name="job" value={formData.job} id="job" onChange={handleChange} ref={refs.jobRef}>
+                    <option value="default">선택</option>
+                    <option value="back">백엔드</option>
+                    <option value="front">프론트엔드</option>
+                    <option value="system">시스템관리자</option>
+                </select>
+                <span>{errors.job}</span>
+            </li>
+            <li>
+                <label htmlFor="">성별 : </label>
+                <input type="radio" name="gender" value="m" onChange={handleChange} ref={refs.genderRef} />남
+                <input type="radio" name="gender" value="w" onChange={handleChange} ref={refs.genderRef}/>여
+                <span>{errors.gender}</span>
+            </li>
+            <li>
+                <label htmlFor="">이메일 : </label>
+                <input type="text" name="email" value={formData.email} onChange={handleChange} ref={refs.emailRef}/>
+                <span>{errors.email}</span>
+            </li>
+            <li>
+                <label htmlFor="">자기소개 : </label>
+                <textarea rows="10" cols="30" name="introduce" value={formData.introduce} id="introduce" onChange={handleChange} ref={refs.introduceRef}></textarea>
+                <span>{errors.introduce}</span>
+            </li>
+            <li>
+                <button type="submit">회원가입</button>
+                <button type="reset">취소</button>
+            </li>
+
+        </ul>
+    </form>
     );
 };
