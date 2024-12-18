@@ -13,7 +13,7 @@ export default function BestBookButton({totalChange}){
         }
     };
     return(
-        <ul>
+        <ul className="container-button">
             <li>
                 <input type="checkbox" />
                 <button type="button" onClick={() => cntChange('-')}>-</button>

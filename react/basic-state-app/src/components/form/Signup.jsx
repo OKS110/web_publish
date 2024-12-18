@@ -1,12 +1,13 @@
 import './commons.css';
 import './cgv.css';
 import { useRef, useState } from 'react';
-import { validateSignup } from '../../apis/validate';
+import { validateSignup, handleIdCheck, handlePasswordCheck } from '../../apis/validate';
 import { errorCheckSignup } from '../../apis/errorCheck.js';
 import { initFormName } from '../../apis/initial.js';
+
 export default function Signup() {
     const testId = 'test';
-    const idMsgRef = useRef(null);
+    const idMsgRef = useRef(null); //span태그에 들어가는 문자열
     const refs = {
         idRef: useRef(null),
         pwdRef: useRef(null),
@@ -36,32 +37,9 @@ export default function Signup() {
             console.log(formData);
         }
     };
-    const handleIdCheck = () => {
-        const id = refs.idRef.current;
-        if(id.value === ''){
-            errorCheckSignup('id', id.value, errors, setErrors);
-        }else {
-            if(testId === id.value){
-                setErrors({...errors, ['id']:'이미 사용중인 아이디입니다.'});
-                id.focus();
-            }else{
-                setErrors({...errors, ['id']: '사용 가능한 아이디입니다.'});
-                idMsgRef.current.style.setProperty('color', 'green');
-            }
-        }
-    };
+
     
-    const handlePasswordCheck = () => {
-        const cpwd = refs.cpwdRef.current;
-        const pwd = refs.pwdRef.current;
-    
-        if(cpwd.value !== pwd.value){
-            setErrors({...errors, ['cpwd']:'비밀번호가 일치하지 않습니다.'});
-            setFormData({...formData, ['cpwd']:'', ['pwd']:''});
-            cpwd.focus();
-        }
-    
-    };  
+
     
     
 
@@ -76,7 +54,17 @@ export default function Signup() {
                             <label for="id"><b>아이디</b></label> <span id="error-msg-id" ref={idMsgRef}>{errors.id}</span>
                             <div>
                                 <input type="text" name="id" id="id" value={formData.id} ref={refs.idRef} onChange={handleChangeSignup} placeholder="아이디 입력(6~20자)"/>
-                                <button type="button" onClick={handleIdCheck}>중복확인</button>
+                                <button type="button" onClick={() => {
+                                    const param = {
+                                        'refs': refs,
+                                        'errorCheckSignup': errorCheckSignup,
+                                        'errors':errors,
+                                        'setErrors':setErrors,
+                                        'testId':testId,
+                                        'idMsgRef':idMsgRef
+                                    }
+                                    handleIdCheck(param) 
+                                }}>중복확인</button>
                                 <input type="hidden" id="idCheckResult" value="default"/>
                             </div>
                         </li>
@@ -94,7 +82,15 @@ export default function Signup() {
                             <div>
                                 
                                 <input type="password" name="cpwd" id="cpw" 
-                                onBlur={handlePasswordCheck}
+                                onBlur={() => {
+                                    const param = {
+                                            'refs': refs,
+                                            'setErrors': setErrors,
+                                            'errors': errors,
+                                            'setFormData':setFormData,
+                                            'formData': formData
+                                        }
+                                handlePasswordCheck(param)}}
                                 value={formData.cpwd} ref={refs.cpwdRef} onChange={handleChangeSignup} placeholder="비밀번호 재입력" />
                             </div>
                         </li>

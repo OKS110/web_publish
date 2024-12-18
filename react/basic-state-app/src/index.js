@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import AppBestSeller from './components/yes24/AppBestSeller';
 // import './index.css';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
@@ -12,7 +13,7 @@ import ReactDOM from 'react-dom/client';
 // import AppAladin2 from './components/aladin2/AppAladin2.jsx';
 // import AppForm from './components/form/AppForm.jsx';
 // import Signup from './components/form/Signup.jsx';
-import Signup2 from './components/form/Signup2.jsx';
+// import Signup from './components/form/Signup.jsx';
 // import CgvLoginForm from './components/form/CgvLoginForm.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,8 +26,9 @@ root.render(
     {/* <AppAladin></AppAladin> */}
     {/* <AppAladin2></AppAladin2> */}
     {/* <AppForm></AppForm> */}
+    <AppBestSeller></AppBestSeller>
   {/* <CgvLoginForm></CgvLoginForm> */}
-  <Signup2></Signup2>
+  {/* <Signup></Signup> */}
   </React.StrictMode>
 );
 

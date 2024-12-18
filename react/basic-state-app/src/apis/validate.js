@@ -87,7 +87,7 @@ export const validateSignup = (refs, errors, setErrors) =>{
 
 
 
-
+//Signup2의 validate함수
 export const validateSignup2 = (refs, errors, setErrors) => {
     // const refValues = Object.values(refs);
     // const refKeys = Object.keys(refs);
@@ -113,7 +113,7 @@ export const validateSignup2 = (refs, errors, setErrors) => {
     };
 
 // 배열.map() or 배열.forEach() 함수는 배열객체를 순회하는 것이 목적이므로 if 체크 후 focus가 적용되지 않음.!!!
-    for(const item of refEntries){ // 예시 ) item = ["idRef": "current:input  value:""]
+    for(const item of refEntries){ // 예시 ) item = ["idRef": "current:input  value:"]
 
         const name = item[0];
         const ref = item[1];
@@ -145,6 +145,35 @@ export const validateSignup2 = (refs, errors, setErrors) => {
     
     return true;
 };
+
+
+export const handleIdCheck = ({refs, errorCheckSignup, errors, setErrors, testId, idMsgRef}) => {
+    const id = refs.idRef.current;
+    if(id.value === ''){
+        errorCheckSignup('id', id.value, errors, setErrors);
+    }else {
+        if(testId === id.value){
+            setErrors({...errors, ['id']:'이미 사용중인 아이디입니다.'});
+            id.focus();
+        }else{
+            setErrors({...errors, ['id']: '사용 가능한 아이디입니다.'});
+            idMsgRef.current.style.setProperty('color', 'green');
+        }
+    }
+};
+
+export const handlePasswordCheck = ({refs, setErrors, errors, setFormData, formData}) => { //param으로 받은 것을 구조분해할당 하였다.
+    const cpwd = refs.cpwdRef.current;
+    const pwd = refs.pwdRef.current;
+
+    if(cpwd.value !== pwd.value){
+        setErrors({...errors, ['cpwd']:'비밀번호가 일치하지 않습니다.'});
+        setFormData({...formData, ['cpwd']:'', ['pwd']:''});
+        cpwd.focus();
+    }
+
+};  
+
 
 export const errorChange = (name, value, errors, setErrors) => {
     const names = [

@@ -1,27 +1,26 @@
+import BestBookAvater from "./BestBookAvatar.jsx";
 import BestBookButton from "./BestBookButton.jsx";
-import { useState } from "react";
-export default function BestBook(){ //qty를 이곳에서 받는다고 생각해서 오류가 발생했다.
-    const list =[
-        {"img" : "https://image.yes24.com/goods/13137546/L"},
-        {"img" : "https://image.yes24.com/goods/108422348/L"},
-        {"img" : "https://image.yes24.com/goods/103495056/L"},
-    ];
+import BestBookContents from "./BestBookContents.jsx";
+export default function BestBook({bookList}){ 
 
-    const [total, setTotal] = useState(0);
 
-    const totalChange = (count) => {
-        setTotal(total + count);
-    };
     return(
         <>
-        <div className="total">전체카트수량 : {total} </div>
-        {list && list.map((item) => 
-            <div className="wrap" style={{display:"flex"}}>
-                <img src={item.img}/>
-                <BestBookButton totalChange = {totalChange}></BestBookButton>
-            </div>
-        )}
+        {bookList.map((item, index) => 
+        <div style={{display:'flex', marginBottom:'20px'}}>
+            <BestBookAvater rank={index + 1} img={item.img}></BestBookAvater>
+            <BestBookContents 
+                suggest={item.suggest} 
+                today={item.today} type={item.type} title={item.title} 
+                author={item.author} company={item.company} pubDate={item.pubDate}
+                price={item.price} perSale ={item.perSale} point={item.point}
+            />
+            <BestBookButton></BestBookButton>
        
+        </div>
+        )}
+        
+        
         </>
     );
 }
