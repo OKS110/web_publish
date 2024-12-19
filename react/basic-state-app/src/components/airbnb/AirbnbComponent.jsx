@@ -2,7 +2,7 @@ export default function AirbnbComponent({img, d1, d2, d3, d4, isGood, color}){
 
     return (
         <div className="wrap">
-                    <div className="image">
+                    <div className="image-airbnb">
                         <img src={img} alt="img" />
                         {isGood && <span className="isgood">게스트 추천</span>}
                         <span className="like" style={{color: color}}>♥</span>

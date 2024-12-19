@@ -7,7 +7,7 @@ ul{
     gap: 20px;
 }
 
-li{
+li.avater-list{
     width: 250px;
     height: 300px;
     border: 1px solid black;

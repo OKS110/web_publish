@@ -1,9 +1,15 @@
 import BestBookAvater from "./BestBookAvatar.jsx";
 import BestBookButton from "./BestBookButton.jsx";
 import BestBookContents from "./BestBookContents.jsx";
-export default function BestBook({bookList}){ 
+import { useState } from "react";
+export default function BestBook({bookList}){
 
+    const [total, setTotal] = useState(0);
 
+    const totalChange = (count) => {
+        setTotal(total + count);
+    };
+    console.log(total);
     return(
         <>
         {bookList.map((item, index) => 
@@ -15,7 +21,7 @@ export default function BestBook({bookList}){
                 author={item.author} company={item.company} pubDate={item.pubDate}
                 price={item.price} perSale ={item.perSale} point={item.point}
             />
-            <BestBookButton></BestBookButton>
+            <BestBookButton totalChange={totalChange}></BestBookButton>
        
         </div>
         )}

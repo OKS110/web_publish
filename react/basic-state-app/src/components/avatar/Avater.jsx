@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './avatar.css'
+import './avatar.css';
 import AvatarContent from './AvatarContent.jsx';
 
 export default function Avatar(){
@@ -16,7 +16,7 @@ export default function Avatar(){
         <div className="wrap">
             <ul>
                 {list ? (list.map((item, index) => 
-                    <li key={index}>
+                    <li className='avater-list' key={index}>
                         <AvatarContent img={item.img} newText={item.newText} name={item.name}></AvatarContent>
                     </li>)
                 ) : null}
