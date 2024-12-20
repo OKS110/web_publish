@@ -1,0 +1,329 @@
+{
+    "Header": [
+        {
+            "profileIcon" : {
+                "img" : "/data/images/favicon.ico",
+                "name" : "Judy"
+            }
+        },
+        {
+            "navList" : [
+                {
+                    "name": "Home",
+                    "href": "#home",
+                    "active": true
+                },
+                {
+                    "name": "About",
+                    "href": "#about"
+                },
+                {
+                    "name": "Skills",
+                    "href": "#skill"
+                },
+                {
+                    "name": "My work",
+                    "href": "#work"
+                },
+                {
+                    "name": "Testimonial",
+                    "href": "#testimonial"
+                },
+                {
+                    "name": "Contact",
+                    "href": "#contact"
+                }
+            ]
+        }
+    
+    ],
+    "Body":{
+        "Home":{
+                "HomeText" : {
+                            "img":"/data/images/favicon.ico",
+                            "nickName": "Dream Coder",
+                            "name":"Judy",
+                            "job":"A software engineer",
+                            "country":"Seoul",
+                            "nation":"South Korea"
+                        }
+        },
+        "About":{
+
+                "AboutText" : {
+                    "description":"asdLorem ipsum dolor sit amet consectetur adipisicing elit. Iure natus, temporibus perspiciatis repudiandae nostrum modidoloremque expedita non eius ipsum! Beatae porro adipisci omnis architecto dignissimos. Iusto ipsa inventore adipisci."
+                
+                },
+                "AboutMajorList" : [
+                    {
+                    
+                    "icon": "faHtml5",
+                    "skillTitle":"Front-end",
+                    "skillDescription": "HTML, CSS, JavaScript, TypeScript, React, WebAPIs"
+                    },
+                    {
+                    "icon":"faMobile",
+                    "skillTitle":"Mobile",
+                    "skillDescription": "Android Studio, React Native, iOS, Swift, Java, Kotlin"
+                    },
+                    {
+                    "icon":"faServer",
+                    "skillTitle":"Back-end",
+                    "skillDescription": "Java, JavaScript, Go, Kotlin, Spring, Spring Boot"
+                    }
+                ],
+                "AboutJobsList" : [
+                    {
+                    "img":"/data/images/jobs/google.png",
+                    "jobName":"Google as Junior Software Engineer",
+                    "jobPeroid":"2019 Oct - Until now"
+                    },
+                    {
+                    "img":"/data/images/jobs/samsung.png",
+                    "jobName":"Samsung as Junior Software Engineer",
+                    "jobPeroid":"2010 Oct - 2019 Oct"
+                    }
+                ]
+        },
+        
+        "Skills":{
+            "SkillTxt" : {
+                "skillDescription":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis beatae, aliquid ratione commodi nam ex voluptate rem eveniet cupiditate optio natus? Cum, harum eum sint id quod nulla adipisci. Sunt?"
+            },
+            "CodingSkillList" : [
+                        {
+                            "title":"HTML",
+                            "percent":"98%"
+                        },
+                        {
+                            "title":"CSS",
+                            "percent":"98%"
+                        },
+                        {
+                            "title":"HTML",
+                            "percent":"98%"
+                        },
+                        {
+                            "title":"JavaScript",
+                            "percent":"98%"
+                        },
+                        {
+                            "title":"TypeScript",
+                            "percent":"80%"
+                        },
+                        {
+                            "title":"React",
+                            "percent":"88%"
+                        },
+                        {
+                            "title":"NodeJs",
+                            "percent":"70%"
+                        }
+                    ],
+            "ToolsList" : [
+                        {
+                            "Tool":"Visual Studio Code"
+                        },
+                        {
+                            "Tool":"IntelliJ"
+                        },
+                        {
+                            "Tool":"Android Studio Code"
+                        },
+                        {
+                            "Tool":"iOS development tools"
+                        },
+                        {
+                            "Tool":"Eclipse"
+                        }
+                    ],
+            "EtcList" : [
+                        {
+                            "Etc":"Git"
+                        },
+                        {
+                            "Etc": "Scrum Master"
+                        },
+                        {
+                            "Etc":"SVN"
+                        }
+                    ]
+        },
+
+       "Work":{
+                    "workMenuList" : [
+                        {
+                            "category": "All"
+                        },
+                        {
+                            "category": "Front-end"
+                        },
+                        {
+                            "category": "Back-end"
+                        },
+                        {
+                            "category": "Mobile"
+                        }
+                    ],
+                    "workMenuItemList" : [
+                        {
+                            "img":"/data/images/projects/project1.webp",
+                            "alt":"project1",
+                            "category":"Front-end",
+                            "title":"Project #1",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+                            
+
+                        },
+                        {
+                            "img":"/data/images/projects/project2.webp",
+                            "alt":"project2",
+                            "category":"Front-end",
+                            "title":"Project #2",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project3.webp",
+                            "alt":"project1",
+                            "category":"Front-end",
+                            "title":"Project #3",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project4.webp",
+                            "alt":"project1",
+                            "category":"Front-end",
+                            "title":"Project #4",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project5.webp",
+                            "alt":"project1",
+                            "category":"Back-end",
+                            "title":"Project #5",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project6.webp",
+                            "alt":"project1",
+                            "category":"Back-end",
+                            "title":"Project #6",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project7.webp",
+                            "alt":"project1",
+                            "category":"Mobile",
+                            "title":"Project #7",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project8.webp",
+                            "alt":"project1",
+                            "category":"Mobile",
+                            "title":"Project #8",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project8.webp",
+                            "alt":"project1",
+                            "category":"Mobile",
+                            "title":"Project #8",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project8.webp",
+                            "alt":"project1",
+                            "category":"Mobile",
+                            "title":"Project #8",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project8.webp",
+                            "alt":"project1",
+                            "category":"Mobile",
+                            "title":"Project #8",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        },
+                        {
+                            "img":"/data/images/projects/project8.webp",
+                            "alt":"project1",
+                            "category":"Mobile",
+                            "title":"Project #8",
+                            "description": "Clone Coding with Html, Css, JavaScript"
+
+                        }
+
+
+                    ]
+       },
+
+        
+
+
+        
+
+       "Testimonial":{
+            "testimonialList" : [
+                {
+                "img":"/data/images/testimonials/people1.webp",
+                "alt":"people1",
+                "name" : "James Kim",
+                "company" : "Google",
+                "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis similique, unde nam totam quam, nisi odio error amet provident iste modi eos dicta, eum suscipit rem illum inventore sapiente blanditiis?"
+                },
+                {
+                "img":"/data/images/testimonials/people2.webp",
+                "alt":"people1",
+                "name" : "Smith Park",
+                "company" : "Samsung",
+                "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis similique, unde nam totam quam, nisi odio error amet provident iste modi eos dicta, eum suscipit rem illum inventore sapiente blanditiis?"
+                },
+                {
+                "img":"/data/images/testimonials/people3.webp",
+                "alt":"people1",
+                "name" : "Anne Jin",
+                "company" : "Apple",
+                "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis similique, unde nam totam quam, nisi odio error amet provident iste modi eos dicta, eum suscipit rem illum inventore sapiente blanditiis?"
+                }
+            ]
+            
+       }
+
+    },
+    
+    
+      
+    "footerMsg" : {
+        "msg" : "Let's talk, It's me Maaaaaaaaaario!!!!",
+        "email": "oks321098@gmail.com",
+        "rights": "Dream Software Engineer Judy - All right reserved"
+    },
+
+    "footerIconList" : [
+        {
+            "icon" : "faGithub",
+            "link" : "http://github.com"
+        },
+        {
+            "icon" : "faLinkedin",
+            "link" : "https://kr.linkedin.com"
+        },
+        {
+            "icon" : "faInstagram",
+            "link" : "http://instagram.com"
+        }
+    ]
+
+
+}

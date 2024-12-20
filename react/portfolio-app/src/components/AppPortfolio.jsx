@@ -1,14 +1,26 @@
 
-import Header from "./Header.jsx";
-import Body from "./Body.jsx";
-import Footer from "./Footer.jsx";
+import Header from "./AppHeader/Header.jsx";
+import Body from "./AppBody/Body.jsx";
+import Footer from "./AppFooter/Footer.jsx";
 import './css/style.css';
+import AppHeader from "./AppHeader/AppHeader.jsx";
+import AppBody from "./AppBody/AppBody.jsx";
+import AppFooter from "./AppFooter/AppFooter.jsx";
+
 export default function AppPortfolio() {
 return (
 <>
-    <Header></Header>
-    <Body></Body>
-    <Footer></Footer>
+    <AppHeader>
+        <Header></Header>
+    </AppHeader>
+
+    <AppBody>
+        <Body></Body>
+    </AppBody>
+
+    <AppFooter>
+        <Footer></Footer>
+    </AppFooter>
 
 </>
     );

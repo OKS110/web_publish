@@ -55,6 +55,7 @@
     text-decoration: none;
   }
   button {
+    cursor: pointer;
     background-color: transparent;   
     border: 0;
     outline: 0;
@@ -68,7 +69,7 @@
     /* border: 1px solid red; */
   }
   .section {
-    padding: 4rem; 
+    padding: 5rem; 
     text-align: center;
   }
   .title {
@@ -122,11 +123,11 @@
 }
 .header__menu__item{
     padding: 8px 16px;
+    border-radius: 4px;
     color: var(--color-text);
 }
 .header__menu__item.active{
     border: 1px solid var(--color-accent);
-    border-radius: 4px;
 }
 .header__toggle{
     display: none;
