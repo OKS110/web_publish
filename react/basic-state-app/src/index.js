@@ -12,10 +12,10 @@ import ReactDOM from 'react-dom/client';
 // import AppAladin from './components/aladin/AppAladin.jsx';
 // import AppAladin2 from './components/aladin2/AppAladin2.jsx';
 // import AppForm from './components/form/AppForm.jsx';
-// import Signup2 from './components/form/Signup2.jsx';
+import Signup2 from './components/form/Signup2.jsx';
 // import Signup from './components/form/Signup.jsx';
 // import CgvLoginForm from './components/form/CgvLoginForm.jsx';
-import AppRouter2 from './components/router2/AppRouter2.jsx';
+// import AppRouter2 from './components/router2/AppRouter2.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,8 +30,8 @@ root.render(
     {/* <AppForm></AppForm> */}
     {/* <AppBestSeller></AppBestSeller> */}
   {/* <CgvLoginForm></CgvLoginForm> */}
-  {/* <Signup2></Signup2> */}
-  <AppRouter2></AppRouter2>
+  <Signup2></Signup2>
+  {/* <AppRouter2></AppRouter2> */}
   </React.StrictMode>
 );
 

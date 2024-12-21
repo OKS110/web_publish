@@ -3,6 +3,7 @@ import {faBars} from '@fortawesome/free-solid-svg-icons';
 import ProfileIcon from './ProfileIcon.jsx';
 import Nav from "./Nav.jsx";
 import { useEffect, useState } from 'react';
+import NavMobile from './NavMobile.jsx';
 
 export default function Header() {
     const [profileIcon, setProfileIcon] = useState({});
@@ -30,9 +31,15 @@ return (
 
         <Nav navList= {navList}></Nav>
 
+
         <button id="menu_toggle" className="header__toggle" aria-label="navigation menu toggle">
             <FontAwesomeIcon icon={faBars} />
         </button>
+
+
+
+        <NavMobile></NavMobile>
+
     </header>
     );
 };

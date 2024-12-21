@@ -10,7 +10,7 @@ export default function Nav({navList}) {
 
     
 return (
-    <nav>
+    <nav className="pc-menu">
       <ul className="header__menu">
         {navList.map((item, index) => {
                 return <li key={index}><a className= {`header__menu__item ${selectedIndex === index ? "active" : ""}`}
