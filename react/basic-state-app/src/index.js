@@ -7,12 +7,12 @@ import ReactDOM from 'react-dom/client';
 // import AppAirbnb from './components/airbnb/AppAirbnb';
 // import './Airbnb.css';
 // import Avatar from './components/airbnb/avatar/Avater.jsx';
-// import AppBestSeller from './components/yes24/AppBestSeller.jsx';
+import AppBestSeller from './components/yes24/AppBestSeller.jsx';
 // import AppOlive from './components/olive/AppOlive.jsx';
 // import AppAladin from './components/aladin/AppAladin.jsx';
 // import AppAladin2 from './components/aladin2/AppAladin2.jsx';
 // import AppForm from './components/form/AppForm.jsx';
-import Signup2 from './components/form/Signup2.jsx';
+// import Signup2 from './components/form/Signup2.jsx';
 // import Signup from './components/form/Signup.jsx';
 // import CgvLoginForm from './components/form/CgvLoginForm.jsx';
 // import AppRouter2 from './components/router2/AppRouter2.jsx';
@@ -28,9 +28,9 @@ root.render(
     {/* <AppAladin></AppAladin> */}
     {/* <AppAladin2></AppAladin2> */}
     {/* <AppForm></AppForm> */}
-    {/* <AppBestSeller></AppBestSeller> */}
+    <AppBestSeller></AppBestSeller>
   {/* <CgvLoginForm></CgvLoginForm> */}
-  <Signup2></Signup2>
+  {/* <Signup2></Signup2> */}
   {/* <AppRouter2></AppRouter2> */}
   </React.StrictMode>
 );
