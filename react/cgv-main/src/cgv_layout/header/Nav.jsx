@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function Nav(){
     const [topMenuList, setTopMenuList] = useState([]);    
     useEffect(() => {
-        fetch("/data/cgv_header.json")
+        fetch("data/cgv_header.json")
         .then(data => data.json())
         .then(jsonData => setTopMenuList(jsonData.topMenuList))
         .catch(error => console.log(error))

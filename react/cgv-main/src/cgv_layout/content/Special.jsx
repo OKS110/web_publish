@@ -4,7 +4,7 @@ export default function Special(){
     const [specialList, setSpecialList] = useState([]);
 
     useEffect(() => {
-        fetch("/data/cgv_content.json")
+        fetch("data/cgv_content.json")
         .then(data => data.json())
         .then(jsonData => setSpecialList(jsonData.specialList))
         .catch(error => console.log(error))

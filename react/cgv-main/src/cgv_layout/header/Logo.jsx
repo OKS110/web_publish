@@ -4,7 +4,7 @@ export default function Logo({href, src, text, target, alt}){
         <>
         <div className="header-top-logo">
             <a href={href} target={target}>
-                <img src={src} alt={alt}/>
+                <img src={src} alt={alt}></img>
             </a>
             <span>{text}</span>
         </div>

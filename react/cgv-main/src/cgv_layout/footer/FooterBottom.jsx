@@ -4,7 +4,7 @@ export default function FooterBottom(){
     const [companyInfo, setCompanyInfo] = useState({});
 
     useEffect(() => {
-        fetch("/data/cgv_compinfo.json")
+        fetch("data/cgv_compinfo.json")
         .then(data => data.json())
         .then(jsonData => setCompanyInfo(jsonData))
         .catch(error => console.log(error))

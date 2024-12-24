@@ -11,7 +11,7 @@ export default function HeaderBottom(){
         // .then(jsonData => setMenuList(jsonData.menuList))
         // .catch(error => console.log(error))
         
-        fetchJSON("/data/cgv_header.json")
+        fetchJSON("data/cgv_header.json")
         .then(result => setMenuList(result.menuList))
         .catch(error => console.log(error))
     },[]);

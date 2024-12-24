@@ -4,7 +4,7 @@ export default function Event(){
     const [eventList, setEventList] = useState([]);
 
     useEffect(() => {
-        fetch("/data/cgv_content.json")
+        fetch("data/cgv_content.json")
         .then(data => data.json())
         .then(jsonData => setEventList(jsonData.eventList))
         .catch(error => console.log(error))
