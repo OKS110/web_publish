@@ -1,3 +1,7 @@
+**리액트의 이미지 주소는 상대경로로 호출해 주는 것이 좋다.
+/images/ - x
+images/ - o
+
 1. Github 레파지토리 생성 - public
     Repository name : react-sample-1
 

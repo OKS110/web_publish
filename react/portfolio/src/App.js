@@ -95,7 +95,7 @@ function App() {
     <>
       <Header>
         <Logo 
-          img="images/favicon.ico"  name="Judy"/>
+          img="/images/favicon.ico" name="Judy"/>
         <MenuList />
         <ToggleButton />
       </Header>

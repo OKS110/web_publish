@@ -1,0 +1,44 @@
+[
+                {
+                    "img":"/images/people1.webp",
+                    "name":"Smith Kim",
+                    "id":"@smith",
+                    "date":"2024.10.01",
+                    "content":"It's winter. Take care~!"
+                },
+                {
+                    "img":"/images/people2.webp",
+                    "name":"James Lee",
+                    "id":"@james",
+                    "date":"2024.11.01",
+                    "content":"Happy Birthday~!"
+                },
+                {
+                    "img":"/images/people3.webp",
+                    "name":"Lorens Hyun",
+                    "id":"@lorens",
+                    "date":"2024.12.01",
+                    "content":"Merry Christmas~!"
+                },
+                {
+                    "img":"/images/people3.webp",
+                    "name":"Lorens Hyun",
+                    "id":"@lorens",
+                    "date":"2024.12.01",
+                    "content":"Merry Christmas~!"
+                },
+                {
+                    "img":"/images/people3.webp",
+                    "name":"Lorens Hyun",
+                    "id":"@lorens",
+                    "date":"2024.12.01",
+                    "content":"Merry Christmas~!"
+                },
+                {
+                    "img":"/images/people3.webp",
+                    "name":"Lorens Hyun",
+                    "id":"@lorens",
+                    "date":"2024.12.01",
+                    "content":"Merry Christmas~!"
+                }
+    ]
