@@ -8,7 +8,7 @@ export default function SectionWrap({id, title, description, children}) {
             {id === 'skill' && <p class="description">Skills & Attributes</p>}
             {id === 'skill' ? <p>{description}</p>
                 : <p className="description">{description}</p> }
-            {children}            
+            {children}
         </section>
     );
 }

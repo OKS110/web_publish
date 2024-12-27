@@ -95,7 +95,7 @@ function App() {
     <>
       <Header>
         <Logo 
-          img="/images/favicon.ico" name="Judy"/>
+          img="images/favicon.ico" name="Judy"/>
         <MenuList />
         <ToggleButton />
       </Header>
@@ -107,8 +107,7 @@ function App() {
             key={section.id}
             id={section.id}
             title={section.title}
-            description={section.description}
-          >
+            description={section.description}>
             {section.children.map((child) => renderComponent(child))}
 
           </SectionWrap>
