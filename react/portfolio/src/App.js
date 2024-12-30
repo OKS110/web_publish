@@ -109,7 +109,6 @@ function App() {
             title={section.title}
             description={section.description}>
             {section.children.map((child) => renderComponent(child))}
-
           </SectionWrap>
       ))}    
 
