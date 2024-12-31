@@ -1,0 +1,47 @@
+{ 
+    "Major" : [
+        {
+        "icon": "faHtml5",
+        "title": "Front-end",
+        "description":"HTML, CSS, JavaScript, TypeScript, React, WebAPIs"
+        },
+        {
+        "icon": "faMobile",
+        "title": "Mobile",
+        "description":"Android Studio, React Native, iOS, Swift, Java, Kotlin"        
+        },
+        {
+        "icon": "faServer",
+        "title": "Back-end",
+        "description":"Java, JavaScript, Go, Kotlin, Spring, Spring Boot"
+        
+        }
+    ],
+    "Jobs" : [
+        {
+            "img" : "images/jobs/google.png",
+            "jobName": "Google as Junior Software Engineer",
+            "jobPeriod": "2019 Oct - Until now"
+        },
+        {
+            "img" : "images/jobs/samsung.png",
+            "jobName": "Samsung as Junior Software Engineer",
+            "jobPeriod": "2010 Oct - 2019 Oct"
+        }
+    ],
+    "Footer" : [
+        {
+          "icon": "faGithub",
+          "link": "http://github.com"
+        },
+        {
+          "icon": "faLinkedin",
+          "link": "http://linkedin.com"
+        },
+        {
+          "icon": "faInstagram",
+          "link": "http://instagram.com"
+        }
+      ]
+      
+}

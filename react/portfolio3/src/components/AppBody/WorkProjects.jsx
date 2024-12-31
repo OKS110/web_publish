@@ -1,15 +1,6 @@
-export default function Work(){
-    return(
-<section id="work" class="section max-container">    
-      <h2 class="title">My work</h2>
-      <p class="description">Projects</p>
-      <ul class="categories">
-        <li><button class="category category--selected">All<span class="category__count">8</span></button></li>
-        <li><button class="category">Front-end<span class="category__count">4</span></button></li>
-        <li><button class="category">Back-end<span class="category__count">2</span></button></li>
-        <li><button class="category">Mobile<span class="category__count">2</span></button></li>
-      </ul>
-      <ul class="projects">
+export default function WorkProjects() {
+return (
+<ul class="projects">
         <li class="project">
         <img class="project__img" src="images/projects/project1.webp" alt="project1"/>
         <div class="project__metadata">
@@ -67,7 +58,5 @@ export default function Work(){
           </div>
         </li>
       </ul>    
-    </section>
-
     );
-}
+};

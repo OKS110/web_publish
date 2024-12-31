@@ -1,9 +1,6 @@
-export default function Testimonial(){
-    return(
-<section id="testimonial" class="section max-container">
-      <h2 class="title">Testimonial</h2>
-      <p class="description">See what they say about me</p>
-      <ul class="testimonials">
+export default function TestimonialList() {
+return (
+<ul class="testimonials">
         <li class="testimonial">
           <img class="testimonial__img" src="images/testimonials/people1.webp" alt="people1"/>
           <div class="testimonial__bubble">
@@ -26,7 +23,5 @@ export default function Testimonial(){
           </div>
         </li>
       </ul>
-    </section>
-
     );
-}
+};

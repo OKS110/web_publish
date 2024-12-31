@@ -423,6 +423,7 @@ ul.testimonials{
     Arrow-up
 */
 .arrow--up{
+    cursor: pointer;
     position: fixed;
     bottom: 3rem; right: 3rem;
     color: var(--color-text);

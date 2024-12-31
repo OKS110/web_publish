@@ -1,16 +1,16 @@
 
 
-import About from './components/About.jsx';
-import AppBody from './components/AppBody.jsx';
-import Appheader from './components/Appheader.jsx';
-import Arrow from './components/Arrow.jsx';
-import Footer from './components/Footer.jsx';
-import Header from './components/Header.jsx';
-import Home from './components/Home.jsx';
-import Skills from './components/Skills.jsx';
-import Testimonial from './components/Testimonial.jsx';
-import Work from './components/Work.jsx';
-import AppFooter from './components/AppFoot.jsx';
+import About from './components/AppBody/About.jsx';
+import AppBody from './components/AppBody/AppBody.jsx';
+import Appheader from './components/AppHeader/Appheader.jsx';
+import Arrow from './components/AppBody/Arrow.jsx';
+import Footer from './components/AppFooter/Footer.jsx';
+import Header from './components/AppHeader/Header.jsx';
+import Home from './components/AppBody/Home.jsx';
+import Skills from './components/AppBody/Skills.jsx';
+import Testimonial from './components/AppBody/Testimonial.jsx';
+import Work from './components/AppBody/Work.jsx';
+import AppFooter from './components/AppFooter/AppFoot.jsx';
 import './css/style.css';
 
 export default function App() {
