@@ -1,4 +1,7 @@
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHtml5} from '@fortawesome/free-brands-svg-icons';
+import {faMobile} from '@fortawesome/free-solid-svg-icons';
+import {faServer} from '@fortawesome/free-solid-svg-icons';
 
 export default function About(){
     return(
@@ -10,17 +13,17 @@ export default function About(){
         omnis architecto dignissimos. Iusto ipsa inventore adipisci.</p>
       <ul class="majors">
         <li class="major">
-          <i class="fa-brands fa-html5 major__icon"></i>
+          <FontAwesomeIcon icon={faHtml5} className='major__icon'/>
           <p class="major__title">Front-end</p>
           <p>HTML, CSS, JavaScript, TypeScript, React, WebAPIs</p>
         </li>
         <li class="major">
-          <i class="fa-solid fa-mobile major__icon"></i>
+          <FontAwesomeIcon icon={faMobile} className='major__icon'/>
           <p class="major__title">Mobile</p>
           <p>Android Studio, React Native, iOS, Swift, Java, Kotlin</p>
         </li>
         <li class="major">
-          <i class="fa-solid fa-server major__icon"></i>
+          <FontAwesomeIcon icon={faServer} className='major__icon'/>
           <p class="major__title">Back-end</p>
           <p>Java, JavaScript, Go, Kotlin, Spring, Spring Boot</p>
         </li>

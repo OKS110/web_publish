@@ -59,9 +59,7 @@
     border: 0;
     outline: 0;
   }
-  button:focus {
-    outline: 1px solid var(--color-accent);
-  }
+
   .max-container {
     max-width: var(--max-size-width);
     margin: auto;
@@ -124,9 +122,15 @@
     padding: 8px 16px;
     color: var(--color-text);
 }
+.header__menu__item:hover{
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+    margin: -1px;
+}
 .header__menu__item.active{
     border: 1px solid var(--color-accent);
     border-radius: 4px;
+    margin: -1px;
 }
 .header__toggle{
     display: none;
@@ -181,9 +185,7 @@
 .home__contact:hover{
     box-sizing: border-box;
     color: var(--color-text);
-    background-color: var(--color-primary);
-    border: 2px solid var(--color-accent);
-    
+    transition: all .3s;
 }
 
 /* About me */
@@ -200,7 +202,12 @@
     color: var(--color-text);
     padding: 2rem 1rem;
     border-radius: 1rem;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+}
+.major:hover{
+    transition: .3s;
     box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
+
 }
 .major__icon{
     font-size: 4rem;
@@ -331,22 +338,29 @@
     top: 0;
 }
 
-.projects{
+.projects {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 1rem;
 }
-.project{
+.project {
     position: relative;
     overflow: hidden;
 }
-.project__img{
+.project__img {
     width: 100%;
     border-radius: 8px;
+    transition: transform 0.8s ease;
+    transform-origin: center;
 }
-.project__metadata{
-    position: absolute; top: 0; left: 0;
+.project__img:hover {
+    transform: rotateY(180deg);
+}
+.project__metadata {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -355,9 +369,13 @@
     align-items: center;
     opacity: 0;
     background-color: var(--color-primary);
+    transition: opacity 0.8s ease;
+    pointer-events: none; /* 메타데이터가 마우스 이벤트를 받지 않도록 설정 */
 }
-
-.project__metadata__title::after{
+.project:hover .project__metadata {
+    opacity: 0.8;
+}
+.project__metadata__title::after {
     content: "";
     display: block;
     width: 50px;
@@ -367,9 +385,7 @@
     margin: 0.6rem 0;
     transform: translateX(50%);
 }
-.project__metadata:hover{
-    opacity: .8;
-}
+
 
 /* Testimonial */
 

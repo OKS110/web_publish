@@ -1,3 +1,8 @@
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
+import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
+import {faInstagram} from '@fortawesome/free-brands-svg-icons';
+
 export default function Footer(){
     return(
         <footer id="contact" class="section">
@@ -5,10 +10,13 @@ export default function Footer(){
             <p class="description">jeon.developer.judy@gmail.com</p>
             <ul class="contact__links">
             <li>
-                <a class="contact__link" href="http://github.com"><i class="fa-brands fa-github"></i></a>
+                <a class="contact__link" href="http://github.com"><FontAwesomeIcon icon={faGithub} /></a>
             </li>
             <li>
-                <a class="contact__link" href="http://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+                <a class="contact__link" href="http://linkedin.com"><FontAwesomeIcon icon={faLinkedin} /></a>
+            </li>
+            <li>
+                <a class="contact__link" href="http://linkedin.com"><FontAwesomeIcon icon={faInstagram} /></a>
             </li>
             </ul>
             <p>Dream Software Engineer Judy - All right reserved</p>
