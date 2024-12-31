@@ -332,7 +332,7 @@ SELECT * FROM EMPLOYEE WHERE DEPT_ID IN ('MKT', 'GEN', 'HRD');
         ifnull(truncate(salary * 0.2, 0), 0) as incentive 
 	from employee
     -- where salary between 0 and 4999; 
-    -- where 절의 0부터 4999사이의 값을 스캔한 후에 select구문이 실행되므로 
+    -- where 절의 0부터 4999사이의 값을 스캔한 후에 select구문이 실행되므로  (where 조건이 먼저)
     -- 처음 where 절에서 고소해씨는 null값으로 판단된다. 따라서 값이 나오지 않는다.
     where salary < 5000 or salary is null;
  
@@ -564,5 +564,54 @@ select
  select dept_id 부서ID, gender 성별, count(*) 사원수 from employee
 	group by dept_id, gender;
     
+ -- 8. rollup 함수 : reporting을 위한 함수
+ -- 형식 : select [컬럼리스트] from [테이블명]
+ -- 		where [조건절]
+ -- 		group by [그룹핑 컬럼] with rollup;
+ -- 부서별 총연봉을 조회, 연봉이 정해지지 않는 부서는 포함하지 않음
+ select if(grouping (dept_id), '부서총합계', ifnull(dept_id, '-')) 부서, concat(format(sum(salary), 0), '만원') 총연봉 
+	from employee where salary is not null group by dept_id with rollup;
+ 
+ -- 입사년도별 평균연봉을 조회
+ -- 연봉이 정해지지 않는 부서는 포함하지 않음
+ -- 평균연봉이 6000이상 되는 입사년도만 출력
+ -- 3자리 구분, '만원' 단위 추가
+ -- 리포팅 함수 사용, '연도별 총합계' 컬럼명 추가
+ -- (grouping에는 함수가 들어갈 수 없다.)
+select if(grouping(year), '연도별평균연봉', ifnull(year, '-')), concat(format(avg(salary), 0), '만원') 평균연봉
+	from (select left(hire_date, 4) year,
+		salary
+	from employee) t
+    where salary is not null and salary >= 6000 
+	group by year with rollup;
+ 
+ 
+ 
+ 
+ show tables;
+ 
+ -- 사원들의 휴가 사용 내역을 조회
+ select * from vacation;
+ 
+ -- 사원아이디별 휴가사용 횟수 조회
+ -- 총 휴가사용일 기준으로 내림차순 정렬
+ select emp_id, count(*) 휴가횟수, sum(duration) 총휴가사용일자 from vacation group by emp_id
+	order by sum(duration) desc;
+ 
+ -- 2016 ~ 2017년도 사이에 사원아이디별 휴가사용 횟수 조회
+ -- 총휴가사용일 기준으로 내림차순 정렬
+ select if(grouping(emp_id), '총휴가사용내역', ifnull(emp_id, '-')) 사원ID, count(*) 휴가상신횟수, sum(duration) 총사용일수 
+	from vacation 
+    where substring(begin_date, 1, 4) between 2016 and 2017 
+	group by emp_id with rollup 
+    order by 총사용일수 desc; 
     
     
+    
+    
+    
+    
+    
+ 
+ 
+ 
