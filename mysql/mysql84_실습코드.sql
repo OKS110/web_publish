@@ -606,12 +606,371 @@ select if(grouping(year), '연도별평균연봉', ifnull(year, '-')), concat(fo
 	group by emp_id with rollup 
     order by 총사용일수 desc; 
     
+/***************************************************************************
+	DDL : 테이블 생성, 수정, 삭제
+    명령어 : CREATE, ALTER, DROP, TRUNCATE
+**************************************************************************/
+ -- 1. 테이블 생성 : CREATE
+ -- 형식 : CREATE TABLE [생성할 테이블명(중복 x)](
+ -- 		컬럼명	데이터타입(크기) [제약사항],	
+ -- 		...
+ -- 	)
+SHOW DATABASES;
+USE HRDB2019;
+SELECT DATABASE();
+SHOW TABLES;
+
+-- TEST 테이블 생성 및 삭제(제거)
+CREATE TABLE TEST(
+	ID  CHAR(4)		NOT NULL
+);    
+SHOW TABLES;
+DESC TEST;
+SELECT * FROM TEST;
+
+DROP TABLE TEST;
+SHOW TABLES;
     
-    
-    
-    
-    
-    
+ -- DATA TYPE(데이터 타입) : 숫자, 문자, 날짜(시간)
+ -- (1) 숫자 데이터 타입
+ -- 1) 정수 : SMALLINT(2), INT(4), BIGINT(8)
+ -- 2) 실수 : FLOAT(4), DOUBLE(8)
  
+ -- 3) 문자 : CHAR(크기:고정형), VARCHAR(크기:가변형)
+ -- 4) 텍스트 : TEXT - 긴 문장을 저장하는 데이터 타입
+ -- 5) BLOB 타입 : BLOB - 큰 바이너리 타입의 데이터 저장
+ -- 6) 날짜 : DATE - 년, 월, 일, DATETIME - 년, 월, 일, 시, 분, 초
+ -- 		데이터 타입에 맞는 날짜 함수 호출 필요!!!
  
+ DESC EMPLOYEE;
+ SELECT * FROM EMPLOYEE;
  
+ -- EMP 테이블 생성
+ -- 컬럼리스트 : EMP_ID 고정형(4), EMP_NAME 가변형(10), HIRE_DATE 날짜/시간, SALARY 정수(5)
+ CREATE TABLE EMP(
+	EMP_ID CHAR(4),
+    EMP_NAME VARCHAR(10),
+    HIRE_DATE DATETIME,
+    SALARY INT(5)
+ );
+ SHOW TABLES;
+ DESC EMP;
+ 
+ DESC DEPARTMENT;
+ -- DEPT 테이블 생성 : DEPT_ID 고정형(3), DEPT_NAME 가변형(10), LOC 가변형(20)
+ CREATE TABLE DEPT(
+	DEPT_ID CHAR(3),
+    DEPT_NAME VARCHAR(10),
+    LOC VARCHAR(20)
+ );
+ 
+ SHOW TABLES;
+ DESC DEPT;
+ 
+ -- EMP, DEPT 테이블의 모든 데이터 조회
+ SELECT * FROM EMP;
+ SELECT * FROM DEPT;
+ 
+ -- 2. 테이블 생성(복제) : CREATE TABLE ~ AS ~ SELECT
+ -- 물리적으로 메모리 생성
+ -- 기본키, 참조키 등의 제약사항은 복제가 불가능, 복제 후 ALTER TABLE 명령으로 제약사항 추가
+ /* 형식 : CREATE TABLE [생성(복제)할 테이블명(중복 x)]
+		  AS
+		  SELECT [컬럼리스트] FROM [테이블명]
+			WHERE [조건절]
+ */
+ -- 정보시스템 부서의 사원들만 별도로 테이블 복제
+ -- EMPLOYEE_SYS
+ CREATE TABLE EMPLOYEE_SYS
+ AS
+ SELECT * FROM EMPLOYEE WHERE DEPT_ID = "SYS";
+ SHOW TABLES;
+ 
+ SELECT * FROM EMPLOYEE_SYS;
+ DESC EMPLOYEE_SYS;
+-- emp_id	char(5)	NO		
+-- emp_name	varchar(4)	NO		
+-- eng_name	varchar(20)	YES		
+ 
+ DESC EMPLOYEE;
+-- emp_id	char(5)	NO	PRI	
+-- emp_name	varchar(4)	NO		
+-- eng_name	varchar(20)	YES		
+ 
+ -- 퇴직한 사원들을 복제하여 EMPLOYEE_RETIRE 테이블로 관리
+ CREATE TABLE EMPLOYEE_RETIRE AS
+ SELECT * FROM EMPLOYEE WHERE RETIRE_DATE IS NOT NULL; 
+ SHOW TABLES;
+ DESC EMPLOYEE_RETIRE;
+ 
+ -- 2015년, 2017년 입사자들을 복제하여 별도로 관리
+ -- 테이블명 : EMPLOYEE_2015_2017
+ CREATE TABLE EMPLOYEE_2015_2017 AS
+ SELECT * FROM EMPLOYEE WHERE LEFT(HIRE_DATE, 4) IN ('2015', '2017');
+ SHOW TABLES;
+ DESC EMPLOYEE_2015_2017;
+
+
+ /*********************************************
+	테이블 제거 : DROP TABLE
+    형식 : DROP TABLE [제거할 테이블명]
+    명령 즉시 메모리에서 바로 테이블 삭제하므로 주의!! - 복구 불가능
+ *********************************************/
+ 
+ SHOW TABLES;
+ -- EMLOYEE_2015_2017 테이블 제거
+ DROP TABLE EMPLOYEE_2015_2017;
+ SHOW TABLES;
+ 
+-- EMPLOYEE_RETIRE 테이블 제거
+DROP TABLE EMPLOYEE_RETIRE;
+SHOW TABLES; 
+ 
+ -- 재직중인 사원테이블 생성(복제)
+ -- EMPLOYEE_WORKING
+ CREATE TABLE EMPLOYEE_WORKING AS
+ SELECT * FROM EMPLOYEE WHERE RETIRE_DATE IS NULL;
+ SHOW TABLES;
+ SELECT * FROM EMPLOYEE_WORKING;
+ 
+  /*********************************************
+	테이블 데이터 제거 : TRUNCATE TABLE
+    형식 : TRUNCATE TABLE [제거할 데이터를 가진 테이블명]
+    명령 즉시 메모리에서 바로 테이블의 데이터 모두 제거되므로 주의!! - 복구 불가능
+ *********************************************/
+ SHOW TABLES;
+ SELECT * FROM EMPLOYEE_WORKING;
+ -- EMPLOYEE_WORKING 테이블의 모든 데이터(ROW)를 제거
+ TRUNCATE TABLE EMPLOYEE_WORKING;
+ SHOW TABLES; -- 테이블은 유지
+ SELECT * FROM EMPLOYEE_WORKING; -- 내용 삭제
+ 
+/*********************************************
+	테이블 구조 변경 : ALTER TABLE
+    형식 : ALTER TABLE [변경할 테이블명]
+    1) 컬럼 추가 : ADD COLUMN [NEW컬럼명 데이터타입(크기) 제약사항]
+    2) 컬럼 변경 : MODIFY COLUMN [변경할 컬럼명  데이터타입(크기) 제약사항]
+    3) 컬럼 삭제 : DROP COLUMN [삭제할 컬럼명]
+ *********************************************/
+ SHOW TABLES;
+ SELECT * FROM EMPLOYEE_WORKING;
+ DESC EMPLOYEE_WORKING;
+ -- EMPLOYEE_WORKING 테이블에 BONUS 컬럼 추가, 데이터타입 정수형 4자리, NULL값 허용
+ALTER TABLE EMPLOYEE_WORKING
+	ADD COLUMN BONUS INT(4);
+DESC EMPLOYEE_WORKING;
+ 
+ -- EMPLOYEE_WORKING 테이블에 DNAME(부서명) 추가, 데이터타입 가변형(10), NULL값 허용
+ ALTER TABLE EMPLOYEE_WORKING
+	ADD COLUMN DNAME VARCHAR(10);
+ DESC EMPLOYEE_WORKING;
+ 
+ -- EMPLOYEE_WORKING 이메일 주소 컬럼 크기를 30으로 수정 -- 데이터가 없는 경우에는 50에서 30으로 줄어들 수 있다. 
+												-- 그러나 데이터가 있는 경우에는 크기를 줄일 수 없다.(데이터 유실)
+ ALTER TABLE EMPLOYEE_WORKING
+	MODIFY COLUMN EMAIL VARCHAR(30);
+DESC EMPLOYEE_WORKING;
+ 
+ -- EMPLOYEE_WORKING SALARY 컬럼을 실수타입(DOUBLE)로 수정
+ ALTER TABLE EMPLOYEE_WORKING
+	MODIFY COLUMN SALARY DOUBLE;
+DESC EMPLOYEE_WORKING;
+
+-- EMPLOYEE_SYS 테이블의 이메일 주소 컬럼 크기를 가변형 10 크기로 수정
+ALTER TABLE EMPLOYEE_SYS -- 데이터가 있는 경우
+	MODIFY COLUMN EMAIL VARCHAR(10); -- 오류 발생 : 1개의 데이터가 유실될 가능성이 있으므로 EMAIL크기가 50인 상태에서 10으로 줄어들 수 없음.
+DESC EMPLOYEE_SYS;
+
+-- EMPLOYEE_WORKING 테이블의 BONUS, DNAME 컬럼 삭제
+ALTER TABLE EMPLOYEE_WORKING
+	DROP COLUMN BONUS;
+ DESC EMPLOYEE_WORKING;
+ 
+ ALTER TABLE EMPLOYEE_WORKING
+	DROP COLUMN DNAME;
+ DESC EMPLOYEE_WORKING;
+ 
+ -- EMPLOYEE_WORKING 테이블 제거
+ DROP TABLE EMPLOYEE_WORKING;
+ SHOW TABLES;
+ 
+ -- EMPLOYEE 테이블에서 HRD 부서에 속한 사원들의 사원아이디, 사원명, 입사일, 연봉, 보너스(연봉의 10%)
+ -- 정보를 별칭을 사용하여 조회한 후
+ -- EMPLOYEE_HRD 이름으로 복제
+ CREATE TABLE EMPLOYEE_HRD AS
+ SELECT EMP_ID 아이디, EMP_NAME 이름, HIRE_DATE 입사일, SALARY 연봉, SALARY*0.1 AS BONUS FROM EMPLOYEE WHERE DEPT_ID = 'HRD';
+ SHOW TABLES;
+ SELECT * FROM EMPLOYEE_HRD;
+ DESC EMPLOYEE_HRD;
+ 
+ /****************************************************************
+	DML : INSERT(C), SELECT(R), UPDATE(U), DELETE(D) 
+ *****************************************************************/
+ -- 1. INSERT : 데이터 추가
+ -- 형식 : INSERT INTO [테이블명](컬럼리스트)
+ -- 		VALUES(데이터 리스트 ... );
+ SHOW TABLES;
+ DESC EMP;
+ SELECT * FROM EMP;
+ -- S001, 홍길동, 현재날짜, 1000
+ INSERT INTO EMP(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S001', '홍길동', curdate(), 1000);
+ SELECT * FROM EMP;
+ 
+ -- S002, 홍길순, 현재날짜(NOW, SYSDATE), 2000 데이터 추가
+ INSERT INTO EMP(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S002', '홍길순', NOW(), 2000);
+  SELECT * FROM EMP;
+  
+ -- S003, 김철수, 현재날짜(NOW, SYSDATE), 3000 데이터 추가
+ -- 컬럼리스트 생략시에는 생성시 컬럼순서대로 INSERT 실행됨
+DESC EMP;
+INSERT INTO EMP
+	VALUES('S003', '김철수', SYSDATE(), 3000);
+ 
+-- S004, 이영희, 현재날짜(NOW, SYSDATE), 연봉협상 전 데이터 추가
+DESC EMP;
+INSERT INTO EMP(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S004', '이영희', NOW(), NULL);
+SELECT * FROM EMP;
+
+INSERT INTO EMP(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES(NULL, '홍길동', NOW(), NULL);
+SELECT * FROM EMP;
+-- EMPLOYEE 테이블의 정보시스템 부서의 사원들 정보 중
+-- 사원아이디, 사원명, 입사일, 부서아이디, 연봉
+-- 2016년 이전에 입사한 사원들
+-- 복제하여 EMPLOYEE_SYS 테이블 생성
+CREATE TABLE EMPLOYEE_SYS AS
+SELECT EMP_ID, EMP_NAME, HIRE_DATE, DEPT_ID, SALARY FROM EMPLOYEE WHERE LEFT(HIRE_DATE, 4) < 2016 AND DEPT_ID = 'SYS';
+
+SELECT * FROM EMPLOYEE_SYS;
+SELECT * FROM EMPLOYEE WHERE DEPT_ID = 'SYS';
+
+-- EMPLOYEE_SYS 테이블에 2016년도 이후에 입사한 정보시스템 부서 사원 추가
+-- 서브쿼리를 이용한 데이터 추가
+INSERT INTO EMPLOYEE_SYS(EMP_ID, EMP_NAME, HIRE_DATE, DEPT_ID, SALARY)
+	SELECT EMP_ID, EMP_NAME, HIRE_DATE, DEPT_ID, SALARY 
+	FROM EMPLOYEE WHERE DEPT_ID = 'SYS' AND LEFT(HIRE_DATE, 4) >= 2016;
+SELECT * FROM EMPLOYEE_SYS;
+
+-- DEPT 테이블 데이터 구조 확인 및 데이터 추가
+SHOW TABLES;
+DESC DEPT;
+-- SYS, 정보시스템, 서울
+-- MKT, 마케팅, 뉴욕
+-- HRD, 인사, 부산
+-- ACC, 회계, 정해지지 않음
+
+INSERT INTO DEPT(DEPT_ID, DEPT_NAME, LOC)
+	VALUE('SYS', '정보시스템', '서울');
+INSERT INTO DEPT(DEPT_ID, DEPT_NAME, LOC)
+	VALUE('MKT', '마케팅', '뉴욕');
+INSERT INTO DEPT(DEPT_ID, DEPT_NAME, LOC)
+	VALUE('HRD', '인사', '부산');
+INSERT INTO DEPT(DEPT_ID, DEPT_NAME, LOC)
+	VALUE('ACC', '회계', NULL);
+SELECT * FROM DEPT;
+
+INSERT INTO DEPT VALUES('영업', NULL, 'SALES'); -- 값은 들어가져도 올바르게 들어가지지가 않는다.(컬럼리스트를 명시해주는 것이 좋음.)
+SELECT * FROM DEPT;
+
+INSERT INTO DEPT(DEPT_NAME, LOC) VALUES('영업', NULL, 'SALES'); -- 에러발생!! - 컬럼리스트와 매칭 카운트가 다름
+SELECT * FROM DEPT;
+
+INSERT INTO DEPT(DEPT_NAME, LOC, DEPT_ID) VALUES('영업', NULL, 'SALES'); -- 에러발생!! - DEPT_ID 사이즈보다 큰 데이터 입력
+SELECT * FROM DEPT;
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++
+		CONSTRATINT(제약사항) : 데이터 무결성의 원칙을 적용하기 위한 규칙
+        - UNIQUE : 유니크(중복방지) 제약 사항
+        - NOT NULL : NULL값을 허용하지 않는 제약
+        - PRIMARY KEY(기본키) : UNIQUE + NOT NULL 제약을 지정
+        - FOREIGN KEY(참조키) : 타 테이블을 참조하기 위한 재약
+        - DEFAULT : 디폴트로 저장되는 데이터 정의하는 제약
+
+		사용 형식 : CREATE TABLE + 제약사항
+				  ALTER TABLE + 제약사항
++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+-- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인
+-- INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+	WHERE TABLE_NAME = 'EMPLOYEE';
+DESC EMPLOYEE;
+
+SHOW TABLES;
+DESC EMP;
+
+-- EMP_CONST 테이블 생성
+-- 기본키 제약 : EMP_ID 
+-- 유니크 제약 : EMP_NAME
+-- NOT NULL 제약 : SALARY
+CREATE TABLE EMP_CONST(
+	EMP_ID		CHAR(4) 		PRIMARY KEY,
+    EMP_NAME  	VARCHAR(10) 	UNIQUE,
+    HIRE_DATE	DATETIME,
+    SALARY		INT 			NOT NULL
+);
+SHOW TABLES;
+DESC EMP_CONST;
+SELECT *
+	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+    WHERE TABLE_NAME = 'EMP_CONST';
+
+-- S001, 홍길동, 현재날짜, 1000 데이터 추가
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S001', '홍길동', NOW(), 1000);
+SELECT * FROM EMP_CONST;
+
+-- S001, 김철수, 현재날짜, 1000 데이터 추가
+-- PRIMARY 키로 설정되어 있는 컬럼은 입력폼에서 아이디 중복체크 기능을 통해 확인함!!
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S001', '김철수', NOW(), 1000); -- 에러발생!!! EMP_ID가 PRIMARY KEY이기 때문에 중복데이터 추가 X
+SELECT * FROM EMP_CONST;
+
+-- SOLUTION : 중복된 'S001' --> 'S002' 변경 후 실행
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S002', '김철수', NOW(), 1000);
+SELECT * FROM EMP_CONST;
+
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES(NULL, '김철수', NOW(), 1000); -- 에러발생!!! EMP_ID는 PRIMARY KEY이기에 NULL값 설정 불가
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S003', '김철수', NOW(), 1000); -- 에러발생!!! EMP_NAME이 UNIQUE이기에 같은 이름이 들어갈 수 없음.
+
+ -- SOLUTION
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S003', '이영희', NOW(), 1000);
+
+-- EMP_NAME 널값을 추가
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S004', NULL, NOW(), 1000); -- UNIQUE는 NULL값 허용
+-- UNIQUE는 NULL값 중복 허용
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S005', NULL, NOW(), 1000);
+
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S006', '스미스', NOW(), NULL); -- 에러발생!!! SALARY는 NULL값 허용 X(위에서 NOT NULL로 설정)
+    
+INSERT INTO EMP_CONST(EMP_ID, EMP_NAME, HIRE_DATE, SALARY)
+	VALUES('S006', '스미스', NOW(), 3000);
+SELECT * FROM EMP_CONST;
+
+SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+	WHERE TABLE_NAME = 'EMP_CONST';
+    
+-- EMP_CONST2 테이블 생성
+-- EMP_ID : PRIMARY KEY
+-- EMP_NAME : UNIQUE
+CREATE TABLE EMP_CONST2(
+	EMP_ID		CHAR(4),
+    EMP_NAME	VARCHAR(10),
+		CONSTRAINT PK_EMP_ID	PRIMARY KEY(EMP_ID), -- 이 구문은 1번만 쓸 수 있다.
+		CONSTRAINT UK_EMP_NAME  UNIQUE(EMP_NAME)
+);
+DESC EMP_CONST2;
+SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+	WHERE TABLE_NAME = 'EMP_CONST2';
+    
+    
