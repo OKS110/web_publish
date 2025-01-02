@@ -12,8 +12,33 @@ import Testimonial from './components/AppBody/Testimonial.jsx';
 import Work from './components/AppBody/Work.jsx';
 import AppFooter from './components/AppFooter/AppFoot.jsx';
 import './css/style.css';
+import { useEffect, useState } from 'react';
 
 export default function App() {
+  const [home, setHome] = useState([]);
+  const [about, setAbout] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [work, setWork] = useState([]);
+  const [testimonial, setTestimonial] = useState([]);
+
+
+
+
+  useEffect(() => {
+    fetch('data/portfolio.json')
+    .then(data => data.json())
+    .then((jsonData) => {
+      return       setHome(jsonData.Home),
+      setAbout(jsonData.About),
+      setSkills(jsonData.Skills),
+      setWork(jsonData.Work),
+      setTestimonial(jsonData.Testimonial)
+
+    })
+    .catch(error => console.log(error))
+  }, []);
+
+
   return (
     <>
   <Appheader>
@@ -21,11 +46,11 @@ export default function App() {
   </Appheader>
   
   <AppBody>
-    <Home></Home>
-    <About></About>
-    <Skills></Skills>
-    <Work></Work>
-    <Testimonial></Testimonial>
+    <Home home={home}></Home>
+    <About about={about}></About>
+    <Skills skills={skills}></Skills>
+    <Work work={work}></Work>
+    <Testimonial testimonial={testimonial}></Testimonial>
     <Arrow></Arrow>
   </AppBody>
 

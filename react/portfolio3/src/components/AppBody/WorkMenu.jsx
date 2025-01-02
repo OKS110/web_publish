@@ -1,10 +1,17 @@
-export default function WorkMenu() {
+import { useState } from "react";
+
+export default function WorkMenu({workMenu}) {
+  const [selectedCnt, setSelectedCnt] = useState(0);
+
+  const handleMenu = (index) => {
+    setSelectedCnt(index);
+  };
 return (
-<ul class="categories">
-        <li><button class="category category--selected">All<span class="category__count">8</span></button></li>
-        <li><button class="category">Front-end<span class="category__count">4</span></button></li>
-        <li><button class="category">Back-end<span class="category__count">2</span></button></li>
-        <li><button class="category">Mobile<span class="category__count">2</span></button></li>
-      </ul>
+<ul className="categories">
+      {workMenu&& workMenu.map((item, index) => 
+       <li key={index}><button className={`category ${selectedCnt === index? "category--selected": ""}`} 
+       onClick={() => handleMenu(index)}>{item.menuTitle}<span className="category__count">{item.menuCnt}</span></button></li>
+      )}
+</ul>
     );
 };

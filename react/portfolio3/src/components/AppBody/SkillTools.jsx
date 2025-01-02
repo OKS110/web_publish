@@ -1,13 +1,13 @@
-export default function SkillTools() {
+export default function SkillTools({skillTools}) {
+
+
 return (
-    <article class="skills__tools">
-    <h3 class="skill__title">Tools</h3>
+    <article className="skills__tools">
+    <h3 className="skill__title">Tools</h3>
     <ul>
-      <li>Visual Studio Code</li>
-      <li>IntelliJ</li>
-      <li>Android Studio Code</li>
-      <li>iOS development tools</li>
-      <li>Eclipse</li>
+      {skillTools && skillTools.map((item, index) => <li key={index}>
+        {item.tool}
+      </li>)}
     </ul>
   </article>
     );

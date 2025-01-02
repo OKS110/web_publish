@@ -7,9 +7,9 @@ export default function HeaderLogo() {
 
 
 return (
-        <a class="header__logo" href="#home">
-          <img class="header__logo__img" src={headerLogo.img} alt="logo"/>
-          <h1 class="header__logo__title">{headerLogo.name}</h1>
+        <a className="header__logo" href="#home">
+          <img className="header__logo__img" src={headerLogo.img} alt="logo"/>
+          <h1 className="header__logo__title">{headerLogo.name}</h1>
         </a>
     );
 };

@@ -7,7 +7,7 @@ export default function Header(){
 
 
     return(
-        <header class="header">
+        <header className="header">
 
         <HeaderLogo></HeaderLogo>
         <Nav></Nav>

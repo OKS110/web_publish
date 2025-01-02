@@ -408,7 +408,7 @@ ul.testimonials{
     box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
 }
 .testimonial__bubble{
-    padding: 1rem;
+    padding: 1.2rem;
     border-radius: 8px;
     box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
 }

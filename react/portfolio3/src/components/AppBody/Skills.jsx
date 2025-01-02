@@ -1,24 +1,24 @@
-import SkillCoding from "../SkillCoding";
+import SkillCoding from "./SkillCoding";
 import SkillEtc from "./SkillEtc";
 import SkillTools from "./SkillTools";
 
-export default function Skills(){
+export default function Skills({skills}){
     return(
-<section id="skill" class="section max-container">
-      <h2 class="title">My Skills</h2>
-      <p class="description">Skills & Attributes</p>
+<section id="skill" className="section max-container">
+      <h2 className="title">My Skills</h2>
+      <p className="description">Skills & Attributes</p>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
         Nobis beatae, aliquid ratione commodi nam ex voluptate rem 
         eveniet cupiditate optio natus? Cum, harum eum sint id quod 
         nulla adipisci. Sunt?</p>
 
         
-      <div class="skills">
-        <SkillCoding></SkillCoding>
+      <div className="skills">
+        <SkillCoding codingSkills = {skills.CodingSkills}></SkillCoding>
 
-        <SkillTools></SkillTools>
+        <SkillTools skillTools = {skills.toolList}></SkillTools>
         
-        <SkillEtc></SkillEtc>
+        <SkillEtc skillEtc = {skills.etcList}></SkillEtc>
       </div> 
     </section>
     );

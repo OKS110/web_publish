@@ -1,34 +1,208 @@
 { 
-    "Major" : [
+  "Home" : {
+    "nickName" : "Dream Coder",
+    "name" : "Judy",
+    "job" : "software engineer",
+    "city": "Seoul",
+    "country" : "South Korea"
+},
+
+
+  "About":{
+      "Major" : [
+              {
+              "icon": "faHtml5",
+              "title": "Front-end",
+              "description":"HTML, CSS, JavaScript, TypeScript, React, WebAPIs"
+              },
+              {
+              "icon": "faMobile",
+              "title": "Mobile",
+              "description":"Android Studio, React Native, iOS, Swift, Java, Kotlin"        
+              },
+              {
+              "icon": "faServer",
+              "title": "Back-end",
+              "description":"Java, JavaScript, Go, Kotlin, Spring, Spring Boot"
+              
+              }
+          ],
+      "Jobs" : [
+              {
+                  "img" : "images/jobs/google.png",
+                  "jobName": "Google as Junior Software Engineer",
+                  "jobPeriod": "2019 Oct - Until now"
+              },
+              {
+                  "img" : "images/jobs/samsung.png",
+                  "jobName": "Samsung as Junior Software Engineer",
+                  "jobPeriod": "2010 Oct - 2019 Oct"
+              }
+          ]
+  },
+    
+
+    "Skills" : {
+      "CodingSkills" : [
         {
-        "icon": "faHtml5",
-        "title": "Front-end",
-        "description":"HTML, CSS, JavaScript, TypeScript, React, WebAPIs"
+          "skillTitle" : "HTML",
+          "percent": "100%"
         },
         {
-        "icon": "faMobile",
-        "title": "Mobile",
-        "description":"Android Studio, React Native, iOS, Swift, Java, Kotlin"        
+          "skillTitle" : "CSS",
+          "percent": "90%"
         },
         {
-        "icon": "faServer",
-        "title": "Back-end",
-        "description":"Java, JavaScript, Go, Kotlin, Spring, Spring Boot"
-        
+          "skillTitle" : "JavaScript",
+          "percent": "90%"
+        },
+        {
+          "skillTitle" : "TypeScript",
+          "percent": "80%"
+        },
+        {
+          "skillTitle" : "React",
+          "percent": "79%"
+        },
+        {
+          "skillTitle" : "NodeJs",
+          "percent": "68%"
         }
+      ],
+    "toolList" : [
+      {
+        "tool":"Visual Studio Code"
+      },
+      {
+        "tool":"IntelliJ"
+      },
+      {
+        "tool":"Android Studio Code"
+      },
+      {
+        "tool":"Visual Studio Code"
+      },
+      {
+        "tool":"iOS development tools"
+      },
+      {
+        "tool":"Eclipse"
+      }
     ],
-    "Jobs" : [
-        {
-            "img" : "images/jobs/google.png",
-            "jobName": "Google as Junior Software Engineer",
-            "jobPeriod": "2019 Oct - Until now"
-        },
-        {
-            "img" : "images/jobs/samsung.png",
-            "jobName": "Samsung as Junior Software Engineer",
-            "jobPeriod": "2010 Oct - 2019 Oct"
-        }
+    "etcList" : [
+      {
+        "etc":"Git"
+      },
+      {
+        "etc":"Scrum Master"
+      },
+      {
+        "etc":"SVN"
+      }
+    ]
+  },
+
+
+
+  "Work":{
+    "workMenuList" : [
+      {
+        "menuTitle":"All",
+        "menuCnt":"8"
+      },
+      {
+        "menuTitle":"Front-end",
+        "menuCnt":"4"
+      },
+      {
+        "menuTitle":"Back-end",
+        "menuCnt":"2"
+      },
+      {
+        "menuTitle":"Mobile",
+        "menuCnt":"2"
+      }
     ],
+
+    "workProjectsList" : [
+      {
+        "title":"Project #1",
+        "description":"Clone Coding with Html, CSS, JavaScript",
+        "img": "images/projects/project1.webp",
+        "alt":"project1"
+      },
+      {
+        "title":"Project #2",
+        "description":"Clone Coding with Html, CSS, JavaScript",
+        "img": "images/projects/project2.webp",
+        "alt":"project2"
+      },
+      {
+        "title":"Project #3",
+        "description":"Clone Coding with Html, CSS, JavaScript",
+        "img": "images/projects/project3.webp",
+        "alt":"project3"
+      },
+      {
+        "title":"Project #4",
+        "description":"Clone Coding with Html, CSS, JavaScript",
+        "img": "images/projects/project4.webp",
+        "alt":"project4"
+      },
+      {
+        "title":"Project #5",
+        "description":"Clone Coding with Html, CSS, JavaScript",
+        "img": "images/projects/project5.webp",
+        "alt":"project5"
+      },
+      {
+        "title":"Project #6",
+        "description":"Clone Coding with Html, CSS, JavaScript",
+        "img": "images/projects/project6.webp",
+        "alt":"project6"
+      },
+      {
+        "title":"Project #7",
+        "description":"Clone Coding with Html, CSS, JavaScript",
+        "img": "images/projects/project7.webp",
+        "alt":"project7"
+      },
+      {
+        "title":"Project #8",
+        "description":"Clone Coding with Html, CSS, JavaScript",
+        "img": "images/projects/project8.webp",
+        "alt":"project8"
+      }
+    ]
+  },
+
+  
+  "Testimonial" : [
+    {
+      "img":"images/testimonials/people1.webp",
+      "alt":"people1",
+      "comment" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis similique, unde nam totam quam, nisi odio error amet provident iste modi eos dicta, eum suscipit rem illum inventore sapiente blanditiis?",
+      "name":"James Kim",
+      "company":"Google"
+    },
+    {
+      "img":"images/testimonials/people2.webp",
+      "alt":"people2",
+      "comment" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis similique, unde nam totam quam, nisi odio error amet provident iste modi eos dicta, eum suscipit rem illum inventore sapiente blanditiis?",
+      "name":"Smith Park",
+      "company":"Samsung"
+    },
+    {
+      "img":"images/testimonials/people3.webp",
+      "alt":"people3",
+      "comment" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis similique, unde nam totam quam, nisi odio error amet provident iste modi eos dicta, eum suscipit rem illum inventore sapiente blanditiis?",
+      "name":"Anna Jin",
+      "company":"Apple"
+    }
+  ],
+
+
+
     "Footer" : [
         {
           "icon": "faGithub",

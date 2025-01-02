@@ -20,13 +20,13 @@ export default function Footer(){
 
 
     return(
-        <footer id="contact" class="section">
-            <h2 class="title">Let's talk</h2>
-            <p class="description">jeon.developer.judy@gmail.com</p>
-            <ul class="contact__links">
+        <footer id="contact" className="section">
+            <h2 className="title">Let's talk</h2>
+            <p className="description">jeon.developer.judy@gmail.com</p>
+            <ul className="contact__links">
                 {footerList.map((item, index) =>  
                     <li key={index}>
-                        <a class="contact__link" href={item.link}><FontAwesomeIcon icon={iconMap[item.icon]} /></a>
+                        <a className="contact__link" href={item.link}><FontAwesomeIcon icon={iconMap[item.icon]} /></a>
                     </li>
                 )}
             </ul>
