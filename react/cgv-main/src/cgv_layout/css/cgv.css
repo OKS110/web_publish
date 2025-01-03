@@ -182,7 +182,7 @@ header{
     /* border: 1px solid brown; */
     background-color: #fff;
     transition: 1s;
-    display: none;
+    /* display: none; */
 }
 .header-bottom dt{
     cursor: pointer;
