@@ -32,7 +32,7 @@ export default function Nav() {
     setSelectedIndex(index);
   };
 return (
-    <nav>
+    <nav className="pc_menu">
     <ul className="header__menu">
       {navList.map((item, index) =>      
        <li key={index}><a className={`header__menu__item ${selectedIndex === index ? "active" : ""}`} href={item.href}

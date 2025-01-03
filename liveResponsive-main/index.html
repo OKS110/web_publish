@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 오광석 - Live Responsive </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/inter@3.15.0/css/inter.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC|Noto+Sans+TC|Noto+Sans+KR&display=swap">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="./js/live.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="mainLogoMenus">
+            <!-- logo -->
+             <h1 class="logo">
+                <a href="#"><img src="./images/logo.svg" alt="로고"></a>
+             </h1>
+            <!-- pc menu -->
+             <nav class="pcMenu">
+                <ul>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">레퍼런스</a></li>
+                    <li><a href="#">스튜디오</a></li>
+                    <li><a href="#">Q &amp; A</a></li>
+                    <li><a href="#">문의사항</a></li>
+                </ul>
+             </nav>
+            <!-- mobile menu -->
+             <nav class="mobileMenu">
+                <!-- LINE -> X 변경 -->
+                <div class="toggle-container" onclick="toggleMenu()">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                    <div class="line line3"></div>
+                </div>
+
+                <!-- mobile menu -->
+                 <div id="myNav" class="overlay">
+                    <!-- X버튼 -->
+
+                    <!-- menu -->
+                     <div class="overlay-content">
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">레퍼런스</a></li>
+                            <li><a href="#">스튜디오</a></li>
+                            <li><a href="#">Q &amp; A</a></li>
+                            <li><a href="#">문의사항</a></li>
+                        </ul>
+                     </div>
+                </div>
+             </nav>
+        </div>
+    </header>
+    <main>
+        <div class="centerImg">
+            <a href="#">
+                <img src="./images/mainImg.png" alt="메인 이미지"> 
+            </a>
+        </div>
+    </main>
+    <footer>
+        <div class="mainBtn">
+            <a href="#" class="layerPopup">
+                <img src="./images/right-btn.svg" alt="하단버튼">
+            </a>
+        </div>
+    </footer>
+    <div class="popup">
+        <span class="close">
+            &times;
+        </span>
+    </div>
+
+    <div class="bg">
+
+    </div>
+</body>
+</html>

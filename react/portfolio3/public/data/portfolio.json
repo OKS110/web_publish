@@ -108,66 +108,74 @@
     "workMenuList" : [
       {
         "menuTitle":"All",
-        "menuCnt":"8"
+        "menuCnt":""
       },
       {
         "menuTitle":"Front-end",
-        "menuCnt":"4"
+        "menuCnt":""
       },
       {
         "menuTitle":"Back-end",
-        "menuCnt":"2"
+        "menuCnt":""
       },
       {
         "menuTitle":"Mobile",
-        "menuCnt":"2"
+        "menuCnt":""
       }
     ],
 
     "workProjectsList" : [
       {
+        "category" : "Front-end",
         "title":"Project #1",
         "description":"Clone Coding with Html, CSS, JavaScript",
         "img": "images/projects/project1.webp",
         "alt":"project1"
       },
       {
+        "category" : "Front-end",
         "title":"Project #2",
         "description":"Clone Coding with Html, CSS, JavaScript",
         "img": "images/projects/project2.webp",
         "alt":"project2"
       },
       {
+        "category" : "Front-end",
         "title":"Project #3",
         "description":"Clone Coding with Html, CSS, JavaScript",
         "img": "images/projects/project3.webp",
         "alt":"project3"
       },
       {
+        "category" : "Front-end",
         "title":"Project #4",
         "description":"Clone Coding with Html, CSS, JavaScript",
         "img": "images/projects/project4.webp",
         "alt":"project4"
       },
       {
+        "category" : "Front-end",
         "title":"Project #5",
         "description":"Clone Coding with Html, CSS, JavaScript",
         "img": "images/projects/project5.webp",
         "alt":"project5"
       },
       {
+        "category" : "Back-end",
         "title":"Project #6",
         "description":"Clone Coding with Html, CSS, JavaScript",
         "img": "images/projects/project6.webp",
         "alt":"project6"
       },
       {
+        "category" : "Mobile",
         "title":"Project #7",
         "description":"Clone Coding with Html, CSS, JavaScript",
         "img": "images/projects/project7.webp",
         "alt":"project7"
       },
       {
+        "category" : "Mobile",
         "title":"Project #8",
         "description":"Clone Coding with Html, CSS, JavaScript",
         "img": "images/projects/project8.webp",

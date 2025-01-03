@@ -1,0 +1,230 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background: linear-gradient(90deg,
+            rgba(0, 68, 171, 1) 0%,
+            rgba(0, 43, 107, 1) 100%);
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+/* layout */
+header {
+    width: 95%;
+    margin: 0 auto;
+}
+
+header .mainLogoMenus {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+}
+
+header .mainLogoMenus .logo img {
+    margin-top: 20px;
+}
+
+header .mainLogoMenus nav.pcMenu {
+    margin-top: 20px;
+}
+
+header .mainLogoMenus nav.pcMenu ul {
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+}
+
+header .mainLogoMenus nav.pcMenu ul li a {
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+header .mainLogoMenus nav.pcMenu ul li a:hover,
+header .mainLogoMenus nav.pcMenu ul li a:focus {
+    opacity: 0.5;
+}
+
+/* 모바일메뉴 - PC에서 가려줌 */
+header .mainLogoMenus nav.mobileMenu {
+    /* border: 1px solid red; */
+    display: none;
+    /* 가려줌 */
+
+}
+header .mainLogoMenus nav.mobileMenu img{
+    width: 100%;
+    height: 100%;
+}
+
+/* main */
+main {
+    width: 100%;
+    height: 80vh;
+}
+
+main .centerImg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main .centerImg img {
+    max-width: 100%;
+}
+
+/* footer */
+
+footer {
+    width: 95%;
+    margin: 0 auto;
+}
+
+footer .mainBtn {
+    width: 100%;
+    height: 8vh;
+    position: relative;
+
+}
+
+footer .mainBtn .layerPopup {
+    position: absolute;
+    bottom: -10px;
+    right: -5px;
+}
+
+/* popup */
+.popup {
+    background: url("../images/popup.png")no-repeat center/cover;
+    border-radius: 20px;
+    position: absolute;
+    right: 49px;
+    bottom: 30px;
+    width: 400px;
+    height: 425px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 2;
+}
+
+.popup .close {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+.bg{
+    position: fixed;
+    z-index: 1;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+}
+
+
+@media (max-width:760px) {
+    header .mainLogoMenus nav.mobileMenu {
+        display: block;
+        background: #000;
+        opacity: .3;
+        /* 보여줌 */
+    }
+
+    header .mainLogoMenus nav.pcMenu {
+        display: none;
+        /* 가려줌 */
+    }
+    /* mobile menu */
+    .toggle-container {
+        position: relative;
+        top: 20px;
+
+        width: 50px;
+        height: 40px;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .toggle-container .line {
+        width: 100%;
+        height: 3px;
+        background-color: #ffffff;
+        position: absolute;
+        transition: 0.1s;
+    }
+    .toggle-container .line1 {
+        top: 0;
+    }
+    .toggle-container .line2 {
+        top: 18px;
+    }
+    .toggle-container .line3 {
+        bottom: 0;
+    }
+
+    /* X버튼 스타일 */
+    .toggle-container.active .line1{
+        transform: translateY(18px) rotate(45deg);
+    }
+    .toggle-container.active .line2{opacity: 0;}
+    .toggle-container.active .line3{
+        transform: translateY(-18px) rotate(-45deg);
+    }
+
+    header .mainLogoMenus nav.mobileMenu .overlay{
+        position: fixed; top: 0; right: 0;
+        z-index: 2;
+        width: 0; height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        transition: 0.1s;
+        overflow: hidden;
+    }
+
+    /* 모바일 메뉴 안의 x 버튼 */
+    header .mainLogoMenus nav.mobileMenu .overlay a.closeBtn{
+        font-size: 40px;
+        color: #fff;
+        position: absolute; top: 15px; right: 20px;
+    }
+    header .mainLogoMenus nav.mobileMenu .overlay ul li a{
+        padding: 15px;
+        font-size: 23px;
+        color: #fff;
+        display: block;
+        transition: 0.3s;
+    }
+    header .mainLogoMenus nav.mobileMenu .overlay ul li a:hover,
+    header .mainLogoMenus nav.mobileMenu .overlay ul li a:focus{
+        opacity: 0.5;
+    }
+    header .mainLogoMenus nav.mobileMenu .overlay .overlay-content{
+        position: absolute;
+        top: 33%;
+        width: 100%;
+        text-align: center;
+    }
+    /* popup */
+    .popup {
+        max-width: 90%;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
