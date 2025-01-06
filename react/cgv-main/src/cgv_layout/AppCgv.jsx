@@ -1,7 +1,7 @@
 import './css/cgv.css';
 import './css/commons.css';
 
-import Header from "./Header.jsx";
+import Header from "./header/Header.jsx";
 import HeaderTop from "./header/HeaderTop.jsx";
 import HeaderBottom from "./header/HeaderBottom.jsx";
 import Contents from "./content/Contents.jsx";
