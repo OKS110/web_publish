@@ -49,7 +49,7 @@ select customer_name, customer_id, gender, city, phone, point from customer wher
 -- Q15) 포인트가 500,000 이상인 '서울' 이외 지역 고객의 이름, 아이디, 성별, 지역, 전화번호, 포인트를 조회하세요.
 select customer_name, customer_id, gender, city, phone, point from customer where point >= 500000 and not city = '서울';
 -- Q16) 포인트가 400,000 이상인 '서울' 지역 남자 고객의 이름, 아이디, 성별, 지역, 전화번호, 포인트를 조회하세요.
-select customer_name, customer_id, gender, city, phone, point from customer where point >= 400000 and city = '서울';
+select customer_name, customer_id, gender, city, phone, point from customer where point >= 400000 and city = '서울' and gender = 'm';
 -- Q17) '강릉' 또는 '원주' 지역 고객의 이름, 아이디, 성별, 지역, 전화번호, 포인트를 조회하세요.
 select customer_name, customer_id, gender, city, phone, point from customer where city in ('강릉', '원주');
 -- Q18) '서울' 또는 '부산' 또는 '제주' 또는 '인천' 지역 고객의 이름, 아이디, 성별, 지역, 전화번호, 포인트를 조회하세요.
@@ -97,7 +97,7 @@ select employee_name, employee_id, gender, phone, hire_date from employee where 
 /** customer 테이블 사용 **/
 select * from customer;
 -- Q01) 고객의 포인트 합을 조회하세요.
-select sum(point) from customer;
+select format(sum(point), 0) from customer;
 -- Q02) '서울' 지역 고객의 포인트 합을 조회하세요.
 select city, sum(point) from customer group by city having city = '서울';
 -- Q03) '서울' 지역 고객의 수를 조회하세요.
@@ -108,6 +108,7 @@ select city, sum(point), avg(point) from customer group by city having city = '�
 select city, sum(point), avg(point), max(point), min(point) from customer group by city having city = '서울';
 -- Q06) 남녀별 고객의 수를 조회하세요.
 select gender, count(*) from customer group by gender;
+
 -- Q07) 지역별 고객의 수를 조회하세요.
 --      단, 지역 이름을 기준으로 오름차순 정렬해서 조회하세요.
 select city, count(*) from customer group by city order by city asc;
@@ -117,7 +118,19 @@ select city, count(*) from customer group by city order by city asc;
    select city, count(*) from customer group by city having count(*) >= 10 order by city asc;
     
 -- Q09) 남녀별 포인트 합을 조회하세요.
-    select gender, sum(point) from customer group by gender;
+    select case gender
+				when 'f' then '여자'
+                else '남자'
+			end as 성별, 
+		sum(point) 
+        from customer 
+        group by gender;
+/*
+	CASE 컬럼명
+		WHEN 'F' THEN '여자'
+        ELSE '남자'
+	END
+*/
 -- Q10) 지역별 포인트 합을 조회하세요.
 --      단, 지역 이름을 기준으로 오름차순 정렬해서 조회하세요.
 select city, sum(point) from customer group by city order by city asc;
@@ -136,7 +149,7 @@ select city, count(*), sum(point) from customer group by city order by city asc;
 
 -- Q14) 지역별 포인트 합, 포인트 평균을 조회하세요.
 --      단, 포인트가 NULL이 아닌 고객을 대상으로 하며, 지역 이름을 기준으로 오름차순 정렬해서 조회하세요.
-select city, sum(point), avg(point) from customer where point is not null group by city order by city asc;
+select city, sum(point), format(avg(point), 1) from customer where point is not null group by city order by city asc;
 -- Q15) '서울', '부산', '대구' 지역 고객의 지역별, 남녀별 포인트 합과 평균을 조회하세요.
 --      단, 지역 이름을 기준으로 오름차순, 같은 지역은 성별을 기준으로 오름차순 정렬해서 조회하세요.
 select city, gender, sum(point), avg(point) from customer group by city, gender having city in ('서울', '부산', '대구') 
@@ -178,13 +191,23 @@ GROUP BY year, month WITH ROLLUP;
 SHOW DATABASES;
 USE MYSHOP2019;
 SELECT DATABASE();
--- Q01) 전체금액이 8,500,000 이상인 주문의 주문번호, 고객아이디, 사원번호, 주문일시, 전체금액을 조회하세요.
+-- Q01) 전체금액이 8,500,000 이상인 주문의 주문번호, 고객아이디, 사원번호, 주문수량, 주문일시, 전체금액을 조회하세요.
 	SHOW TABLES;
     SELECT * FROM CUSTOMER;
 	SELECT * FROM ORDER_HEADER;
-    SELECT ORDER_ID, CUSTOMER_ID, EMPLOYEE_ID, ORDER_DATE, TOTAL_DUE FROM ORDER_HEADER WHERE TOTAL_DUE >= 8500000;
+    SELECT OH.ORDER_ID, OH.CUSTOMER_ID, OH.EMPLOYEE_ID, OD.ORDER_QTY, OH.ORDER_DATE, OH.TOTAL_DUE
+    FROM ORDER_HEADER OH INNER JOIN ORDER_DETAIL OD
+    ON OH.ORDER_ID = OD.ORDER_ID
+    WHERE TOTAL_DUE >= 8500000;
+    
+    SELECT DISTINCT OH.ORDER_ID, OH.CUSTOMER_ID, OH.EMPLOYEE_ID, OD.ORDER_QTY, OH.ORDER_DATE, OH.TOTAL_DUE
+    FROM ORDER_DETAIL OD, (
+			SELECT ORDER_ID, CUSTOMER_ID, EMPLOYEE_ID, ORDER_DATE, TOTAL_DUE
+            FROM ORDER_HEADER
+            WHERE TOTAL_DUE >= 8500000) OH
+		WHERE OH.ORDER_ID = OD.ORDER_ID;
 -- Q02) 위에서 작성한 쿼리문을 복사해 붙여 넣은 후 고객이름도 같이 조회되게 수정하세요.
-	SELECT ORD.ORDER_ID, CUS.CUSTOMER_ID, ORD.EMPLOYEE_ID, ORD.ORDER_DATE, ORD.TOTAL_DUE, CUS.CUSTOMER_NAME 
+	SELECT DISTINCT ORD.ORDER_ID, CUS.CUSTOMER_ID, ORD.EMPLOYEE_ID, ORD.ORDER_DATE, ORD.TOTAL_DUE, CUS.CUSTOMER_NAME 
     FROM ORDER_HEADER ORD, CUSTOMER CUS
     WHERE ORD.CUSTOMER_ID = CUS.CUSTOMER_ID AND TOTAL_DUE >= 8500000;	
 -- Q03) Q01 쿼리를 복사해 붙여 넣은 후 직원이름도 같이 조회되게 수정하세요.
@@ -235,10 +258,18 @@ SELECT P.PRODUCT_NAME FROM EMPLOYEE E INNER JOIN ORDER_HEADER OH INNER JOIN PROD
 /**
 	서브쿼리
 */
--- Q13) 'mtkim', 'odoh', 'soyoukim', 'winterkim' 고객 주문의 주문번호, 고객아이디, 주문일시, 전체금액을 조회하세요.    
--- Q14) '전주' 지역 고객의 아이디를 조회하세요.    
+-- Q13) 'mtkim', 'odoh', 'soyoukim', 'winterkim' 고객 주문의 주문번호, 고객아이디, 주문일시, 전체금액을 조회하세요.   
+select * from order_header;
+select * from customer c, (
+	select order_id, order_date, total_due from order_header) o
+ where customer_id in ('mtkim', 'odoh', 'soyoukim', 'winterkim');
+-- Q14) '전주' 지역 고객의 아이디를 조회하세요.   
+select * from customer where city = '전주'; 
 -- Q15) 위 두 쿼리문을 조합해서 하위 쿼리를 사용해 '전주' 지역 고객 주문의 주문번호, 고객아이디, 주문일시, 전체금액을 조회하세요.
--- Q16) 고객의 포인트 최댓값을 조회하세요.
+select * from customer c, (
+	select order_id, order_date, total_due from order_header) o
+ where customer_id in (select customer_id from customer where city = '전주');
+-- Q16) 고객의 포인트 최댓값을 조회하세요. 
 -- Q17) 하위 쿼리를 사용해 가장 포인트가 많은 고객의 이름, 아이디, 등록일, 포인트를 조회하세요.
 -- Q18) 하위 쿼리를 사용해 홍길동(gdhong) 고객보다 포인트가 많은 고객 이름, 아이디, 등록일, 포인트를 조회하세요.
 -- Q19) 하위 쿼리를 사용해 홍길동(gdhong) 고객과 같은 지역의 고객 이름, 아이디, 지역, 등록일, 포인트를 조회하세요.
