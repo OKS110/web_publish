@@ -2129,15 +2129,13 @@ SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY, D.DEPT_ID, DEPT_NAME, UNIT_NAME
 	형식 : 쿼리1  UNION/UNION ALL   쿼리2
     ** 쿼리1, 쿼리2의 실행 결과 컬럼리스트가 동일해야함
 ****************************************/
-use hrdb2019;
-select database();
 -- HRD 부서의 사원아이디, 사원명, 부서아이디, 연봉
 -- SYS 부서의 사원아이디, 사원명, 부서아이디, 연봉 실행결과 합치기
-SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY , dept_id
+SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY 
 	FROM EMPLOYEE
     WHERE DEPT_ID = 'HRD'
 UNION ALL
-SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY, dept_id
+SELECT EMP_ID, EMP_NAME, DEPT_ID, SALARY 
 	FROM EMPLOYEE
     WHERE DEPT_ID = 'SYS';
 	
@@ -2159,14 +2157,12 @@ SELECT COUNT(*)
 	FROM (SELECT EMP_ID, EMP_NAME, DEPT_ID, PHONE, SALARY -- 16
 			FROM EMPLOYEE
 			WHERE LEFT(HIRE_DATE,4) BETWEEN '2013' AND '2016' 
-		UNION
+		UNION 
 		SELECT EMP_ID, EMP_NAME, DEPT_ID, PHONE, SALARY  -- 6
 			FROM EMPLOYEE
 			WHERE DEPT_ID = 'SYS') T1;
 
 -- 2013~ 2015 연도별, 부서들의 연봉 합계가 가장 높은 부서들만 조회
-use hrdb2019;
-select database();
 SELECT ROW_NUMBER() OVER(ORDER BY YEAR) AS NO,
 		YEAR, DEPT_ID, SALARY
 FROM (SELECT 	YEAR, DEPT_ID, SALARY
@@ -2315,8 +2311,6 @@ FROM VIEW_EMP_MGR WHERE MGR_NAME = '정주고';
 -- 사원아이디, 사원명, 입사일, 연봉, 휴가결제횟수, 휴가전체사용일수, 부서아이디, 부서명, 소속본부를 조회해주세요. 
 -- 단, 휴가를 사용하지 않은 사원의 휴가결제횟수, 휴가전체사용일수는 0값으로 할당
 -- VIEW 이름 : VIEW_EMP_VACATION
-use hrdb2019;
-select database();
 CREATE VIEW VIEW_EMP_VACATION
 AS
 SELECT 	E.EMP_ID,
@@ -2344,3 +2338,13 @@ SELECT * FROM VIEW_EMP_VACATION;
 
 -- 홍길동 휴가 사용일수 및 정보 조회
 SELECT * FROM VIEW_EMP_VACATION WHERE EMP_NAME = '홍길동';    
+
+
+
+
+
+
+
+
+
+
