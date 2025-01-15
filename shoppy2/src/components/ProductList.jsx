@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import ProductAvata from "./ProductAvata";
+import {Link} from 'react-router-dom';
 export default function ProductList() {
     const [list, setList] = useState([]);
 
@@ -35,7 +36,10 @@ return (
         {rows && rows.map((rowArray, index) => 
             <div className="product-list" key={index}>
                 {
-                     rowArray.map((item, index) => <ProductAvata img={item.image} key={index}></ProductAvata>)
+                     rowArray.map((item, index) =>
+                      <Link to={`/product/${item.pid}`}>
+                        <ProductAvata img={item.image} key={index}></ProductAvata>
+                     </Link>)
                 }  
             </div>
         )}

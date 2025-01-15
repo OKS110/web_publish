@@ -1,7 +1,10 @@
+import ProductList from "../components/ProductList.jsx";
+
 export default function Products() {
     return (
-        <div>
-            <h1>Products</h1>
-        </div>
+    <div className="content">
+        <h3 className="all-products-title">All Products</h3>
+        <ProductList/>
+    </div>
         );
     };
