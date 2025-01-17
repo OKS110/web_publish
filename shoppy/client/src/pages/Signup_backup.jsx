@@ -3,74 +3,43 @@ import { validateSignup } from '../utils/funcValidate.js';
 import '../styles/signup.css';
 
 export default function Signup() {
-    
-    const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname'];
-    const namesStr = ['아이디', '비밀번호', '비밀번호 확인', '이름', '전화번호', '이메일'];
-    const placeholderStr = ['아이디(6~2자이내)', '비밀번호 입력(문자,숫자,특수문자 포함 6~12자)',
-         '비밀번호 재입력', '이름을 입력해주세요', '휴대폰 번호 입력("-" 포함)', '이메일 주소'];
+    const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname', 'emaildomain'];
 
-    // const labels = {
-    //     "id" : "아이디",
-    //     "pwd" : "비밀번호",
-    //     "cpwd" : "비밀번호 확인",
-    //     "name" : "이름",
-    //     "phone" : "전화번호",
-    //     "emailname" : "이메일"
-    // };
-    const labels = names.reduce((acc, cur, idx) => {
-        acc[cur] = namesStr[idx];
-        return acc;
-    }, {});
-
-    const placeholders = names.reduce((acc, cur, idx) => {
-        acc[cur] = placeholderStr[idx];
-        return acc;
-    }, {});
-
-    // let initForm = {};
-    // names.forEach((name) => {
-    //     initForm = {...initForm, [name]:''}
-    // });
-    // console.log("init", initForm);
-    
     const initForm = (initArray) =>{
         const init = initArray.reduce((acc, key) => {
             acc[key] = '';
             return acc;
-        }, {}); // {}는 반환되는 타입
+        }, {});
         return init;
     };
 
-    // const [form, setForm] = useState(initForm);
     const [form, setForm] = useState(initForm(names));
+    const [errorMsg, setErrorMsg] = useState(initForm(names));
 
-    const refs = useRef(
-        names.reduce((acc, cur) => {
-            acc[cur.concat("Ref")] = React.createRef(); //useRef(null) Hook은 콜백함수에서 바로 호출 X
-            return acc;
-    }, {})
-    );
-    refs.current.emaildomainRef = React.createRef();
-    console.log('refs', refs);
-    
-
-
-
-    const msgRefs = useRef(names.reduce((acc, cur) => {
-            acc[cur.concat("MsgRef")] = React.createRef();
-            return acc;
-        }, {})
-    );
-    console.log('refs', refs);
-    
-
+    const refs ={
+        "idRef" : useRef(null),
+        "pwdRef" : useRef(null),
+        "cpwdRef" : useRef(null),
+        "nameRef" : useRef(null),
+        "phoneRef" : useRef(null),
+        "emailnameRef" : useRef(null),
+        "emailDomainRef": useRef(null)
+    };
+    const msgRefs ={
+        "msgIdRef" : useRef(null),
+        "msgPwdRef" : useRef(null),
+        "msgCpwdRef" : useRef(null),
+        "msgNameRef" : useRef(null),
+        "msgPhoneRef" : useRef(null),
+        "msgEmailnameRef" : useRef(null),
+        "msgEmailDomainRef": useRef(null)
+    };
 
 //change
     const handleChangeForm = (event) => {
         const {name, value} = event.target;
         setForm({...form, [name]:value});
-        console.log(name, value);
-        
+
         // if(name === "id"){
         //     refs.idRef.current.value === ''? setErrorMsg({...errorMsg, "id" : '아이디를 입력해주세요.'}) : setErrorMsg({...errorMsg, "id":''});
         // }else if(name === 'pwd'){
@@ -93,61 +62,7 @@ export default function Signup() {
             <h1 className="center-title">SIGINUP</h1>
             <form className="signup-form" onSubmit={handleSubmitSignup}>
                 <ul>
-                    {
-                        names && names.map((item) => (
-                            <li>
-                            <label for="" ><b>{labels[item]}</b></label>
-                            <span id="error-msg-id" ref={msgRefs.current[item.concat("MsgRef")]}>{labels[item]}를(을) 입력해주세요</span>
-                            
-                            <div>
-                                {
-                                 item === 'emailname' ? ( 
-                                    <>
-                                        <input type="text" 
-                                            name={item}
-                                            id = {item}
-                                            ref={refs.current[item.concat("Ref")]}
-                                            placeholder= {placeholders[item]}
-                                            onChange={handleChangeForm} />
-                                        <span>@</span>          
-                                        <select name="emaildomain" 
-                                            id="emaildomain" 
-                                            ref={refs.current['emaildomainRef']}
-                                            onChange={handleChangeForm} >
-                                            <option value="default">선택</option>
-                                            <option value="naver.com">naver.com</option>
-                                            <option value="gmail.com">gmail.com</option>
-                                            <option value="daum.net">daum.net</option>
-                                        </select>
-                                    </>
-                                    ) : (
-                                        <>
-                                            <input type={(item === "pwd" || item === "cpwd") ? "password" : "text"} 
-                                                name={item}
-                                                id={item}
-                                                ref={refs.current[item.concat("Ref")]} //ref.idRef
-                                                placeholder = {placeholders[item]}
-                                                onChange={handleChangeForm}/>
-                                                {
-                                                    item === 'id' &&
-                                                    <>
-                                                        <button type="button" >중복확인</button>
-                                                        <input type="hidden" id="idCheckResult" value="default" />
-                                                    </>      
-                                                }
-                                           
-                                        </>
-                                        )
-                                    
-                                }
-                                
-                               
-                            </div>
-                        </li>  
-                        ))
-                    } {/** end of map */}
-                    
-                    {/* <li>
+                    <li>
                         <label for="" ><b>아이디</b></label>
                         <span id="error-msg-id" ref={msgRefs.msgIdRef}>아이디를 입력해주세요</span>
                         <div>
@@ -230,7 +145,7 @@ export default function Signup() {
                                 <option value="daum.net">daum.net</option>
                             </select>
                         </div>
-                    </li> */}
+                    </li>
                     <li>
                         <button type="submit">가입하기</button>
                         <button type="reset">가입취소</button>

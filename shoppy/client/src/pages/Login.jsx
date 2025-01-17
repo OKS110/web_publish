@@ -14,7 +14,9 @@ export default function Login() {
         "idRef" : useRef(null),
         "pwdRef" : useRef(null)
     };
-
+    const msgRefs = {
+        "msgRef" : useRef(null)
+    };
 
     //form 데이터 입력 함수
     const handleChangeForm = (event) => {        
@@ -26,7 +28,7 @@ export default function Login() {
     const handleLoginSubmit = (e) => {
         e.preventDefault();
 
-        if(validateLogin(refs)) {
+        if(validateLogin(refs, msgRefs)) {
                console.log('send data', form);
             // 리액트 --> 노드서버(express) 데이터 전송
 
@@ -40,7 +42,7 @@ export default function Login() {
             <form className="login-form" onSubmit={handleLoginSubmit}>
                 <ul>
                     <li>
-                        <p className="login-form-message">✔ 아이디와 비밀번호를 입력하신 후, 로그인을 진행해주세요.</p>
+                        <p className="login-form-message" ref={msgRefs.msgRef}>✔ 아이디와 비밀번호를 입력하신 후, 로그인을 진행해주세요.</p>
                     </li>
                     <li>
                         <div className="login-form-input">

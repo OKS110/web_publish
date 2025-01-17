@@ -2,48 +2,40 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import '../styles/signup.css';
 import { validateSignup } from '../utils/funcValidate.js';
-import { initSignup, useInitSignupRefs } from '../utils/funcInitialize.js';
+
 export default function Signup() {
-    const {names, initForm, labels, placeholders}= initSignup();
-    const { refs, msgRefs} = useInitSignupRefs(names);
-    // const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname'];
-    // const namesStr = ['아이디', '비밀번호', '비밀번호 확인', '이름', '전화번호', '이메일'];
-    // const placeholderStr = ['아이디(6~2자이내)', '비밀번호 입력(문자,숫자,특수문자 포함 6~12자)',
-    //     '비밀번호 재입력', '이름을 입력해주세요', '휴대폰 번호 입력("-" 포함)', '이메일 주소'];
 
-    // const initForm = (initArray) => {
-    //     const init = initArray.reduce((acc, key) => {
-    //         acc[key] = '';
-    //         return acc;
-    //     }, {})
-    //     return init;
-    // };
-    const [formData, setFormData] = useState(initForm);
-    const [errorMsg, setErrorMsg] = useState(initForm);
+   
+    const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname', 'emaildomain'];
 
-    // const refs = useRef(names.reduce((acc, cur) => { //useRef로 감쌌기 때문에 호출 시에 .current로 껍질을 벗겨야 한다. 잘 모른다면 log를 찍어보자.
-    //         acc[cur.concat("Ref")] = React.createRef();
-    //         return acc;
-    //     }, {})
-    // );
-    // refs.current.emaildomain = React.createRef();
-    // console.log(refs); //{current: {…}}
-    
-    // const msgRefs = useRef(names.reduce((acc, cur) => {
-    //         acc[cur.concat("MsgRef")] = React.createRef();
-    //         return acc;
-    //     }, {})
-    // );
-    // const labels = names.reduce((acc, cur, idx) => { 
-    //     acc[cur] = namesStr[idx];
-    //     return acc;
-    // }, {});
+    const initForm = (initArray) => {
+        const init = initArray.reduce((acc, key) => {
+            acc[key] = '';
+            return acc;
+        }, {})
+        return init;
+    };
+    const [formData, setFormData] = useState(initForm(names));
+    const [errorMsg, setErrorMsg] = useState(initForm(names));
 
-    // const placeholders = names.reduce((acc, cur, idx) => { 
-    //     acc[cur] = placeholderStr[idx];
-    //     return acc;
-    // }, {});
-
+        const refs ={
+            "idRef" : useRef(null),
+            "pwdRef" : useRef(null),
+            "cpwdRef" : useRef(null),
+            "nameRef" : useRef(null),
+            "phoneRef" : useRef(null),
+            "emailnameRef" : useRef(null),
+            "emailDomainRef": useRef(null)
+        };
+        const msgRefs ={
+            "msgIdRef" : useRef(null),
+            "msgPwdRef" : useRef(null),
+            "msgCpwdRef" : useRef(null),
+            "msgNameRef" : useRef(null),
+            "msgPhoneRef" : useRef(null),
+            "msgEmailnameRef" : useRef(null),
+            "msgEmailDomainRef": useRef(null)
+        };
     
     
 
@@ -71,57 +63,7 @@ export default function Signup() {
             <h1 className="center-title">SIGINUP</h1>
             <form onSubmit={handleSubmitSignup} className="signup-form">
                 <ul>
-
-                    {
-                        names && names.map((item) => (
-                        <li>
-                            <label for="" ><b>{labels[item]}</b></label>
-                            <span id="error-msg-id" ref={msgRefs.current[item.concat("MsgRef")]}>{errorMsg[item]}</span>
-                            {
-                                (item !== "emailname") ? 
-                                <div>
-                                    <input type="text" 
-                                            name={item}
-                                            id={item}
-                                            ref={refs.current[item.concat("Ref")]}
-                                            placeholder = {placeholders[item]}
-                                            onChange={handleChangeSignup} />
-                                    {item === "id" && 
-                                        <>
-                                            <button type="button" >중복확인</button>
-                                            <input type="hidden" id="idCheckResult" value="default" />
-                                        </>
-                                    }
-                                    
-                                </div>:
-                                <div>
-                                    <input type="text" 
-                                            name={item}
-                                            id = {item}
-                                            ref={refs.current[item.concat("Ref")]}
-                                            onChange={handleChangeSignup}
-                                            placeholder={placeholders[item]} />
-
-                                    <span>@</span>       
-
-                                    <select name="emaildomain" 
-                                            id="emaildomain" 
-                                            ref={refs.current["emaildomainRef"]}
-                                            onChange={handleChangeSignup}
-                                            >
-                                        <option value="default">선택</option>
-                                        <option value="naver.com">naver.com</option>
-                                        <option value="gmail.com">gmail.com</option>
-                                        <option value="daum.net">daum.net</option>
-                                    </select>
-                                </div>
-                                
-                            }
-                            
-                        </li>
-                        ))
-                    }
-                    {/* <li>
+                    <li>
                         <label for="" ><b>아이디</b></label>
                         <span id="error-msg-id" ref={msgRefs.msgIdRef}>{errorMsg.id}</span>
                         <div>
@@ -205,7 +147,7 @@ export default function Signup() {
                                 <option value="daum.net">daum.net</option>
                             </select>
                         </div>
-                    </li> */}
+                    </li>
                     <li>
                         <button type="submit">가입하기</button>
                         <button type="reset">가입취소</button>

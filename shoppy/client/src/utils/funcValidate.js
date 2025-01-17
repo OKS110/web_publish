@@ -2,15 +2,19 @@
 // =============================Login==================================================
 
 // validate 함수
-    export function validateLogin({idRef, pwdRef}) {
-        if(idRef.current.value === ''){
-            alert('아이디를 입력해주세요');
-            idRef.current.focus();
+    export function validateLogin(refs, {msgRef}) {
+        if(refs.idRef.current.value === ''){
+            // alert('아이디를 입력해주세요');
+            msgRef.current.style.setProperty('color', 'red');
+            refs.idRef.current.focus();
             return false;
-        }else if(pwdRef.current.value === ''){
-            alert('패스워드를 입력해주세요');
-            pwdRef.current.focus();
+        }else if(refs.pwdRef.current.value === ''){
+            // alert('패스워드를 입력해주세요');
+            msgRef.current.style.setProperty('color', 'red');
+            refs.pwdRef.current.focus();
             return false;
+        }else{
+            msgRef.current.style.setProperty('color', 'rgb(137, 137, 135)');
         }
         return true;
     };
@@ -23,8 +27,11 @@
 
 //validate
 export const validateSignup = (refs, msgRefs) => {
-    const refsEntries = Object.entries(refs); //{idRef:xxxx, ...}
-    const msgRefsEntries = Object.entries(msgRefs);
+
+    console.log("refs --->>", refs);
+    
+    const refsEntries = Object.entries(refs.current); //{idRef:xxxx, ...}
+    const msgRefsEntries = Object.entries(msgRefs.current);
 
     console.log(refsEntries); //['idRef', {...주소}]...
     console.log(msgRefsEntries);

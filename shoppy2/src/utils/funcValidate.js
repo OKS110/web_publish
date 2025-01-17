@@ -15,8 +15,8 @@ export const validateLogin = ({idRef, pwdRef}) => {
 
 
 export const validateSignup = (refs, msgRefs, errorMsg, setErrorMsg) => {
-    const refsEntries = Object.entries(refs);
-    const msgRefsEntries = Object.entries(msgRefs);
+    const refsEntries = Object.entries(refs.current);
+    const msgRefsEntries = Object.entries(msgRefs.current);
 
     for(let i = 0; i < refsEntries.length; i++){
         const item = refsEntries[i];
@@ -24,6 +24,7 @@ export const validateSignup = (refs, msgRefs, errorMsg, setErrorMsg) => {
         const ref = item[1];
         
         const newName = item[0].replace('Ref', '');
+
         
 
         const msgItem = msgRefsEntries[i];
@@ -31,14 +32,15 @@ export const validateSignup = (refs, msgRefs, errorMsg, setErrorMsg) => {
 
             if(name !== 'emailDomainRef'){
                 if(ref.current.value === ''){
-                    setErrorMsg({...errorMsg, [newName] : `${newName}를 입력해주세요.`});
+                    setErrorMsg({...errorMsg, [newName] : `${namesStr[i]}를 입력해주세요.`});
+                    // setErrorMsg({...errorMsg, [newName] : `${newName}를 입력해주세요.`});
                     msgRef.current.style.setProperty('color', 'red');
                     ref.current.focus();
                     return false;
                 }
-                // console.log(errorMsg);
+                console.log(errorMsg);
                 
-            }else if(name === 'emailDomainRef'){
+            }else if(name === 'emaildomainRef'){
                 if(ref.current.value === 'default'){
                     alert('이메일 도메인을 선택해주세요');
                     ref.current.focus();
