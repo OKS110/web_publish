@@ -131,7 +131,7 @@ export default function Signup() {
                                                 {
                                                     item === 'id' &&
                                                     <>
-                                                        <button type="button" >중복확인</button>
+                                                        <button type="button" onClick={handleDuplicateIdCheck}>중복확인</button>
                                                         <input type="hidden" id="idCheckResult" value="default" />
                                                     </>      
                                                 }

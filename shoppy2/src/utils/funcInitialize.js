@@ -25,7 +25,7 @@ export function initSignup (){
             return acc;
         }, {});
 
-    return {names, initForm, labels, placeholders};
+    return {names, initForm, labels, placeholders, namesStr};
 };
 
 export function useInitSignupRefs(names){ //커스텀 훅(함수 앞에 use를 붙여서 생성 - React에서 관리하게 된다.)
@@ -35,7 +35,7 @@ export function useInitSignupRefs(names){ //커스텀 훅(함수 앞에 use를 �
         return acc;
     }, {})
     );
-    refs.current.emaildomain = React.createRef();
+    refs.current.emaildomainRef = React.createRef();
 
     const msgRefs = useRef(names.reduce((acc, cur) => {
             acc[cur.concat("MsgRef")] = React.createRef();

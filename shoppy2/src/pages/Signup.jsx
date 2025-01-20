@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useRef } from 'react';
 import '../styles/signup.css';
-import { validateSignup } from '../utils/funcValidate.js';
+import { validateSignup, handleDuplicateIdCheck, handlePasswordCheck } from '../utils/funcValidate.js';
 import { initSignup, useInitSignupRefs } from '../utils/funcInitialize.js';
 export default function Signup() {
-    const {names, initForm, labels, placeholders}= initSignup();
+    const {names, initForm, labels, placeholders, namesStr}= initSignup();
     const { refs, msgRefs} = useInitSignupRefs(names);
     // const names = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname'];
     // const namesStr = ['아이디', '비밀번호', '비밀번호 확인', '이름', '전화번호', '이메일'];
@@ -57,15 +57,15 @@ export default function Signup() {
     const handleSubmitSignup = (e) => {
         e.preventDefault();
         
-        if(validateSignup(refs, msgRefs, errorMsg, setErrorMsg)){
+        if(validateSignup(refs, msgRefs, errorMsg, setErrorMsg, namesStr)){
             console.log(formData);
-
+            
         }
+        console.log(refs);
             
     };
 
-
-
+    
     return (
         <div className="content">
             <h1 className="center-title">SIGINUP</h1>
@@ -80,15 +80,24 @@ export default function Signup() {
                             {
                                 (item !== "emailname") ? 
                                 <div>
-                                    <input type="text" 
+                                    <input  type = {(item === 'pwd' || item === "cpwd") ? "password" : "text"} 
                                             name={item}
                                             id={item}
                                             ref={refs.current[item.concat("Ref")]}
                                             placeholder = {placeholders[item]}
-                                            onChange={handleChangeSignup} />
+                                            onBlur={(item === 'cpwd' ? () => handlePasswordCheck(refs.current["pwdRef"], refs.current["cpwdRef"], refs.current["nameRef"]) 
+                                                : null)}
+                                            onChange={handleChangeSignup}
+                                             />
                                     {item === "id" && 
                                         <>
-                                            <button type="button" >중복확인</button>
+                                            <button type="button" onClick={() =>  
+                                            handleDuplicateIdCheck(
+                                                refs.current["idRef"],
+                                                refs.current["pwdRef"],
+                                                msgRefs.current["idMsgRef"]
+                                            )
+                                            }>중복확인</button>
                                             <input type="hidden" id="idCheckResult" value="default" />
                                         </>
                                     }
