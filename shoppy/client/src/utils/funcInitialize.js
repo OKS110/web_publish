@@ -35,8 +35,8 @@ export function useInitSignupRefs(names){ //커스텀 훅(함수 앞에 use를 �
         return acc;
     }, {})
     );
-    refs.current.emaildomainRef = useRef(React.createRef());
-    refs.current.duplicateRef = useRef(React.createRef());
+    refs.current.emaildomainRef = React.createRef(); // 이메일 도메인
+    refs.current.idCheckResultRef = React.createRef();// 중복체크 - useState에서 관리하게 되어서 쓸모가 없어졌다.
 
     const msgRefs = useRef(names.reduce((acc, cur) => {
             acc[cur.concat("MsgRef")] = React.createRef();
