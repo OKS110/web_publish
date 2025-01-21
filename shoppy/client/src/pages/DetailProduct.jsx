@@ -1,85 +1,142 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from 'axios';
-export default function DetailProduct({addCart}) {
-    const {pid} = useParams(); // {"pid" : pid}
-    const [product, setProduct] = useState({});
-    const [size, setSize] = useState('XS');
-
-    useEffect(() => {
-        axios.get('/data/products.json') 
-        //data 앞에 '/' 를 붙여주는 것이 좋다. (axios 사용 시) url에서 바로 검색하기 때문(?)
-        // http://localhost:3000/data/products.json
-        .then((res) => {
-            
-            res.data.filter((product) => {
-                if(product.pid === pid) setProduct(product || {});
-            }) // - 1
-
-
-            // const resPid = res.data.filter((product) => {
-            //     return product.pid === pid;
-            // });
-            // // {resPid.map((item) => setProduct(item))}; // - 2
-            // setProduct(resPid[0]); - 3
-
-        })
-        .catch(err => console.log(err))
-    }, []);
-    console.log(product);
+import { PiGiftThin } from "react-icons/pi";
+import axios from "axios";
+import ReturnDelivery from "../components/ReturnDelivery";
+import Detail from "../components/Detail.jsx";
+import Review from "../components/Review.jsx";
+import QnA from "../components/QnA.jsx";
+export default function DetailProduct({ addCart }) {
     
-    // useEffect(() => {
-    //     setProduct({}); // 데이터를 가져오기 전 상태 초기화
-    //     axios.get('/data/products.json') 
-    //         .then((res) => {
-    //             const resPid = res.data.find((item) => String(item.pid) === pid); // 배열에서 조건에 맞는 첫 번째 항목을 바로 반환(객체)
-    //             setProduct(resPid || {}); // 일치하는 데이터가 없으면 빈 객체 저장
-    //         })
-    //         .catch(err => console.log(err));
-    // }, [pid]); // - 4
+  const { pid } = useParams();
+  const [product, setProduct] = useState({});
+  const [size, setSize] = useState("XS");
+
+  useEffect(() => {
+    axios
+      .get("/data/products.json") // http://localhost:3000/data/products.json
+      .then((res) => {
+        res.data.filter((product) => {
+          if (product.pid === pid) setProduct(product);
+        });
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  //장바구니 추가 버튼 이벤트
+  const addCartItem = () => {
+    //장바구니 추가 항목 : { pid, size, count, price }
+    // alert(`${pid} --> 장바구니 추가 완료!`);
+    // console.log(product.pid, product.price, size, 1);
+    const cartItem = {
+      pid: product.pid,
+      size: size,
+      qty: 1,
+      price: product.price,
+    };
+    addCart(cartItem); // App.js의 addCart 함수 호출
+  };
 
 
-
-    //장바구니 추가 버튼 이벤트
-    const addCartItem = () => {
-        // 장바구니 추가 항목 : { pid, size, count, price }
-        const cartItem = {
-            "pid": product.pid,
-            "size" : size,
-            "qty": 1,
-            "price":product.price
-        }
-
-        addCart(cartItem); //App.js의 addCart 함수 호출
+  const [showReturnDelivery, setShowReturnDelivery] = useState(false);
+  const [category, setCategory] = useState('');
+    const handleClickReturnDelivery = () => {
+        setShowReturnDelivery(true);
+        setCategory("returnDelivery");
     };
 
-    console.log(size);
-    
-    return (
-        <div className='content'>
-        <div className='product-detail'>
-            <img src={product.image} />
-            <ul>
-                    <li className="product-detail-title">{product.name}</li>
-                    <li className="product-detail-title">{`${Number(product.price).toLocaleString()} 원`}</li>
-                    <li className="product-detail-subtitle">{product.info}</li>
-                    <li>
-                        <span className='product-detail-select1'>옵션 : </span>
-                        <select className='product-detail-select2' onChange={(e) => {setSize(e.target.value)}}>
-                                <option value="XS">XS</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                        </select>
-                    </li>
-                    <li>
-                        <button type="button" className='product-detail-button'
-                         onClick={addCartItem}>
-                            장바구니 추가</button>
-                    </li>
-            </ul>
+  const handleClickDetail = () => {
+    setCategory("detail");
+  };    
+  const handleClickReview= () => {
+    setCategory("review");
+
+  }
+  const handleClickQnA = () => {
+    setCategory("qna");
+
+  };
+  return (
+    <div className="content">
+      <div className="product-detail-top">
+        <div className="product-detail-image-top">
+          <img src={product.image} />
+          <ul className="product-detail-image-top-list">
+            <li>
+              <img src={product.image} alt="" />
+            </li>
+            <li>
+              <img src={product.image} alt="" />
+            </li>
+            <li>
+              <img src={product.image} alt="" />
+            </li>
+          </ul>
         </div>
-</div>
-    );
-};
+
+        <ul className="product-detail-info-top">
+          <li className="product-detail-title">{product.name}</li>
+          <li className="product-detail-title">{`${parseInt(
+            product.price
+          ).toLocaleString()}원`}</li>
+          <li className="product-detail-subtitle">{product.info}</li>
+          <li>
+            <p className="product-detail-box">신규회원, 무이자 할부 등</p>
+          </li>
+          <li className="flex">
+            <label className="product-detail-label">사이즈 </label>
+            <select
+              className="product-detail-select2"
+              onChange={(e) => setSize(e.target.value)}
+            >
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </li>
+          <li className="flex">
+            <button type="button" className="product-detail-button order">
+              바로 구매
+            </button>
+            <button
+              type="button"
+              className="product-detail-button cart"
+              onClick={addCartItem}
+            >
+              쇼핑백 담기
+            </button>
+            <div type="button" className="gift">
+              <PiGiftThin />
+              <div className="gift-span">선물하기</div>
+            </div>
+          </li>
+          <li>
+            <ul className="product-detail-summary-info">
+              <li>상품 요약 정보</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      {/* DETAIL / REVIEW / Q&A / RETURN & DELIVERY  */}
+      <div className="product-detail-tab">
+        {/* DETAIL / REVIEW / Q&A / RETURN & DELIVERY */}
+          <ul>
+            <li onClick={handleClickDetail}><label>DETAIL</label></li>
+            <li onClick={handleClickReview}><label>REVIEW</label></li>
+            <li onClick={handleClickQnA}><label>Q&A</label></li>
+            <li onClick={handleClickReturnDelivery}><label>RETURN & DELIVERY</label></li>
+          </ul>
+          <div>
+            {/* {showReturnDelivery && <ReturnDelivery/>} */}
+            {category === "returnDelivery" ? <ReturnDelivery/>: null}
+            {category === "detail" ? <Detail/> : null}
+            {category === "review" ? <Review/> : null}
+            {category === "qna" ? <QnA/> : null}
+          </div>
+      </div>
+    </div>
+  );
+}

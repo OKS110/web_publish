@@ -18,7 +18,7 @@ export default function Signup() {
         const {name, value} = event.target;
         setFormData({...formData, [name]:value});
         console.log(name, value);
-        
+        setIdCheckResult('default');//아이디를 재입력하는 경우에 중복확인 체크버튼 초기화
     };
 
     const handleSubmitSignup = (e) => {
