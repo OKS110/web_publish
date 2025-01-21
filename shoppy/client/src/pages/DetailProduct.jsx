@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PiGiftThin } from "react-icons/pi";
 import axios from "axios";
-import ReturnDelivery from "../components/ReturnDelivery";
+import ReturnDelivery from "../components/ReturnDelivery.jsx";
 import Detail from "../components/Detail.jsx";
 import Review from "../components/Review.jsx";
 import QnA from "../components/QnA.jsx";

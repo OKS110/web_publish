@@ -64,7 +64,7 @@ export default function Qna() {
                     previousLabel={'<'} // 이전 페이지 텍스트
                     nextLabel={'>'} // 다음 페이지 텍스트
 
-                    forcePage={page +1} // 현재 페이지
+                    forcePage={page + 1} // 현재 페이지
                     pageCount={totalPages} // 총 페이지 수
                     onPageChange={handlePageChange} // 페이지 변경 핸들링 함수
 
