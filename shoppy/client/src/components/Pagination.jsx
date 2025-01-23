@@ -26,6 +26,7 @@ export default function Pagination({page, totalPages, currentPage, setPage}) {
         setPage(totalPages);
     }
 
+    //
     return (
         <>
         <ul className='qna-paginate-ul'>

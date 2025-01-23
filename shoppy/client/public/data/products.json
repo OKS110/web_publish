@@ -6,7 +6,12 @@
         "image" : "/images/1.webp",
         "name" : "분홍 후드티",
         "price" : 15000,
-        "info" : "분홍색 후드티"
+        "info" : "분홍색 후드티",
+        "imgList": [
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/15.jpg",
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/15.jpg",
+            "http://qhdrus123.cafe24.com/web/24fall/Cashmere%20Balmacaan%20Coat_black/15.jpg"
+        ]
     },
     {
         "pid" : "2",

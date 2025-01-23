@@ -11,6 +11,9 @@
 .bold{
   font-weight: bold;
 }
+button{
+  cursor: pointer;
+}
 /**
     Commons
   */
@@ -335,9 +338,8 @@ p {
 }
 
 /****************Review***************************/
-.review-all{
+/* .review-all{
   width: 1200px;
-  /* border: 1px solid red; */
 }
 .review-tap{
   list-style-type: none;
@@ -367,7 +369,6 @@ p {
   padding: 20px 0;
   justify-content: space-between;
 }
-/* 25. 01. 22 수정 */
 .review-box table, .review-box tr:not(:last-child){
   border-bottom: 1px solid silver;
   border-collapse: collapse;
@@ -380,10 +381,8 @@ p {
 }
 
 .review-star{
-  /* border: 1px solid orange; */
   padding: 0 5px;
   width: 140px;
-  /* width: 125px; */
   height: 20px;
   text-align: center;
 }
@@ -399,13 +398,10 @@ p {
 }
 
 .review-detail-top{
-  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
 }
-/* .review-detail-top-left{
  
-} */
 .review-detail-top-left h5:first-child {
   padding: 5px 0;
 }
@@ -421,7 +417,6 @@ p {
 }
 .review-detail-size {
   list-style-type: none;
-  /* border: 1px solid blue; */
   display: flex;
   gap: 10px;
   padding: 10px 0;
@@ -445,7 +440,6 @@ p {
   padding: 10px 0;
 }
 .review-bottom{
-  /* background-color: antiquewhite; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -474,7 +468,6 @@ p {
   padding: 0 10px;
 }
 .review-next-page{
-  /* border: 1px solid red; */
   text-align: center;
   padding: 40px 0;
 }
@@ -482,37 +475,12 @@ p {
   padding: 0 10px;
 }
 
-/* .review-product-like-box{
-   border: 3px solid red;
-} */
 .review-product-like-top {
   display: flex;
-  /* border: 1px solid green; */
   justify-content: space-between;
 }
 
-/* star */
-.review-product-like-left .rating-star{
-  /* background-color: skyblue; */
-  width: 125px;
-  height: 20px;
-}
 
-.star-flex {
-  display: flex;
-  gap: 10px;
-  padding: 20px 0 0;
-}
-.star-flex span{
-  font-size: 30px;
-  font-weight: 700;
-}
-.star-flex span:last-child{
-  color: gray;
-}
-.star-flex span:nth-child(3){
-  font-weight: 100;
-}
 
 .review-product-like-left .star{
   display: block;
@@ -527,12 +495,10 @@ p {
 }
 .review-product-like-top {
   display: flex;
-  /* border: 1px solid green; */
   justify-content: space-between;
 }
 .review-product-like-left{
   padding: 30px 0;
-  /* border: 1px solid green; */
 
 }
 .review-product-like-left h5 {
@@ -552,7 +518,6 @@ p {
   list-style-type: none;
   padding: 50px 10px 30px ;
   font-size: 13px;
-  /* border: 1px solid blue; */
   width: 260px;
 }
 .review-product-rate-box li {
@@ -566,19 +531,16 @@ p {
 }
 .review-product-rate-flex {
   display: flex;
-  /* border: 1px solid red; */
   justify-content: space-between;
   align-items: center;
   text-align: center;
 }
 .review-product-rate-flex span:first-child{
-  /* border: 1px solid red; */
   width: 50px;
   text-align: left;
 }
 
 .review-product-rate-bar-box {
-  /* border: 1px solid blue; */
   width: 130px;
 }
 .review-product-rate-bg-bar {
@@ -599,7 +561,7 @@ p {
 }
 .review-product-like-rate {
   font-size: 30px;
-}
+} */
 /* ********************************** RETURN DELIVERY ************************************ */
 .product-detail-tab-return-delivery .rd-title{
   font-size: 18px;
@@ -829,6 +791,7 @@ p {
   cursor: pointer;
 }
 
+/* tab menu를 눌렀을 때 */
 .onClick {
   border: 1px solid black;
   border-bottom: none;
@@ -837,4 +800,126 @@ p {
 .una-qna-list {
   width: 1200px;
   margin: 0 auto;
+}
+
+/* review */
+
+.pdt_review--summary{
+  background-color: yellow;
+}
+.pdt_review--grade{
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+.star-grade pull-left .star-grade {
+  width: 182px;
+  height: 30px;
+  margin-right: 20px;
+  background-image: url(//static.wconcept.co.kr/web/images/common/svg/ico_evaluate_empty_30.svg);
+}
+.pdt_contents.pdt_review .pdt_review--grade .star-grade strong {
+  background-image: url(//static.wconcept.co.kr/web/images/common/svg/ico_evaluate_fIll_30.svg);
+}
+.star-grade {
+  width: 100px;
+  height: 16px;
+  background: transparent url(//static.wconcept.co.kr/web/images/common/svg/ico_star_rating_empty.svg) 0 center no-repeat;
+  background-size: contain;
+}
+.star-grade strong {
+  display: block;
+  height: 100%;
+  background: transparent url(//static.wconcept.co.kr/web/images/common/svg/ico_star_rating_fill.svg) 0 center no-repeat;
+  background-size: auto 100%;
+}
+.pdt_review--scores{
+  display: flex;  gap: 50px;
+  /* background-color: gray; */
+  justify-content: space-between;
+}
+.pull-left{
+  background-color: beige;
+}
+.pdt_review--per{
+  display: flex;
+  align-items: center;
+  width: 250px;
+  gap: 30px;
+  justify-content: space-between;
+  background-color: gold;
+}
+.pdt_review--per>strong{
+  display: block;
+  width: 100px;
+  /* background-color: blue; */
+  padding: 0;
+}
+.pdt_review--bar{
+  width: 60%;
+  height: 2px;
+  background-color: #fff;
+  /* background-color: black; */
+}
+.pdt_review--bar>span{
+  display: block;
+  height: 2px;
+  background-color: #000;
+}
+
+/* review bottom */
+.review-bottom{
+  background-color: yellow;
+}
+.pdt_review--sort{
+  display: flex;
+}
+.pdt_review--sort>li>button{
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  color: #808080;
+  padding: 0 13px;
+  border: none;
+  background-color: none;
+  
+}
+.pdt_review--sort>li>button .active{
+  color: #000;
+}
+
+.review-table{
+  width: 100%;
+}
+.review-table td{
+  background-color: gainsboro;
+  position: relative;
+  min-height: 107px;
+  font-family: "ProximaNova-Regular", "Noto Sans KR";
+  padding: 30px 0;
+  vertical-align: top;
+}
+.pdt_review_photo img{
+  background-color: pink;
+  width: 100px;
+}
+.pdt_review_info{
+  display: flex;
+}
+
+.product_review_evaluation{
+  display: flex;
+  gap: 20px;
+}
+.product_review_reaction{
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-arrow{
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }

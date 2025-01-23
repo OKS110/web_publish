@@ -4,9 +4,11 @@ import { useParams } from "react-router-dom";
 import { PiGiftThin } from "react-icons/pi";
 import axios from "axios";
 import Detail from "../components/Detail.jsx";
-import Review from '../components/Review.jsx'
+// import Review from '../components/review/Review.jsx'
+import Review2 from "../components/review2/Review2.jsx";
 import QnA from "../components/QnA.jsx";
 import ReturnDelivery from '../components/ReturnDelivery.jsx'
+import StarRating from "../components/review2/StarRating.jsx";
 // import QnA2 from "../components/QnA2.jsx";
 // import ProductDetailTab from "../components/ProductDetailTab.jsx";
 // import QnA2copy from "../components/QnA2copy.jsx";
@@ -18,29 +20,36 @@ export default function DetailProduct({ addCart }) {
         {'name': 'Q&A'},
         {'name': 'RETURN & DELIVERY'}
     ];
-
+    
 
     const { pid } = useParams();
     const [product, setProduct] = useState({});
     const [size, setSize] = useState("XS"); 
-    const [category, setCategory] = useState('Q&A');
+    const [category, setCategory] = useState('REVIEW');
 
-    const [select, setSelect] = useState('Q&A');
+    const [select, setSelect] = useState('REVIEW');
     const handleChangeSelect = (name) => {
         setSelect(name);
         setCategory(name);
     }
+    
+    // const [imgList, setImgList] = useState([]); // detail, review일 때 이미지 개수가 달라짐
 
     useEffect(() => {
         axios
             .get("/data/products.json") // http://localhost:3000/data/products.json
             .then((res) => {
                 res.data.filter((product) => {
-                    if (product.pid === pid) setProduct(product);
+                    if (product.pid === pid){
+                        setProduct(product);
+                        // setImgList();
+                    }
                 });
             })
             .catch((error) => console.log(error));
     }, []); 
+
+    
     //장바구니 추가 버튼 이벤트
 
     const addCartItem = () => {
@@ -57,28 +66,29 @@ export default function DetailProduct({ addCart }) {
     };  
 
     // 카테고리 선택 이벤트
-    const handleDetail = () => {
-        setCategory('detail');
-    }
+    // const handleDetail = () => {
+    //     setCategory('detail');
+    // }
 
-    const handleReview = () => {
-        setCategory('review');
-    }
+    // const handleReview = () => {
+    //     setCategory('review');
+    // }
 
-    const handleQnA = () => {
-        setCategory('qna');
-    }
-    const handleReturnDelivery = () => {
-        setCategory('returndelivery');
-    }
+    // const handleQnA = () => {
+    //     setCategory('qna');
+    // }
+    // const handleReturnDelivery = () => {
+    //     setCategory('returndelivery');
+    // }
 
     return (
         <div className="content">
             <div className="product-detail-top">
                 <div className="product-detail-image-top">
                     <img src={product.image} />
+                    
                     <ul className="product-detail-image-top-list">
-                        <li>
+                        {/* <li>
                             <img src={product.image} alt="" />
                         </li>
                         <li>
@@ -86,8 +96,8 @@ export default function DetailProduct({ addCart }) {
                         </li>
                         <li>
                             <img src={product.image} alt="" />
-                        </li>
-                    </ul>
+                        </li> */}
+                    </ul> {/** ul 태그를 이미지 리스트로 만들어서 Detail일 때 3개, review일 때 6개 마지막 이미지에 더보기 추가 */}
                 </div>    
                 <ul className="product-detail-info-top">
                     <li className="product-detail-title">{product.name}</li>
@@ -95,6 +105,9 @@ export default function DetailProduct({ addCart }) {
                         {`${parseInt(product.price).toLocaleString()}원`}
                     </li>
                     <li className="product-detail-subtitle">{product.info}</li>
+                    <li>
+                        <StarRating totalRate={4.2} className="star-coral"/> <span>572개 리뷰 &nbsp;&nbsp; {">"}</span>
+                    </li>
                     <li>
                         <p className="product-detail-box">신규회원, 무이자 할부 등</p>
                     </li>
@@ -145,7 +158,7 @@ export default function DetailProduct({ addCart }) {
                 </ul>
                 <div className="una-qna-list">
                     { category === 'DETAIL' ? <Detail /> : null }
-                    { category === 'REVIEW' ? <Review /> : null }
+                    { category === 'REVIEW' ? <Review2 /> : null }
                     { category === 'Q&A' ? <QnA /> : null }
                     { category === 'RETURN & DELIVERY' ? <ReturnDelivery /> : null }
                 </div>

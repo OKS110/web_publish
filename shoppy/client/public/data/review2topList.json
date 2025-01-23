@@ -1,0 +1,63 @@
+[
+    {
+      "category": "사이즈",
+      "items": [
+        {
+          "name": "적당함",
+          "percentage": 50,
+          "highlight": true
+        },
+        {
+          "name": "작음",
+          "percentage": 0,
+          "highlight": false
+        },
+        {
+          "name": "큼",
+          "percentage": 50,
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "category": "색상",
+      "items": [
+        {
+          "name": "같음",
+          "percentage": 100,
+          "highlight": true
+        },
+        {
+          "name": "비슷함",
+          "percentage": 0,
+          "highlight": false
+        },
+        {
+          "name": "다름",
+          "percentage": 0,
+          "highlight": false
+        }
+      ]
+    },
+    {
+      "category": "소재",
+      "items": [
+        {
+          "name": "같음",
+          "percentage": 100,
+          "highlight": true
+        },
+        {
+          "name": "비슷함",
+          "percentage": 0,
+          "highlight": false
+        },
+        {
+          "name": "다름",
+          "percentage": 0,
+          "highlight": false
+        }
+      ]
+    }
+  ]
+  
