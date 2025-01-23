@@ -39,7 +39,7 @@ export default function ReviewBottom() {
 
    /** sliceData 관리 :: 페이지 변경 or 리스트 변동 시 출력 데이터 재정의 **/ 
    useEffect(() => {
-       setSliceData(data.slice(startIdx, endIdx));
+       setSliceData(data.slice(startIdx, endIdx)); //6개씩 쪼개짐
    }, [page, data]);
 
 //    pagination을 누르면 리뷰 첫 번째 리스트로 이동
