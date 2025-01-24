@@ -1,9 +1,10 @@
 import React from "react";
 
 const Pagination = ({ totalPages, page, setPage }) => {
-  const itemsPerPage = 5; // 한 번에 보여줄 페이지 수
-  const totalGroups = Math.ceil(totalPages / itemsPerPage); // 전체 그룹 수 ex) totalPages = 12이면 totalGroups = 3 (12 ÷ 5 = 2.4 → 올림하여 3).
+  const itemsPerPage = 5; // 한 번에 보여줄 버튼 수
+  // const totalGroups = Math.ceil(totalPages / itemsPerPage); // 전체 그룹 수 ex) totalPages = 12이면 totalGroups = 3 (12 ÷ 5 = 2.4 → 올림하여 3). 없어도 된다.
   const currentGroup = Math.floor((page - 1) / itemsPerPage); // 현재 페이지 그룹 계산 ex) page = 6이면 currentGroup = 1 ((6 - 1) ÷ 5 = 1).
+  // 1페이지부터 5페이지까지는 그룹 0, 6페이지부터 10페이지까지는 그룹 1, 11페이지부터 15페이지까지는 그룹 3 ...
 
   const startPage = currentGroup * itemsPerPage + 1; //currentGroup이 1이면 1 * 5 + 1 = 6 , 6페이지부터 스타트
   const endPage = Math.min((currentGroup + 1) * itemsPerPage, totalPages);
@@ -72,7 +73,7 @@ const Pagination = ({ totalPages, page, setPage }) => {
 
 export default Pagination;
 
-// Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i)
+// Array.from({ length: endPage - startPage + 1  얼만큼 나타내줄 거냐 - (ex 무조건 5개씩)}, (_, i) => startPage + i)
 // { length: endPage - startPage + 1 }
 // 이 객체는 length 속성을 가진 단순한 객체다.
 // Array.from은 이 length 값만큼의 빈 배열을 생성한다.
@@ -80,10 +81,10 @@ export default Pagination;
 
 
 // 2. (_, i)
-// Array.from의 두 번째 인자로 들어가는 콜백 함수
+// Array.from의 두 번째 인자로 들어가는 콜백 함수(매핑함수)
 // 콜백 함수는 배열의 각 요소를 생성하기 위해 호출된다.
 // (_, i)에서:
-// _는 현재 요소의 값입니다. (여기서는 필요 없어서 무시하므로 _로 표기)
+// _는 현재 요소의 값이다. (여기서는 필요 없어서 무시하므로 _로 표기)
 // i는 현재 인덱스
 // 예를 들어, 배열의 첫 번째 요소에서 i = 0, 두 번째 요소에서 i = 1이 된다.
 // 3. startPage + i
