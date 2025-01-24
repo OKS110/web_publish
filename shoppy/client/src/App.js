@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+// import Star from './pages/Star';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; //react-router-dom에서 제공하는 컴포넌트
 import Layout from './pages/Layout.jsx';
 import Home from './pages/Home.jsx';
@@ -42,6 +42,7 @@ export default function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+        {/* <Star></Star> */}
     </div>
   );
 }

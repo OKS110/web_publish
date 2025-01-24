@@ -19,7 +19,7 @@ export default function QnA() {
     const currentPage = 1;
     const [sliceData, setSliceData] = useState([]); // 현재 페이지에서 보여줄 리스트(slice)
     // 리스트 slice 범위
-    const endIdx = (page * itemsPerPage); 
+    const endIdx = (page * itemsPerPage);  
     const startIdx = endIdx - itemsPerPage;
 
     /** Data 호출 **/ 

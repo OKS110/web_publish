@@ -923,3 +923,47 @@ p {
   justify-content: center;
   gap: 5px;
 }
+
+
+
+.review-top-imglist {
+  border: 1px solid rgb(115, 0, 255);
+  display: flex;
+  justify-content: space-between;
+  /* gap: 15px; */
+  list-style-type: none;
+  padding: 40px 0;
+}
+.review-top-imglist img {
+  width: 160px;
+  border: 1px solid red;
+}
+.review-top-imglist img:hover, .review-top-imglist-metadata2:hover {
+  cursor: pointer;
+}
+.review-top-img-metadata {
+  position: relative;
+  overflow: hidden;
+}
+.review-top-imglist-metadata {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 100%;
+  opacity: 0.5;
+  background-color: #777; 
+  border-bottom: 5px solid #fff;
+}
+.review-top-imglist-metadata2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  padding: 78px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}

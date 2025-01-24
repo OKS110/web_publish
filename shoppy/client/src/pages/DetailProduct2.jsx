@@ -9,6 +9,7 @@ import Review2 from "../components/review2/Review2.jsx";
 import QnA from "../components/QnA.jsx";
 import ReturnDelivery from '../components/ReturnDelivery.jsx'
 import StarRating from "../components/review2/StarRating.jsx";
+import ImageList from "../components/review2/ImgList.jsx";
 // import QnA2 from "../components/QnA2.jsx";
 // import ProductDetailTab from "../components/ProductDetailTab.jsx";
 // import QnA2copy from "../components/QnA2copy.jsx";
@@ -33,7 +34,7 @@ export default function DetailProduct({ addCart }) {
         setCategory(name);
     }
     
-    // const [imgList, setImgList] = useState([]); // detail, review일 때 이미지 개수가 달라짐
+    const [imgList, setImgList] = useState([]); // detail, review일 때 이미지 개수가 달라짐
 
     useEffect(() => {
         axios
@@ -42,7 +43,7 @@ export default function DetailProduct({ addCart }) {
                 res.data.filter((product) => {
                     if (product.pid === pid){
                         setProduct(product);
-                        // setImgList();
+                        setImgList(product.imgList);
                     }
                 });
             })
@@ -65,39 +66,16 @@ export default function DetailProduct({ addCart }) {
         addCart(cartItem); // App.js의 addCart 함수 호출
     };  
 
-    // 카테고리 선택 이벤트
-    // const handleDetail = () => {
-    //     setCategory('detail');
-    // }
-
-    // const handleReview = () => {
-    //     setCategory('review');
-    // }
-
-    // const handleQnA = () => {
-    //     setCategory('qna');
-    // }
-    // const handleReturnDelivery = () => {
-    //     setCategory('returndelivery');
-    // }
-
     return (
         <div className="content">
             <div className="product-detail-top">
                 <div className="product-detail-image-top">
                     <img src={product.image} />
                     
-                    <ul className="product-detail-image-top-list">
-                        {/* <li>
-                            <img src={product.image} alt="" />
-                        </li>
-                        <li>
-                            <img src={product.image} alt="" />
-                        </li>
-                        <li>
-                            <img src={product.image} alt="" />
-                        </li> */}
-                    </ul> {/** ul 태그를 이미지 리스트로 만들어서 Detail일 때 3개, review일 때 6개 마지막 이미지에 더보기 추가 */}
+
+                        <ImageList className="product-detail-image-top-list"
+                                imgList={imgList}/>
+                                 {/** ul 태그를 이미지 리스트로 만들어서 Detail일 때 3개, review일 때 6개 마지막 이미지에 더보기 추가 */}
                 </div>    
                 <ul className="product-detail-info-top">
                     <li className="product-detail-title">{product.name}</li>

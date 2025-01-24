@@ -5,8 +5,8 @@ const Pagination = ({ totalPages, page, setPage }) => {
   const totalGroups = Math.ceil(totalPages / itemsPerPage); // 전체 그룹 수 ex) totalPages = 12이면 totalGroups = 3 (12 ÷ 5 = 2.4 → 올림하여 3).
   const currentGroup = Math.floor((page - 1) / itemsPerPage); // 현재 페이지 그룹 계산 ex) page = 6이면 currentGroup = 1 ((6 - 1) ÷ 5 = 1).
 
-  const startPage = currentGroup * itemsPerPage + 1; //currentGroup이 이면 1 * 5 + 1 = 6 , 6페이지부터 스타트
-  const endPage = Math.min((currentGroup + 1) * itemsPerPage, totalPages); 
+  const startPage = currentGroup * itemsPerPage + 1; //currentGroup이 1이면 1 * 5 + 1 = 6 , 6페이지부터 스타트
+  const endPage = Math.min((currentGroup + 1) * itemsPerPage, totalPages);
 //  endPage: 현재 그룹의 마지막 페이지를 계산.
 //  Math.min을 사용하여 총 페이지(totalPages)를 초과하지 않도록 제한.
 //  예: currentGroup = 1, totalPages = 12이면 endPage = 10 (2 × 5 = 10).
