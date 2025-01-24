@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Pasination from './Pagination.jsx'
+import Pagination from './Pagination.jsx'
 
 export default function QnA() {
     /** Date **/
@@ -53,7 +53,7 @@ export default function QnA() {
                 )) }
                 </tbody>
             </table>
-            <Pasination page={page} 
+            <Pagination page={page} 
                         totalPages={totalPages}
                         currentPage={currentPage} 
                         setPage={setPage}
