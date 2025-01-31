@@ -12,5 +12,4 @@ router.get('/:pname', controller.getProductName);
 
 
 
-
 export default router;

@@ -23,7 +23,6 @@ server.use('/hello', helloRouter); // hello로 시작하는 주소는 모두 hel
 server.use('/product', productRouter);
 // server.get('/product/all', productRouter);
 // server.get('/product/:pname', productRouter);
-
 // server.get('/hello', (req, res) => {
 //     console.log("HELLO~ NodeJs~!!!");
 //     res.send('<h1>반갑습니다. 클라이언트</h1>');
