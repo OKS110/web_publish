@@ -12,10 +12,11 @@ export const getEmployeeAll = async() => {
             salary,
             concat(format(salary, 0), '원') as osalary
         from employee
+        where emp_id = ?;
         `;
-
+        const values = ['s0003'];
         // 2. db.js의 connection을 이용하여 실행한 후 결과 가져오기
-    const [employees, fields] = await db.execute(sql)
+    const [employees, fields] = await db.execute(sql, values)
         .then(result => result) //[ res:[], fields:[]]
         .catch(error => console.log(error));
 
