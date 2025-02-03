@@ -8,3 +8,37 @@
     npm i react-router-dom      # 리액트 라우터 돔 패키지 설치
     npm i axios                 # axios 패키지 설치
     npm i react-icons           # 리액트 제공 아이콘 패키지 설치
+
+3. NodeJS 서버 생성 : server
+    
+    1. 프로젝트디렉토리 > mkdir server
+    
+    npm init --yes             : 프로젝트 초기화 - node모듈 설치
+    npm i express --save       : 익스프레스 서버 라이브러리 설치
+    npm i mysql2               : mysql 연동 라이브러리 설치 - 2로 받아야 promise로 받을 수 있음.
+    npm i cors                 : 리액트 연동 시 특정 도메인 허용 라이브러리 설치
+    npm i nodemon -g --save-dev
+    
+    2. cat package.json > 설치가 제대로 이루어 졌는지 확인
+    {
+    "name": "server",
+    "version": "1.0.0",
+    "main": "index.js",
+    ***** "type": "module", ***** 추가할 것 module일때 반드시 import시 확장자 적어야함
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+    },
+    "devDependencies": {
+    "nodemon": "^3.1.9"
+    }
+    }
+    3. nodemon server.js : 서버 실행

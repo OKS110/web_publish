@@ -1,12 +1,8 @@
-// 일반 자바스크립트 함수로 생성
-// function 컨트롤러함수명(req, res){}
 export const getHello = (req, res) => {
-    console.log('helloController!');
-    res.send(`server.js > helloRouter > helloController:getHello`); //브라우저에서 문자열 출력
-    res.end(); //응답 없이 종료
+    res.send('<h3>Hello~</h3>');
+    res.end();
 };
-
-export const getHelloParam = (req, res) => {
-    console.log(`서버로 요청된 파라미터 ====>> ${req.params.id}`);
-    res.end();  
+export const getHelloTest = (req, res) => {
+    res.send('test~!!');
+    res.end();
 };
