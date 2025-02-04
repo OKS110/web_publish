@@ -15,9 +15,10 @@ return (
                 <Link to='/signup'>
                     <button type="button">Signup</button>
                 </Link>
-                <Link to='/employees'>
+                {/* <Link to='/employees'>
                     <button type= "button">Employees</button>
-                </Link>
+                </Link> */}
+                
             </nav>
         </div>
     </div>

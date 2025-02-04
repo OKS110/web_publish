@@ -1,5 +1,8 @@
+import axios from "axios";
 
 
+
+// 로그인 폼 체크
 export const validateLogin = ({idRef, pwdRef}) => {
     if(idRef.current.value === ''){
         alert('아이디를 입력해주세요');
@@ -69,19 +72,22 @@ export const validateSignup = (refs, msgRefs, errorMsg, setErrorMsg, namesStr) =
             idRef.current.focus();
             return false;
         }else{
-            const did = 'test';
-            if(idRef.current.value === did){
-                alert('중복된 아이디입니다.');
-                idRef.current.value = '';
-                return false;
-            }else{
-                alert('사용가능');
-                // idCheckResultRef.current.value = 'complete';
-                setIdCheckResult("complete");
-                pwdRef.current.focus();
-                return false;
-            }
-            
+            // 아이디 중복 체크 <--> 서버 연동
+            axios.post('http://localhost:9000/member/idcheck', {"id":idRef.current.value})
+                    .then(res => {
+                         if(res.data.result === 1){
+                            alert('중복된 아이디입니다.');
+                            idRef.current.focus();
+                            return false;
+                        }else{
+                            alert('사용가능');
+                            // idCheckResultRef.current.value = 'complete';
+                            setIdCheckResult("complete");
+                            pwdRef.current.focus();
+                            return false;
+                        }
+                        })
+                    .catch(error => console.log(error));
         }
     };
 

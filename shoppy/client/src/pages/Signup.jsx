@@ -1,9 +1,12 @@
 import React from 'react';
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/signup.css';
 import { validateSignup, handleDuplicateIdCheck, handlePasswordCheck } from '../utils/funcValidate.js';
 import { initSignup, useInitSignupRefs } from '../utils/funcInitialize.js';
+import axios from 'axios';
 export default function Signup() {
+    const navigate = useNavigate();
     const {names, initForm, labels, placeholders, namesStr}= initSignup();
     const { refs, msgRefs} = useInitSignupRefs(names);
     
@@ -32,7 +35,32 @@ export default function Signup() {
                 return false;
             }else{
                 console.log('submit --->', formData);
-                
+                //  서버 --> DB 테이블에 insert
+                // GET : URL 통해 호출 및 데이터 전달 => 패킷의 Header => req.params, 보안에 취약함, 작은데이터에 용이
+                // POST : URL 주소로 경로 호출, 데이터 전달 => 패킷의 BODY => req.body, 보안에 강함. 큰 데이터에 용이
+                // axios.post('경로', {전송할 객체})
+                //         .then()
+                //         .catch(error => console.log(error));
+
+                axios.post('http://localhost:9000/member/signup', formData) //formData는 컨트롤러로 전송되어야 한다.
+                        .then(res => {
+                            if(res.data.result_rows === 1){
+                                alert('회원가입에 성공하셨습니다.');
+                                // window.location.href = '/login';
+
+                                setTimeout(() => {
+                                    navigate('/login');
+                                }, 3000); //3초 후에 로그인 페이지로 이동
+                                
+
+                            }else{
+                                alert('회원가입 실패');
+                            }
+                        })
+                        .catch(error => {
+                            alert('회원가입 실패');
+                            console.log(error);
+                        });                              
             }
             
         }
