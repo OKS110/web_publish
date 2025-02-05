@@ -10,6 +10,7 @@ import Signup from './pages/Signup.jsx';
 import DetailProduct2 from './pages/DetailProduct2.jsx';
 // import Employees from './pages/Employees.jsx';
 import './styles/shoppy.css';
+import { AuthProvider } from './auth/AuthContext.js';
 
 export default function App() {
   //장바구니 아이템 저장 : 배열
@@ -31,6 +32,7 @@ export default function App() {
 
   return (
     <div>
+      <AuthProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Layout cartCount={cartCount}/>}>
@@ -44,6 +46,7 @@ export default function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+        </AuthProvider>
         {/* <Star></Star> */}
     </div>
   );

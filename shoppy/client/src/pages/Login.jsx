@@ -1,11 +1,15 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import axios from 'axios';
+import { useState, useRef, useContext } from 'react';
 import '../styles/login.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { validateLogin } from '../utils/funcValidate.js';
-
+import {useNavigate} from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext.js';
 export default function Login() {
+    const {idLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+    const navigate = useNavigate();
     const [form, setForm] = useState({'id' : "", "pwd" : ""});
     
     // const idRef = useRef(null);
@@ -30,7 +34,33 @@ export default function Login() {
 
         if(validateLogin(refs, msgRefs)) {
                console.log('send data', form);
-            // 리액트 --> 노드서버(express) 데이터 전송
+            // 브라우저의 로컬스토리지 영역에 아이디, 패스워드 저장 - 브라우저에서 개발자도구 => application
+            // localStorage.setItem("userId", form.id);
+            // localStorage.setItem("userPassword", form.pwd);
+
+            // console.log(localStorage.getItem('userId'));
+            // localStorage.removeItem("userId");
+            // localStorage.clear();
+            
+            // 리액트 --> 노드서버(express) 데이터 전송 로그인
+            axios
+                .post('http://localhost:9000/member/login', form) //form은 객체타입이어서 그대로 넣어도 됨.({ id: "test", pwd: "1234" })
+                .then(res => {
+                    // console.log('res.data ==> ', res.data)
+                    if(res.data.result_rows === 1){
+                        alert('로그인 성공');
+                        localStorage.setItem("token", res.data.token);
+                        setIsLoggedIn(true);
+                        navigate('/');
+                    }else{
+                        alert('로그인 실패');
+                    }
+                })
+                .catch(error => {
+                    alert('로그인 실패');
+                    console.log(error);
+                    
+                });
 
         };
     };

@@ -26,4 +26,10 @@ select * from shoppy_member;
 delete from shoppy_member where id = 'asdfd';
 
 -- 'test' 중복체크 : 결과를 count 함수로 반환 - 0: 사용가능, 1: 사용불가능
-select count(id) from shoppy_member where id = 'test11';
+select count(id) as result from shoppy_member where id = 'test9';
+
+select * from shoppy_member;
+
+-- login
+select count(*) as result_rows from shoppy_member
+	where id = 'test11' and pwd = '1111'; 
