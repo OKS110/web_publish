@@ -2,6 +2,7 @@ show databases;
 use admin_db;
 use customer_db;
 use products_db;
+select * from products;
 show tables;
 select * from customers;
 
@@ -116,5 +117,6 @@ CREATE TABLE products (
 );
 select * from products where category = 'Bottoms';
 select * from customers;
-drop table customers;
+select * from cart;
+
 show databases;
