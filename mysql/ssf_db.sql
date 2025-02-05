@@ -59,11 +59,11 @@ CREATE TABLE customers (
     password VARCHAR(255) NOT NULL,
     address VARCHAR(255),
     birth_date DATE,
-    membership_level ENUM('Silver', 'Gold', 'Platinum') DEFAULT 'Silver',
+    membership_level ENUM('Bronze','Silver', 'Gold', 'Platinum') DEFAULT 'Silver',
     last_login DATETIME
 );
-ALTER TABLE customers MODIFY COLUMN membership_level ENUM('Bronze', 'Silver', 'Gold', 'Platinum') DEFAULT 'Silver';
-ALTER TABLE customers MODIFY COLUMN phone VARCHAR(50) NOT NULL;
+-- ALTER TABLE customers MODIFY COLUMN membership_level ENUM('Bronze', 'Silver', 'Gold', 'Platinum') DEFAULT 'Silver';
+-- ALTER TABLE customers MODIFY COLUMN phone VARCHAR(50) NOT NULL;
 
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -117,3 +117,4 @@ CREATE TABLE products (
 select * from products where category = 'Bottoms';
 select * from customers;
 drop table customers;
+show databases;
