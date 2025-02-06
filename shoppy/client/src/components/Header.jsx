@@ -31,6 +31,13 @@ return (
                     <button type="button">Signup</button>
                 </Link>
                 
+                {
+                    isLoggedIn &&
+                    <Link to='/products/new'>
+                    <button type="button">New Product</button>
+                    </Link>
+                }
+                
                     <button type="button" onClick={handleLoginToggle}>
                         {isLoggedIn ? "Logout":"Login"}
                     </button>

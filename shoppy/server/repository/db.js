@@ -12,6 +12,7 @@ const pool = mysql.createPool({
     user: 'root',
     password: 'mysql1234',
     database: 'hrdb2019',
+    
   });
 
   export const db = pool.promise();
