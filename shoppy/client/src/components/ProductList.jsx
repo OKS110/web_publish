@@ -6,12 +6,21 @@ export default function ProductList() {
     const [list, setList] = useState([]); // list 변경 시 실시간 업데이트
 
     useEffect(() => {
-        axios.get('data/products.json') //서버와 서버끼리 연결할 때 사용
-        .then((res) => {
-            console.log('data --> ', res.data);
-            setList(res.data);
-        })
-        .catch(err => console.log(err));
+        // axios.get('data/products.json') //서버와 서버끼리 연결할 때 사용
+        // .then((res) => {
+        //     console.log('data --> ', res.data);
+        //     setList(res.data);
+        // })
+        // .catch(err => console.log(err));
+
+        axios
+            .get('http://localhost:9000/product/all')
+            .then(res => {
+                console.log(res.data);
+                
+                setList(res.data);
+            })
+            .catch(error => console.log(error))
 
     }, []);
     
@@ -29,7 +38,7 @@ return (
                 <div className="product-list">
                     {rowArray.map((product) => 
                         <Link to ={`/products/${product.pid}`} key={product.pid}>
-                            <ProductAvata img={product.image}></ProductAvata>
+                            <ProductAvata img={`${product.image}`}></ProductAvata>
                         </Link>
                     )
                     }

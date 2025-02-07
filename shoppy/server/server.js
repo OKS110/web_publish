@@ -5,6 +5,7 @@ import express from 'express';
 import cors from 'cors';
 import memberRouter from './router/memberRouter.js';
 import uploadRouter from './router/uploadRouter.js';
+import productRouter from './router/productRouter.js'
 import path from 'path';
 
 // 서버 생성 및 포트 지정
@@ -26,7 +27,7 @@ server.use('/member', memberRouter);
 
 // 업로드 - repository는 필요 없다.
 server.use('/uploads', uploadRouter);
-
+server.use('/product', productRouter);
 
 server.listen(port, () => {
     console.log(`server port ===>> ${port}`);        
