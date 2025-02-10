@@ -3,16 +3,24 @@ import {db} from './db.js';
 
 // 전체 상품 조회
 export const getList = async () => {
+    // const sql = `
+    //     select 
+    //         pid, pname as name,
+    //         price, description as info,
+    //         concat('http://localhost:9000/', upload_file) as image, 
+    //         source_file,
+    //         pdate
+    //     from shoppy_product
+
+    // `;
     const sql = `
         select 
             pid, pname as name,
             price, description as info,
-            concat('http://localhost:9000/', upload_file) as image, 
+            concat('http://localhost:9000/', upload_file->>'$[0]') as image, 
             source_file,
             pdate
-        from shoppy_product
-
-    `;
+        from shoppy_product`; //->> 는 데이터타입이 json인 경우에 가능
     const [result] = await db.execute(sql);
     console.log("result ==> ", result);
     
@@ -29,10 +37,10 @@ export const registerProduct = async (formData) => {
     `;
     const values = [
         formData.productName,
-        formData.price,
-        formData.description,
-        formData.uploadFile,
-        formData.sourceFile
+        formData.price || 0,
+        formData.description || "",
+        formData.uploadFile || null,
+        formData.sourceFile || null
     ];
     const [result] = await db.execute(sql, values);
     return {'result_rows' : result.affectedRows};

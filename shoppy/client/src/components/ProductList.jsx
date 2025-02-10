@@ -29,7 +29,7 @@ export default function ProductList() {
     for(let i = 0; i < list.length; i+=3){ //[{0},{1},{2}]
         rows.push(list.slice(i, i + 3)); //[{0},{1},{2}]
     }
-    console.log(rows);
+    console.log("rows", rows);
     
 return (
     <div>
