@@ -15,3 +15,10 @@ export const registerProduct = async (req, res) => {
     res.end();
 };
 
+
+// 상품 상세 정보 조회
+export const getProduct = async (req, res) => {
+    const result = await repository.getProduct(req.body.pid); // req.body = {"pid":pid}
+    res.json(result);
+    res.end();
+};

@@ -34,22 +34,31 @@ export default function DetailProduct({ addCart }) {
         setCategory(name);
     }
     
+    
     const [imgList, setImgList] = useState([]); // detail, review일 때 이미지 개수가 달라짐
-
+    const [detailImgList, setDetailImgList] = useState([]);
+    
     useEffect(() => {
         axios
-            .get("/data/products.json") // http://localhost:3000/data/products.json
+            .post("http://localhost:9000/product/detail", {"pid" : pid})
             .then((res) => {
-                res.data.filter((product) => {
-                    if (product.pid === pid){
-                        setProduct(product);
-                        setImgList(product.imgList);
-                    }
-                });
+                console.log("res.data ==> ", res.data);
+                setProduct(res.data);
+                //uploadFile 배열의 3개 이미지를 가져와서 출력 형태로 생성하여 배열에 저장
+                // const imgList = res.data.uploadFile.filter((image, index) => (index<3) && image
+                //     // if(index < 3) { //res.data.uploadFile.length
+                //     //     return image;
+                //     // }
+                // );
+                // setImgList(imgList);
+                setImgList(res.data.imgList);
+                setDetailImgList(res.data.detailImgList);
             })
             .catch((error) => console.log(error));
     }, []); 
 
+    console.log("imgList ===> ", imgList);
+    
     
     //장바구니 추가 버튼 이벤트
 
@@ -71,8 +80,7 @@ export default function DetailProduct({ addCart }) {
             <div className="product-detail-top">
                 <div className="product-detail-image-top">
                     <img src={product.image} />
-                    
-
+                
                         <ImageList className="product-detail-image-top-list"
                                 imgList={imgList}/>
                                  {/** ul 태그를 이미지 리스트로 만들어서 Detail일 때 3개, review일 때 6개 마지막 이미지에 더보기 추가 */}
@@ -135,7 +143,7 @@ export default function DetailProduct({ addCart }) {
                     )) }
                 </ul>
                 <div className="una-qna-list">
-                    { category === 'DETAIL' ? <Detail /> : null }
+                    { category === 'DETAIL' ? <Detail imgList = {detailImgList} /> : null }
                     { category === 'REVIEW' ? <Review2 /> : null }
                     { category === 'Q&A' ? <QnA /> : null }
                     { category === 'RETURN & DELIVERY' ? <ReturnDelivery /> : null }
