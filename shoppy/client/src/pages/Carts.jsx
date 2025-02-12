@@ -23,6 +23,7 @@ export default function Carts() {
                     const matchedItem = res.data.find(dataItem => dataItem.pid === item.pid);
                     return matchedItem ? { 
                         ...item,
+                    
                         pname: matchedItem.pname,
                         price: matchedItem.price,
                         description: matchedItem.description,
