@@ -16,27 +16,59 @@ import NewProduct from './pages/NewProduct.jsx';
 export default function App() {
   //장바구니 아이템 저장 : 배열
 
-  const [cartList, setCartList] = useState([]); //장바구니 아이템 저장 : 배열
-  const [cartCount, setCartCount] = useState(0); //장바구니 상품 개수
+  const [cartList, setCartList] = useState(() => {
+    try{
+      const initCartList = localStorage.getItem('cartItems');
+      return initCartList ? JSON.parse(initCartList) : [];
+
+    }catch(error){
+      console.log('로컬스토리지 데이터 작업 도중 에러 발생');
+      console.log(error);
+    }
+  });
+  
+  const [cartCount, setCartCount] = useState(() => {
+    try{
+      const initCartList = localStorage.getItem('cartItems');
+      return initCartList ? JSON.parse(initCartList).length : 0;
+
+    }catch(error){
+      console.log('로컬스토리지 데이터 작업 도중 에러 발생');
+      console.log(error);
+    }
+  }); //장바구니 상품 개수
 
   // cartCount가 업데이트가 되면 localStorage에 cartList를 저장
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cartList)); //JSON.stringfy가 없으면 [object Object] 형태
-    }, [cartCount])
+    }, [cartList])
 
   // 장바구니 추가
   const addCart = (cartItem) => {
     // console.log(cartItem);
     // 입력받은 cartItem이 cartList에 존재하면 qty+1, 존재하지 않으면 새로 추가
-    const updateCartList = cartList.some(checkItem => checkItem.pid === cartItem.pid && checkItem.size === cartItem.size) ?
-        cartList.map(item => item.pid === cartItem.pid && item.size === cartItem.size ?
-          {...item, qty:item.qty+1} : item
-        ) 
-        : [...cartList, cartItem]; //some() - 배열을 보고 true, false 반환
+    // const updateCartList = cartList.some(checkItem => checkItem.pid === cartItem.pid && checkItem.size === cartItem.size) ?
+    //     cartList.map(item => item.pid === cartItem.pid && item.size === cartItem.size ?
+    //       {...item, qty:item.qty+1} : item
+    //     ) 
+    //     : [...cartList, cartItem]; //some() - 배열을 보고 true, false 반환
+    const isCheck = cartList.some(checkItem => checkItem.pid === cartItem.pid && checkItem.size === cartItem.size);
 
+    let updateCartList = [];
 
+    if(isCheck){
+      updateCartList = cartList.map(item => item.pid === cartItem.pid && item.size === cartItem.size ? 
+        {...item, qty:item.qty+1}
+        :item)
+    }else{
+      updateCartList = [...cartList, cartItem];
+      setCartCount(cartCount + 1);
+    }
+
+    // const sortUpdateCartList = updateCartList.sort((a, b) => a.pid - b.pid); //오름차순 정렬
+    // setCartList(sortUpdateCartList);
     setCartList(updateCartList);
-    setCartCount(cartCount + 1);
+    
   };
 
   console.log('cartcount', cartCount);
