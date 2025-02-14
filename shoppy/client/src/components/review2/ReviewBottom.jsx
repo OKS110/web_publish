@@ -44,14 +44,14 @@ export default function ReviewBottom() {
 
 //    pagination을 누르면 리뷰 첫 번째 리스트로 이동
    const tableRef = useRef(null); // ReviewBottomTable의 스크롤 위치 참조
-   useEffect(() => {
-       if (tableRef.current) {
-           window.scrollTo({
-               top: tableRef.current.offsetTop - "25", // 테이블 위치로 스크롤
-               behavior: "smooth", // 부드럽게 이동
-           });
-       }
-   }, [page]);
+//    useEffect(() => {
+//        if (tableRef.current) {
+//            window.scrollTo({
+//                top: tableRef.current.offsetTop - "25", // 테이블 위치로 스크롤
+//                behavior: "smooth", // 부드럽게 이동
+//            });
+//        }
+//    }, [page]);
 
 
 return (

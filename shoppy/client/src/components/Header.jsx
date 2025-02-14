@@ -15,7 +15,7 @@ export default function Header({cartCount}) {
                 localStorage.removeItem('user_id');
                 setIsLoggedIn(false);                
                 navigate('/');
-                }            
+                }
         }else{ // 로그인 버튼 클릭
             navigate('/login');
         }
