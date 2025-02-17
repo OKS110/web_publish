@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'; //react-router-do
 import Layout from './pages/Layout.jsx';
 import Home from './pages/Home.jsx';
 import Products from './pages/Products.jsx';
+// import Carts from './pages/CartsBackup.jsx';
 import Carts from './pages/Carts.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
@@ -13,9 +14,11 @@ import './styles/shoppy.css';
 import { AuthProvider } from './auth/AuthContext.js';
 import NewProduct from './pages/NewProduct.jsx';
 import CartsDB from './pages/CartsDB.jsx';
+// import CartsBackup from './pages/CartsBackup.jsx';
+import {CartProvider} from './context/CartContext.js'
 
 export default function App() {
-  //장바구니 아이템 저장 : 배열
+  // //장바구니 아이템 저장 : 배열
 
   const [cartList, setCartList] = useState(() => {
     try{
@@ -39,7 +42,7 @@ export default function App() {
     }
   }); //장바구니 상품 개수
 
-  // 로컬스토리지 재호출 --> cartList, cartCount 업데이트
+  // // 로컬스토리지 재호출 --> cartList, cartCount 업데이트
   const refreshStorage = (updateCart, updateCount) => {
     setCartList(updateCart);
     setCartCount(updateCount);
@@ -78,20 +81,21 @@ export default function App() {
     
   };
 
-  console.log('cartcount', cartCount);
+  // console.log('cartcount', cartCount);
   
-  console.log('cartList', cartList);
+  // console.log('cartList', cartList);
   
 
   return (
     <div>
+      <CartProvider>
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Layout cartCount={cartCount}/>}>
+            <Route path='/' element={<Layout/>}>
                     <Route index element={<Home/>}></Route>
                     <Route path='/all' element={<Products/>}></Route>    
-                    <Route path='/cart' element={<Carts refreshStorage = {refreshStorage}/>}></Route>    
+                    <Route path='/cart' element={<Carts refreshStorage={refreshStorage}/>}></Route>    
                     <Route path='/login' element={<Login/>}></Route>    
                     <Route path='/signup' element={<Signup/>}></Route>    
                     {/* <Route path='/employees' element= {<Employees/>}></Route> */}
@@ -102,6 +106,7 @@ export default function App() {
           </Routes>
         </BrowserRouter>
         </AuthProvider>
+        </CartProvider>
         {/* <Star></Star> */}
     </div>
   );

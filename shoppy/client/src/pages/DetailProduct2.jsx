@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import ReactDom from 'react-dom';
 import { useParams } from "react-router-dom";
 import { PiGiftThin } from "react-icons/pi";
@@ -13,16 +13,21 @@ import ImageList from "../components/review2/ImgList.jsx";
 // import QnA2 from "../components/QnA2.jsx";
 // import ProductDetailTab from "../components/ProductDetailTab.jsx";
 // import QnA2copy from "../components/QnA2copy.jsx";
+import { CartContext } from "../context/CartContext.js";
+import { AuthContext } from "../auth/AuthContext.js";
+import { useNavigate } from "react-router-dom";
+export default function DetailProduct({}) {
 
-export default function DetailProduct({ addCart }) {
+
+    const navigate = useNavigate();
     const tabList = [
         {'name': 'DETAIL'},
         {'name': 'REVIEW'},
         {'name': 'Q&A'},
         {'name': 'RETURN & DELIVERY'}
     ];
-    
-
+    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+    const {cartList, setCartList, cartCount, setCartCount} = useContext(CartContext);
     const { pid } = useParams();
     const [product, setProduct] = useState({});
     const [size, setSize] = useState("XS"); 
@@ -63,17 +68,85 @@ export default function DetailProduct({ addCart }) {
     //장바구니 추가 버튼 이벤트
 
     const addCartItem = () => {
-      //장바구니 추가 항목 : { pid, size, qty, price }
-      // alert(`${pid} --> 장바구니 추가 완료!`);
-      // console.log(product.pid, product.price, size, 1);
+        if(isLoggedIn){
+            //장바구니 추가 항목 : { pid, size, qty, price }
+
         const cartItem = {
             pid: product.pid,
             size: size,
             qty: 1
             // price: product.price,
         };
-        addCart(cartItem); // App.js의 addCart 함수 호출
+        const id = localStorage.getItem("user_id");
+        // console.log('formData ==> ', formData);
+
+        // cartItem에 있는 pid, size를 cartList(로그인 성공 시 준비)의 item과 비교해서 있으면 qty + 1, 없으면 새로 추가
+        console.log(`Detail :: cartList ===> `, cartList);
+
+        const findItem = cartList && cartList.find(item => item.pid === product.pid && item.size === size);
+        
+
+        if(findItem !== undefined){
+            // qty+1 :: update ----> id, pid, size
+            // qty+1 :: update ----> cid
+            console.log('update');
+            axios.put("http://localhost:9000/cart/updateQty", {"cid":findItem.cid})
+            .then(res => {
+                // console.log('res.data', res.data)
+                if(res.data.result_rows){
+                    alert('장바구니에 추가되었습니다.');
+                    // DB연동 --> cartList 재호출 !!!
+
+
+                    // const updateCartList = cartList.map((item) => 
+                    //     (item.cid === findItem.cid)?
+                    //       {
+                    //         ...item,
+                    //         qty: item.qty+1
+                    //       } : item               
+                         
+                    // );
+                    // setCartList(updateCartList);
+                }
+            }
+            )
+            .catch(error => console.log(error));
+            
+        }else{
+            console.log('insert');
+            const formData = {id:id, cartList:[cartItem]};
+            axios.post("http://localhost:9000/cart/add", formData)
+            .then(res => {
+                // console.log('res.data', res.data)
+                if(res.data.result_rows){
+                    alert('장바구니에 추가되었습니다.');
+                    // setCartCount(cartCount+1);
+                    // setCartList([...cartList, cartItem]);
+                }
+            }
+            )
+            .catch(error => console.log(error));
+
+            // DB연동 ==> cartList 재호출!!!
+        }
+
+
+        
+
+            
+            
+
+        
+        }else{
+            const select = window.confirm('로그인 하시겠습니까?');
+            if(select){
+                navigate('/login');
+            }
+        }
+      
     };  
+    console.log("cartCount ==> ", cartCount);
+    
 
     return (
         <div className="content">

@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../auth/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 
-export default function Carts({refreshStorage}) {
+export default function CartsDB({refreshStorage}) {
     const navigate = useNavigate();
     const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 

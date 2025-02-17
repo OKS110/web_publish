@@ -1,88 +1,70 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useContext, useEffect} from "react";
+import "../styles/cart.css";
+import {AuthContext} from '../auth/AuthContext.js';
+import {CartContext} from '../context/CartContext.js';
 import axios from "axios";
-import { AuthContext } from "../auth/AuthContext.js";
 import { useNavigate } from "react-router-dom";
-
-export default function Carts({refreshStorage}) {
+export default function Carts() {
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(AuthContext);
-
-    const [cartList, setCartList] = useState([]);
+    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+    const {cartList, setCartList} = useContext(CartContext);
 
     useEffect(() => {
         if(isLoggedIn){
-            // DB - shoppy_cart에서 정보
-            const id = localStorage.getItem("user_id");
-            console.log('db');
-            axios.post("http://localhost:9000/cart/items", {"id" : id})
-            .then(res => setCartList(res.data))
-            .catch(error => console.log(error))
-        }else{
-            //localStorage
-            console.log('localStorage');
-            addCartList();
+            //테이블의 로그인 아이디의 카트 리스트 가져오기
+
+                const id = localStorage.getItem('user_id');
+                axios
+                .post("http://localhost:9000/cart/items", {"id" : id})
+                .then((res) => {
+                    console.log("list ==> ", res.data);
+                    setCartList(res.data);
+                })
+                .catch((error) => console.log(error));
             
+        }else{
+            const select = window.confirm('로그인이 필요합니다. \n 로그인 하시겠습니까?');
+            if(select){
+                navigate('/login');
+            }
+            // setCartList([]);
         }
-    }, [isLoggedIn]);
+    }, [isLoggedIn])
 
-    // 로컬스토리지 데이터 --> cartList add
-    const addCartList = () => {
-        const items = localStorage.getItem('cartItems');
-        setTimeout(() => {
-            setCartList([...JSON.parse(items)]);
-        }, 0)
-    };
+    console.log('cartList =======> ', cartList);
     
-
-return (
-    <div className="content">
-        <h1>MyCart!!!</h1>
-        {/* <button onClick={() => handleOrder("all")}>주문하기</button> */}
-        <table border='1'>
-            <tr>
-                <th>PID</th>
-                <th>Size</th>
-                <th>Qty</th>
-                <th>Pname</th>
-                <th>price</th>
-                <th>Description</th>
-                <th>Image</th>
-                {
-                    isLoggedIn && 
-                    <>
-                        <th>배송지 주소</th>
-                        {/* <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th> */}
-                    </>
-                }
-            </tr>
-            {cartList && cartList.map((item) => 
-                <tr>
-                    <td>{item.pid}</td>
-                    <td>{item.size}</td>
-                    <td>{item.qty}</td>
-                    <td>{item.pname}</td>
-                    <td>{item.price}</td>
-                    <td>{item.info}</td>
-                    <td><img src={item.image} alt="" style={{width:"100px"}}/></td>
-                    {
-                        isLoggedIn && 
-                        <>
-                            <td>{item.zipcode} / {item.address}</td>
-                        </>
-                    }
-
-                    {/* <td><button 
-                            onClick={() => handleOrder("each", item.pid, item.size)}>계속 담아두기</button>
-                    </td> */}
-                </tr>
-            )}
-        </table>
-    
-        
-    </div>
+    return (
+        <div className="cart-container">
+        <h2 className="cart-header"> 장바구니</h2>
+        {cartList && cartList.map((item) => <>
+            <div className="cart-item" >
+                    <img src={item.image} alt="" />
+                    <div className="cart-item-details">
+                        <p className="cart-item-title">{item.pname}</p>
+                        <p className="cart-item-title">{item.size}</p> 
+                        <p className="cart-item-price">
+                            {item.price}원
+                        </p>
+                    </div>
+                    <div className="cart-quantity">
+                        <button >
+                        -
+                        </button>
+                        <input type="text" value={item.qty} readOnly />
+                        <button >
+                        +
+                        </button>
+                    </div>
+                    <button
+                        className="cart-remove"
+                    >
+                        🗑
+                    </button>
+                    </div>  
+                </>)}
+                <div className="cart-actions">                       
+                        <button>주문하기</button>
+                    </div>   
+        </div>
     );
-};
+    }
