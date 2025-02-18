@@ -5,8 +5,8 @@ import express from 'express';
 import cors from 'cors';
 import memberRouter from './router/memberRouter.js';
 import uploadRouter from './router/uploadRouter.js';
-import productRouter from './router/productRouter.js'
-import cartRouter from './router/cartRouter.js'
+import productRouter from './router/productRouter.js';
+import cartRouter from './router/cartRouter.js';
 import path from 'path';
 
 // 서버 생성 및 포트 지정
