@@ -1,38 +1,58 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import "../styles/cart.css";
 import {AuthContext} from '../auth/AuthContext.js';
 import {CartContext} from '../context/CartContext.js';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {useCart} from '../hooks/useCart.js';
 export default function Carts() {
     const navigate = useNavigate();
-    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+    const {isLoggedIn} = useContext(AuthContext);
     const {cartList, setCartList} = useContext(CartContext);
+    const { getCartList, updateCartList, deleteCartItem } = useCart();
+    const hasCheckedLogin = useRef(false);
 
     useEffect(() => {
-        if(isLoggedIn){
-            //테이블의 로그인 아이디의 카트 리스트 가져오기
+        if(hasCheckedLogin.current) return; // true: 로그인 상태 ==> 블록 return
+        hasCheckedLogin.current = true;
 
-                const id = localStorage.getItem('user_id');
-                axios
-                .post("http://localhost:9000/cart/items", {"id" : id})
-                .then((res) => {
-                    console.log("list ==> ", res.data);
-                    setCartList(res.data);
-                })
-                .catch((error) => console.log(error));
+        if(isLoggedIn){
+            getCartList();
             
         }else{
             const select = window.confirm('로그인이 필요합니다. \n 로그인 하시겠습니까?');
-            if(select){
-                navigate('/login');
-            }
-            // setCartList([]);
+            select ? navigate('/login') : navigate('/');
+            setCartList([]);
         }
     }, [isLoggedIn])
 
-    console.log('cartList =======> ', cartList);
+    // 수량 업데이트
+
+    const handleQtyUpdate =  (cid, type) => {
+        const result = updateCartList(cid, type);
+        console.log(type, "result :: ", result);
+        
+    }
+
+    // 상품 삭제
+    const handleQtyDelete = async (cid) => {
+        const confirmDelete = window.confirm("장바구니에서 정말 삭제하시겠습니까?");
+        
+        if (!confirmDelete) {
+            console.log("삭제 취소됨");
+            return; // 취소하면 함수 종료
+        }
     
+        try {
+            const result = await deleteCartItem(cid);
+            console.log("result_delete ::", result);
+        } catch (error) {
+            console.error("삭제 중 오류 발생:", error);
+        }
+    };
+    
+
+
     return (
         <div className="cart-container">
         <h2 className="cart-header"> 장바구니</h2>
@@ -47,15 +67,15 @@ export default function Carts() {
                         </p>
                     </div>
                     <div className="cart-quantity">
-                        <button >
+                        <button onClick={(e) => handleQtyUpdate(item.cid, "decrease")}>
                         -
                         </button>
                         <input type="text" value={item.qty} readOnly />
-                        <button >
+                        <button  onClick={(e) => handleQtyUpdate(item.cid, "increase")}>
                         +
                         </button>
                     </div>
-                    <button
+                    <button onClick={() => handleQtyDelete(item.cid)}
                         className="cart-remove"
                     >
                         🗑

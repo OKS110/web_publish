@@ -16,9 +16,9 @@ import ImageList from "../components/review2/ImgList.jsx";
 import { CartContext } from "../context/CartContext.js";
 import { AuthContext } from "../auth/AuthContext.js";
 import { useNavigate } from "react-router-dom";
+import { useCart} from "../hooks/useCart.js";
 export default function DetailProduct({}) {
-
-
+    const {saveToCartList, updateCartList} = useCart();
     const navigate = useNavigate();
     const tabList = [
         {'name': 'DETAIL'},
@@ -26,8 +26,8 @@ export default function DetailProduct({}) {
         {'name': 'Q&A'},
         {'name': 'RETURN & DELIVERY'}
     ];
-    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
-    const {cartList, setCartList, cartCount, setCartCount} = useContext(CartContext);
+    const {isLoggedIn} = useContext(AuthContext);
+    const {cartList} = useContext(CartContext);
     const { pid } = useParams();
     const [product, setProduct] = useState({});
     const [size, setSize] = useState("XS"); 
@@ -49,13 +49,6 @@ export default function DetailProduct({}) {
             .then((res) => {
                 console.log("res.data ==> ", res.data);
                 setProduct(res.data);
-                //uploadFile 배열의 3개 이미지를 가져와서 출력 형태로 생성하여 배열에 저장
-                // const imgList = res.data.uploadFile.filter((image, index) => (index<3) && image
-                //     // if(index < 3) { //res.data.uploadFile.length
-                //     //     return image;
-                //     // }
-                // );
-                // setImgList(imgList);
                 setImgList(res.data.imgList);
                 setDetailImgList(res.data.detailImgList);
             })
@@ -77,64 +70,26 @@ export default function DetailProduct({}) {
             qty: 1
             // price: product.price,
         };
-        const id = localStorage.getItem("user_id");
-        // console.log('formData ==> ', formData);
 
-        // cartItem에 있는 pid, size를 cartList(로그인 성공 시 준비)의 item과 비교해서 있으면 qty + 1, 없으면 새로 추가
-        console.log(`Detail :: cartList ===> `, cartList);
+                const findItem = cartList && cartList.find(item => item.pid === product.pid && item.size === size);
+                console.log("findItem", findItem);
+                console.log("cartList", cartList);
+                
 
-        const findItem = cartList && cartList.find(item => item.pid === product.pid && item.size === size);
-        
+                if(findItem !== undefined){
+                    // qty + 1 업데이트
+                    const result = updateCartList(findItem.cid, "increase");
+                    result && alert('장바구니에 추가 되었습니다.');
+                    
+                }else{
+                    // 새로 추가
+                    const id = localStorage.getItem('user_id');
+                    const formData = {id:id, cartList:[cartItem]};
+                    const result = saveToCartList(formData);
+                    result && alert("장바구니에 추가");
 
-        if(findItem !== undefined){
-            // qty+1 :: update ----> id, pid, size
-            // qty+1 :: update ----> cid
-            console.log('update');
-            axios.put("http://localhost:9000/cart/updateQty", {"cid":findItem.cid})
-            .then(res => {
-                // console.log('res.data', res.data)
-                if(res.data.result_rows){
-                    alert('장바구니에 추가되었습니다.');
-                    // DB연동 --> cartList 재호출 !!!
-
-
-                    // const updateCartList = cartList.map((item) => 
-                    //     (item.cid === findItem.cid)?
-                    //       {
-                    //         ...item,
-                    //         qty: item.qty+1
-                    //       } : item               
-                         
-                    // );
-                    // setCartList(updateCartList);
+                    console.log(`insert::cartList`, cartList);
                 }
-            }
-            )
-            .catch(error => console.log(error));
-            
-        }else{
-            console.log('insert');
-            const formData = {id:id, cartList:[cartItem]};
-            axios.post("http://localhost:9000/cart/add", formData)
-            .then(res => {
-                // console.log('res.data', res.data)
-                if(res.data.result_rows){
-                    alert('장바구니에 추가되었습니다.');
-                    // setCartCount(cartCount+1);
-                    // setCartList([...cartList, cartItem]);
-                }
-            }
-            )
-            .catch(error => console.log(error));
-
-            // DB연동 ==> cartList 재호출!!!
-        }
-
-
-        
-
-            
-            
 
         
         }else{
@@ -145,7 +100,6 @@ export default function DetailProduct({}) {
         }
       
     };  
-    console.log("cartCount ==> ", cartCount);
     
 
     return (
