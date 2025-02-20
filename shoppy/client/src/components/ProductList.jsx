@@ -1,50 +1,39 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
+import ProductAvata from './ProductAvata.jsx';
 import axios from 'axios';
-import ProductAvata from "./ProductAvata.jsx";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
 export default function ProductList() {
-    const [list, setList] = useState([]); // list 변경 시 실시간 업데이트
+    const [list, setList] = useState([]); // list변경시 실시간 업데이트
 
-    useEffect(() => {
-        // axios.get('data/products.json') //서버와 서버끼리 연결할 때 사용
-        // .then((res) => {
-        //     console.log('data --> ', res.data);
-        //     setList(res.data);
-        // })
-        // .catch(err => console.log(err));
-
-        axios
-            .get('http://localhost:9000/product/all')
-            .then(res => {
-                console.log(res.data);
-                
-                setList(res.data);
-            })
-            .catch(error => console.log(error))
-
+    useEffect(()=>{
+        axios.get('http://localhost:9000/product/all')
+            .then(res => setList(res.data))
+            .catch((error) => console.log(error));
     }, []);
-    
-    //출력 리스트 생성 [[{},{},{}], [{},{},{}], [{},{},{}]]
+
+
+    //출력 리스트 생성 [ [{},{},{}], [{},{},{}], [{}]]
     const rows = [];
-    for(let i = 0; i < list.length; i+=3){ //[{0},{1},{2}]
-        rows.push(list.slice(i, i + 3)); //[{0},{1},{2}]
+    for(let i=0; i < list.length; i+=3){ // [{0},{1},{2}]  
+        rows.push(list.slice(i, i+3));  // [{0},{1},{2}]
     }
-    console.log("rows", rows);
-    
-return (
-    <div>
-        {
-           rows.map((rowArray)=> 
-                <div className="product-list">
-                    {rowArray.map((product) => 
-                        <Link to ={`/products/${product.pid}`} key={product.pid}>
-                            <ProductAvata img={`${product.image}`}></ProductAvata>
-                        </Link>
-                    )
-                    }
-                 </div>
-            )
-        }
-    </div>
+
+    return (
+        <div>
+            {   
+                rows.map((rowArray, index) => 
+                    <div key={index} className='product-list'>
+                        {rowArray.map((product) => 
+                            <Link key={product.pid} to={`/products/${product.pid}`}>
+                                <ProductAvata img={`${product.image}`}/>
+                            </Link>
+                        )
+                        }
+                    </div>
+                ) 
+            }
+        </div>
     );
-};
+}
+

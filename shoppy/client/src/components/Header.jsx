@@ -1,64 +1,61 @@
-import React, {useContext, useEffect} from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from 'react';
+import { Link, useNavigate  } from 'react-router-dom';
 import { FiShoppingBag } from "react-icons/fi";
-import { AuthContext } from "../auth/AuthContext.js";
+import { AuthContext } from '../auth/AuthContext.js';
 import { CartContext } from '../context/CartContext.js';
-import {useCart} from '../hooks/useCart.js';
-import axios from 'axios';
+import { useCart } from "../hooks/useCart.js";
+
 export default function Header() {
-    const {getCartList, getCount, setCount} = useCart();
-    const {cartList, setCartList, cartCount, setCartCount} = useContext(CartContext);
-    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+    const { getCount, setCount } = useCart(); 
+    const { cartCount } = useContext(CartContext);
+    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    // 로그인 상태에 따라 cartCount 값 변경
-    useEffect(() => {
-        isLoggedIn ? getCount(): setCount(0);
-
-    }, [isLoggedIn, cartList]);
-
+    //로그인 상태에 따라 cartCount 값 변경
+    useEffect(()=>{
+        isLoggedIn ?    getCount() :   setCount(0);
+    }, [isLoggedIn]);
 
     const handleLoginToggle = () => {
-        if(isLoggedIn){ //Logout 버튼 클릭!!
+        if(isLoggedIn) { 
             const select = window.confirm("정말로 로그아웃 하시겠습니까?");
-            if(select){
-                localStorage.removeItem('token');
-                localStorage.removeItem('user_id');
-                setIsLoggedIn(false);                
+            if(select) {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user_id");
+                setIsLoggedIn(false);
                 navigate('/');
-                }
-        }else{ // 로그인 버튼 클릭
+            }    
+        } else {  
             navigate('/login');
         }
-    };
-    
-return (
-    <div className="header-outer">
-        <div className="header">
-            <Link to='/' className="header-left"><FiShoppingBag /> <span>Shoppy</span></Link>
-            <nav className="header-right">
-                <Link to='/all'>Products</Link>
-                <Link to='/cart'>MyCart<span>({cartCount})</span></Link>
-                <Link to='/signup'>
-                    <button type="button">Signup</button>
+    }   
+
+    return (
+        <div className='header-outer'>
+            <div className='header'>
+                <Link to='/' className='header-left'>
+                    <FiShoppingBag />
+                    <span>Shoppy</span>
                 </Link>
-                
-                {
-                    isLoggedIn &&
-                    <Link to='/products/new'>
-                    <button type="button">New Product</button>
-                    </Link>
-                }
-                
+                <nav className='header-right'>
+                    <Link to='/all'>Products</Link>
+                    <Link to='/cart'>MyCart({cartCount})</Link>
                     <button type="button" onClick={handleLoginToggle}>
-                        {isLoggedIn ? "Logout":"Login"}
+                        { isLoggedIn ? "Logout" : "Login" }
                     </button>
-                {/* <Link to='/employees'>
-                    <button type= "button">Employees</button>
-                </Link> */}
-                
-            </nav>
+                    <Link to='/signup'>
+                        <button type="button">Signup</button>
+                    </Link>  
+                    
+                    { isLoggedIn && 
+                        <Link to='/products/new'>
+                            <button type="button">New Product</button>
+                        </Link> 
+                    }
+                                        
+                </nav>
+            </div>
         </div>
-    </div>
     );
-};
+}
+
