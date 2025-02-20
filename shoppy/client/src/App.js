@@ -13,6 +13,7 @@ import CheckoutInfo from './pages/CheckoutInfo.jsx';
 import { AuthProvider } from './auth/AuthContext.js';
 import { CartProvider } from './context/CartContext.js';
 import { OrderProvider } from './context/OrderContext.js';
+import PaymentSuccess from './pages/PaymentSuccess.jsx'
 
 export default function App() {
 
@@ -32,6 +33,7 @@ export default function App() {
                   <Route path='/products/:pid' element={<DetailProduct />} />                  
                   <Route path='/products/new' element={<NewProduct />} />
                   <Route path='/checkout' element={<CheckoutInfo />} />
+                  <Route path='/payment/success' element={<PaymentSuccess/>}/>
               </Route>
           </Routes>            
       </BrowserRouter>

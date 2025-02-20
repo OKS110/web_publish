@@ -61,6 +61,29 @@ export default function CheckoutInfo() {
     };
     //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
     
+    const handlePayment = async () => {
+        const id = localStorage.getItem("user_id");
+    
+        try {
+            const res = await axios.post('http://localhost:9000/payment/qr', {
+                "id": id,
+                "item_name": "테스트 상품",
+                "total_amount": 1000
+            });
+    
+            console.log(res.data);
+            
+            if (res.data.next_redirect_pc_url) { 
+                window.location.href = res.data.next_redirect_pc_url; // ✅ 카카오페이 결제 페이지로 이동
+                localStorage.setItem("tid", res.data.tid); // ✅ 결제 고유번호(TID) 저장
+            }
+        } catch (error) {
+            console.log("카카오페이 QR 결제 시 에러 발생", error);
+        }
+    };
+    
+
+
 
 return (
     <div className="cart-container">
@@ -218,7 +241,7 @@ return (
         <label for="privacy">개인정보 국외 이전 동의</label>
     </div>
 
-    <button className="pay-button" >결제하기</button>
+    <button className="pay-button" onClick={handlePayment} >결제하기</button>
     </div>
 );
 }
